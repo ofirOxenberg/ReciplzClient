@@ -12,6 +12,7 @@ const routes = [{
         component: () =>
             import ("./pages/RegisterPage"),
     },
+    
     {
         path: "/login",
         name: "login",
