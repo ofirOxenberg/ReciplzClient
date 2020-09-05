@@ -8,7 +8,7 @@
       <br/>
       
       <p>
-      We are third-year students of Information System, at the academit  Tel-Aviv collage.
+      We are third-year students of Information System, at the academit Tel-Aviv collage.
       <br/>
       In the last 3 years we got experience in many different systems, languages and frameworks such as: Java, C++, HTML, PHP, SQL and more.
         <br/>
