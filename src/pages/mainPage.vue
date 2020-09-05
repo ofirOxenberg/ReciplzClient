@@ -12,6 +12,7 @@
         <br />
         <br />
       </b-col>
+      
 
       <b-col class="col">
         <!-- if the user is not logged in: -->
