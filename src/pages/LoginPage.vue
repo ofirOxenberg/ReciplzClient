@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <br />
-    <h1 style="text-align:centerl; color:white;">Login</h1>
+    <h1 style="text-align:centerl; color:black;">Login</h1>
     <br />
     <br />
     <b-form @submit.prevent="onLogin">
@@ -56,6 +56,9 @@
       dismissible
       show
     >Login failed: {{ form.submitError }}</b-alert>
+    <!-- <b-card class="mt-3" header="Form Data Result">
+      <pre class="m-0">{{ form }}</pre>
+    </b-card>-->
   </div>
 </template>
 
