@@ -18,7 +18,7 @@ const router = new VueRouter({
 });
 
 const shared_data = {
-    BASE_URL: "http://reci-plz.herokuapp.com",
+    BASE_URL: "http://recip-lz-client.herokuapp.com",
     username: localStorage.username,
     login(username) {
         localStorage.setItem("username", username);
