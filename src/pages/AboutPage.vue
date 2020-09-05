@@ -1,8 +1,6 @@
 <template>
   <div>
     <br/>
-    <img src="../assets/best-about-us.jpg" height="500" width="1164"/>
-    
       <br/>
       <br/>
        <div id="Hello"> Hello everyone ! </div>
