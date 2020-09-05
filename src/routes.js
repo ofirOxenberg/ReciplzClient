@@ -1,4 +1,4 @@
-import Main from "./pages/mainPage";
+import Main from "./pages/MainPage";
 import NotFound from "./pages/NotFoundPage";
 
 const routes = [{
