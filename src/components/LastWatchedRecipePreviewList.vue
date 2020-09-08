@@ -1,8 +1,9 @@
 <template>
-  <RecipePreviewList title="Last watched recipes" :recipes="recipes" :homePage="true" />
+  <div>
+    <h1 v-if="showMsg">hi</h1>
+    <RecipePreviewList v-else title="Last watched recipes" :recipes="recipes" :homePage="true" />
+  </div>
 </template>
-
-
 
 <script>
 import RecipePreviewList from "./RecipePreviewList";
@@ -12,8 +13,16 @@ export default {
   },
   data() {
     return {
-      recipes: []
+      recipes: [],
+      showMsg 
     };
+  },
+  props: {
+    showMsg: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
   },
   mounted() {
     this.updateRecipes();
@@ -30,7 +39,9 @@ export default {
           var _recipes = [];
           _recipes.push(...recipes_resopnse);
           this.recipes = _recipes;
+          this.showMsg= false;
         } catch (error) {
+          this.showMsg= true;
           console.log(error);
         }
       }
