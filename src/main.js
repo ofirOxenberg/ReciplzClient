@@ -122,7 +122,7 @@ try {
     axios.interceptors.response.use(
         function(response) {
             // Do something with response data
-            console.log('sahar log response: ', response);
+            console.log('ofir log response: ', response);
             return response;
         },
         function(error) {
