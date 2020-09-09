@@ -48,15 +48,7 @@ router.beforeEach((to, from, next) => {
     // if we try to enter auth required pages and we are not authorized
 
 
-    if (shared_data.username === undefined /*|| !Vue.$cookies.get("session")*/) {
-        // if (
-        //     (shared_data.username === undefined && Vue.$cookies.get("session")) ||
-        //     (shared_data.username !== undefined && !Vue.$cookies.get("session"))
-        // ) {
-        //     shared_data.logout();
-        // }
-
-        // if the route requires Authorization, (and we know the user is not authorized), we redirect to login page
+    if (shared_data.username === undefined ) {
         if (to.matched.some((route) => route.meta.requiresAuth)) {
             next({ name: "login" });
         } else next();
@@ -122,10 +114,32 @@ try {
     axios.interceptors.response.use(
         function(response) {
             // Do something with response data
-            console.log('ofir log response: ', response);
             return response;
         },
         function(error) {
+            //the user was logged in, his session is over.
+            if(error.response.status == 401 && shared_data.username) {
+                shared_data.logout();
+                alert('You are no longer logged in to the website, please log in again');
+                router.replace({
+                    path: "/login",
+                    query: { redirect: router.currentRoute.fullPath }
+                });
+            }
+
+            if(error.response.status == 402) {
+                alert('The 150 free calls to spooncular API is over, Please pay for spooncular!!');
+            }
+            
+            //the user hasn't logged in yet.
+            if(error.response.status == 401) {
+                logout();
+                alert('Please log in to the website...');
+                router.replace({
+                    path: "/login",
+                    query: { redirect: router.currentRoute.fullPath }
+                }); 
+            }
             return Promise.reject(error);
         }
     );
