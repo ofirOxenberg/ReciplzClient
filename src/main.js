@@ -27,7 +27,7 @@ const shared_data = {
         //localStorage.removeItem("search_history");
     },
     logout() {
-        Vue.$cookies.remove("session");
+        //Vue.$cookies.remove("session");
         localStorage.removeItem("username");
         this.username = undefined;
 
