@@ -12,7 +12,6 @@ const routes = [{
         component: () =>
             import ("./pages/RegisterPage"),
     },
-    
     {
         path: "/login",
         name: "login",
@@ -20,11 +19,14 @@ const routes = [{
             import ("./pages/LoginPage"),
     },
     {
+        path: "/newRecipePage",
+        name: "newRecipePage",
+        component: () =>
+            import ("./pages/newRecipePage"),
+    },
+    {
         path: "/search",
         name: "search",
-        // meta: {
-        //     requiresAuth: true,
-        // },
         component: () =>
             import ("./pages/SearchPage"),
 
