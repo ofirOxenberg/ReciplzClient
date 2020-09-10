@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1 v-if="showMsg">hi</h1>
-    <RecipePreviewList v-else title="Last watched recipes" :recipes="recipes" :homePage="true" />
+    <!-- <h1 v-if="showMsg">There arent any last watched recipes</h1> -->
+    <!-- <RecipePreviewList v-else title="Last watched recipes" :recipes="recipes" :homePage="true" /> -->
+    <RecipePreviewList title="Last watched recipes" :recipes="recipes" :homePage="true" />
   </div>
 </template>
 
@@ -14,15 +15,15 @@ export default {
   data() {
     return {
       recipes: [],
-      showMsg 
+      // showMsg ,
     };
   },
   props: {
-    showMsg: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
+    // showMsg: {
+    //   type: Boolean,
+    //   required: false,
+    //   default: false
+    // },
   },
   mounted() {
     this.updateRecipes();
@@ -39,9 +40,9 @@ export default {
           var _recipes = [];
           _recipes.push(...recipes_resopnse);
           this.recipes = _recipes;
-          this.showMsg= false;
+          // this.showMsg= false;
         } catch (error) {
-          this.showMsg= true;
+          // this.showMsg= true;
           console.log(error);
         }
       }
