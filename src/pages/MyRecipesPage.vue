@@ -2,10 +2,6 @@
   <div>
     <br/>
     <button @click="moveTo">Creat New Recipe</button>
-    <!-- <b-form @creat.prevent= "onCreat">
-      <b-button type="creat" variant="danger">Creat New Recipe</b-button>
-    </b-form>
-    <br/> -->
     <RecipePreviewList title="My Recipes Page" :recipes="recipes" :privateRecipes="true" />
   </div>
 </template>

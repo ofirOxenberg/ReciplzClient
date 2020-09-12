@@ -69,7 +69,7 @@
         style="text-align: center; margin-left: auto;
   margin-right: auto; background-position: center; font-size: 21px;"
       >
-        <strong>No results to display. Try again.</strong>
+        <strong>No results found. Try looking for a different recipe.</strong>
       </div>
       <br />
       <br />
@@ -116,34 +116,6 @@ export default {
     };
   },
 
-  // async created() {
-  //   //this.search_history = undefined;
-  //   //this.last_search = this.$root.store.search_history;
-
-  //   this.searched = false;
-
-  //   if (this.$root.store.username) {
-  //     if (this.$root.store.search_history.length == 0) {
-  //       // no history
-  //       this.$root.store.addSearchedRecipes([
-  //         {
-  //           username: this.$root.store.username,
-  //           recipes: []
-  //         }
-  //       ]);
-  //     } else {
-  //       // user already has history
-  //       let history_arr = JSON.parse(localStorage.getItem("search_history"));
-  //       for (let i = 0; i < history_arr.length; i++) {
-  //         // try to find the correct user.
-  //         if (this.$root.store.username == history_arr[i].username) {
-  //           // found
-  //           this.last_search.push(...history_arr[i].recipes);
-  //         }
-  //       }
-  //     }
-  //   }
-  // },
   mounted() {
     this.intolerances.push(...intolerances);
     this.diets.push(...diets);
@@ -167,14 +139,6 @@ export default {
             //withCredentials: true,
           }
         );
-
-        //  if (response.data.length == 0) {
-        //   console.log("no results");
-        //   message = "No results to display. Please try again."
-        //   //this.currentSearchQuery = "";
-        // }
-
-        //debugger;
 
         this.recipes = [];
         const results_dic = response.data;

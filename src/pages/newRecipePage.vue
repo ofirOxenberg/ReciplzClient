@@ -1,6 +1,89 @@
 <template  class="container">
   <div>
-    <br/>
-    <h1> hello </h1>
+      <b-form @submit.prevent="saveRecipe">
+        <b-form-group
+        id="input-group-recipeName"
+        label-cols-sm="3"
+        label="Recipe Name:"
+        label-for="recipeName"
+        >
+        <b-form-input
+          id="recipeName"
+          v-model="$v.form.recipeName.$model"
+          type="text"
+          :state="validateState('recipeName')"
+        ></b-form-input>
+        <b-form-invalid-feedback>Recipe name is required</b-form-invalid-feedback>
+        </b-form-group>
+
+        <b-form-group
+        id="input-group-recipePic"
+        label-cols-sm="3"
+        label="Recipe Picture URL:"
+        label-for="image"
+        >
+        <b-form-input
+          id="image"
+          v-model="$v.form.image.$model"
+          type="text"
+          :state="validateState('image')"
+        ></b-form-input>
+        <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback>
+        </b-form-group>
+
+        <b-form-group
+        id="input-group-recipePreparationTime"
+        label-cols-sm="3"
+        label="Preparation Time"
+        label-for="PreparationTime"
+        >
+        <b-form-input
+          id="recipePic"
+          v-model="$v.form.recipePic.$model"
+          type="text"
+          :state="validateState('recipePic')"
+        ></b-form-input>
+        <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback>
+        </b-form-group>
+
+        <b-form-group
+        id="input-group-instruction"
+        label-cols-sm="3"
+        label="Instruction:"
+        label-for="instruction"
+        >
+        <b-form-textarea
+          id="instruction"
+          v-model="$v.form.instruction.$model"
+          type="text"
+          rows="6"
+          max-rows="20"
+          :state="validateState('instruction')"
+        ></b-form-textarea>
+        <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
+        </b-form-group>
+        
     </div>
 </template>
+
+<script>
+export default {
+    
+    methods: {
+        saveRecipe(){
+
+        }
+    }
+}
+</script>
+
+<style>
+.container {
+  max-width: 20000px;
+  display: grid;
+  justify-content: space-evenly;
+}
+#lable {
+  font-size: 20px;
+}
+</style>
