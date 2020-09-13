@@ -70,13 +70,14 @@ export default {
     methods: {
         saveRecipe(){
             alert("form submittesd")
-        },
+        }
         // validateState(param) {
         //     const { $dirty, $error } = this.$v.form[param];
         //     return $dirty ? !$error : null;
-    },
+        //}
     }
 }
+
 </script>
 
 <style>
