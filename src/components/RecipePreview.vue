@@ -107,8 +107,9 @@
                 <b-icon-heart @click="heart"></b-icon-heart>
               </td>
 
-
-              <b-icon-clipboard-plus @click="meal"></b-icon-clipboard-plus>
+              <td>
+                <b-icon-clipboard-plus @click="meal"></b-icon-clipboard-plus>
+              </td>
 
               <td v-if="watched">
                 <img class="center" src="../assets/visible.png" />
@@ -208,11 +209,15 @@ export default {
       this.saveTheRecipe = true;
       try {
         if (this.$root.store.username != undefined) {
+          console.log("meal url");
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
               this.recipe.id +'/'+ this.meal.id
           );
+          console.log(this.$root.store.BASE_URL +
+              "/users/recipesForMeal/recipeId/" +
+              this.recipe.id +'/'+ this.meal.id);
         }
       } catch (error) {
         console.log("error.response.status", error.response.status);
