@@ -107,6 +107,9 @@
                 <b-icon-heart @click="heart"></b-icon-heart>
               </td>
 
+
+              <b-icon-clipboard-plus @click="meal"></b-icon-clipboard-plus>
+
               <td v-if="watched">
                 <img class="center" src="../assets/visible.png" />
               </td>
@@ -194,6 +197,21 @@ export default {
             this.$root.store.BASE_URL +
               "/users/add_to_favorites/recipeId/" +
               this.recipe.id
+          );
+        }
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
+        return;
+      }
+    },
+    async meal() {
+      this.saveTheRecipe = true;
+      try {
+        if (this.$root.store.username != undefined) {
+          await this.axios.put(
+            this.$root.store.BASE_URL +
+              "/users/recipesForMeal/recipeId/" +
+              this.recipe.id +'/'+ this.meal.id
           );
         }
       } catch (error) {
