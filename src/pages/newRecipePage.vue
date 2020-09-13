@@ -10,12 +10,12 @@
         >
         <b-form-input
           id="recipeName"
+          v-model="$v.form.recipeName.$model"
           type="text">
           </b-form-input>
         </b-form-group>
 
         <!-- <b-form-group
-        v-model="$v.form.recipeName.$model"
         id="input-group-recipePic"
         label-cols-sm="3"
         label="Recipe Picture URL:"
@@ -69,7 +69,16 @@
 
 <script>
 export default {
-    
+    data() {
+    return {
+      form: {
+        recipeName: "",
+        submitError: undefined
+      },
+      errors: [],
+      validated: false
+    };
+  },
     // methods: {
     //     saveRecipe(){
     //         alert("form submittesd")
