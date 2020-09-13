@@ -13,7 +13,7 @@
           type="text"
           :state="validateState('recipeName')"
         ></b-form-input>
-        <b-form-invalid-feedback>Recipe name is required</b-form-invalid-feedback>
+        <!-- <b-form-invalid-feedback>Recipe name is required</b-form-invalid-feedback> -->
         </b-form-group>
 
         <b-form-group
@@ -28,7 +28,7 @@
           type="text"
           :state="validateState('image')"
         ></b-form-input>
-        <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback>
+        <!-- <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback> -->
         </b-form-group>
 
         <b-form-group
@@ -43,7 +43,7 @@
           type="text"
           :state="validateState('PreparationTime')"
         ></b-form-input>
-        <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback>
+        <!-- <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback> -->
         </b-form-group>
 
         <b-form-group
@@ -60,7 +60,7 @@
           max-rows="20"
           :state="validateState('instruction')"
         ></b-form-textarea>
-        <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
+        <!-- <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback> -->
         </b-form-group>
     </b-form>  
 </div>
