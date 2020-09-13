@@ -213,7 +213,7 @@ export default {
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
-              this.recipe.id +'/'+ this.meal.id
+              this.recipe.id +'/3'
           );
           console.log(this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
