@@ -1,6 +1,6 @@
 <template  class="container">
   <div>
-      <b-form @submit.prevent="saveRecipe">
+    <b-form @submit.prevent="saveRecipe"> 
         <b-form-group
         id="input-group-recipeName"
         label-cols-sm="3"
@@ -34,16 +34,16 @@
         <b-form-group
         id="input-group-recipePreparationTime"
         label-cols-sm="3"
-        label="Preparation Time"
+        label="Preparation Time:"
         label-for="PreparationTime"
         >
         <b-form-input
-          id="recipePic"
-          v-model="$v.form.recipePic.$model"
+          id="PreparationTime"
+          v-model="$v.form.PreparationTime.$model"
           type="text"
-          :state="validateState('recipePic')"
+          :state="validateState('PreparationTime')"
         ></b-form-input>
-        <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback>
+        <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback>
         </b-form-group>
 
         <b-form-group
@@ -62,8 +62,8 @@
         ></b-form-textarea>
         <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
         </b-form-group>
-        
-    </div>
+    </b-form>  
+</div>
 </template>
 
 <script>
@@ -71,7 +71,7 @@ export default {
     
     methods: {
         saveRecipe(){
-
+            alert("form submittesd")
         }
     }
 }
