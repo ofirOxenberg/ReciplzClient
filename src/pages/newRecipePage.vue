@@ -10,13 +10,11 @@
         <b-form-input
           id="recipeName"
           v-model="$v.form.recipeName.$model"
-          type="text"
-          :state="validateState('recipeName')"
-        ></b-form-input>
-        <!-- <b-form-invalid-feedback>Recipe name is required</b-form-invalid-feedback> -->
+          type="text">
+          </b-form-input>
         </b-form-group>
 
-        <b-form-group
+        <!-- <b-form-group
         id="input-group-recipePic"
         label-cols-sm="3"
         label="Recipe Picture URL:"
@@ -28,7 +26,7 @@
           type="text"
           :state="validateState('image')"
         ></b-form-input>
-        <!-- <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback> -->
+        <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback>
         </b-form-group>
 
         <b-form-group
@@ -43,7 +41,7 @@
           type="text"
           :state="validateState('PreparationTime')"
         ></b-form-input>
-        <!-- <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback> -->
+        <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback>
         </b-form-group>
 
         <b-form-group
@@ -60,8 +58,8 @@
           max-rows="20"
           :state="validateState('instruction')"
         ></b-form-textarea>
-        <!-- <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback> -->
-        </b-form-group>
+        <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
+        </b-form-group> -->
     </b-form>  
 </div>
 </template>
@@ -72,7 +70,11 @@ export default {
     methods: {
         saveRecipe(){
             alert("form submittesd")
-        }
+        },
+        // validateState(param) {
+        //     const { $dirty, $error } = this.$v.form[param];
+        //     return $dirty ? !$error : null;
+    },
     }
 }
 </script>
