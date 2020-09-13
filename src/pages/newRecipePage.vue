@@ -2,7 +2,7 @@
   <div>
       <!-- @submit.prevent="saveRecipe" -->
     <b-form >   
-        <!-- <b-form-group
+        <b-form-group
         id="input-group-recipeName"
         label-cols-sm="3"
         label="Recipe Name:"
@@ -13,7 +13,7 @@
           v-model="$v.form.recipeName.$model"
           type="text">
           </b-form-input>
-        </b-form-group> -->
+        </b-form-group>
 
         <!-- <b-form-group
         id="input-group-recipePic"
