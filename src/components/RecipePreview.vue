@@ -107,7 +107,11 @@
                 <b-icon-heart @click="heart"></b-icon-heart>
               </td>
 
-              <td>
+              <td v-if=" mealRecipe == true || saved == true">
+                <b-icon-clipboard-plus variant="success"></b-icon-clipboard-plus>
+              </td>
+
+              <td v-else>
                 <b-icon-clipboard-plus @click="meal"></b-icon-clipboard-plus>
               </td>
 
@@ -149,7 +153,8 @@ export default {
     return {
       saveTheRecipe: false,
       watched: false,
-      saved: false
+      saved: false,
+      mealRecipe: false
     };
   },
   props: {
@@ -163,6 +168,11 @@ export default {
       default: false
     },
     myRecipes: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    mealRecipe: {
       type: Boolean,
       required: false,
       default: false
@@ -206,7 +216,7 @@ export default {
       }
     },
     async meal() {
-      this.saveTheRecipe = true;
+      this.mealRecipe = true;
       try {
         if (this.$root.store.username != undefined) {
           console.log("meal url");
@@ -217,7 +227,7 @@ export default {
           );
           console.log(this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
-              this.recipe.id +'/'+ this.meal.id);
+              this.recipe.id +'/'+ 3);
         }
       } catch (error) {
         console.log("error.response.status", error.response.status);
