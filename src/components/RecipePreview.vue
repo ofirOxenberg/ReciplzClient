@@ -171,11 +171,6 @@ export default {
       type: Boolean,
       required: false,
       default: false
-    },
-    mealRecipe: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   },
   mounted() {
