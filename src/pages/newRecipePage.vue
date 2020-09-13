@@ -60,6 +60,8 @@
         ></b-form-textarea>
         <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
         </b-form-group> -->
+
+        <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
     </b-form>  
 </div>
 </template>
