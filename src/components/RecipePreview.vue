@@ -109,7 +109,7 @@
 
               <template>
                 <div>
-                  <b-dropdown variant="success">
+                  <b-dropdown variant="primary">
                     <template v-slot:button-content>
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
@@ -126,7 +126,13 @@
                         <b-icon icon="blank" aria-hidden="true"></b-icon>
                         Option C <span class="sr-only">(Not selected)</span>
                       </b-dropdown-item-button>
+                      
                     </b-dropdown-group>
+
+                       <b-dropdown-item-button variant="success" @click="createMeal">
+                          <b-icon icon="trash-fill" aria-hidden="true"></b-icon>
+                          Create new meal
+                      </b-dropdown-item-button>
                   </b-dropdown>
                 </div>
               </template>
