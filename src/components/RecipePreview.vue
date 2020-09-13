@@ -107,13 +107,29 @@
                 <b-icon-heart @click="heart"></b-icon-heart>
               </td>
 
-              <td v-if=" mealRecipe == true || saved == true">
-                <b-icon-clipboard-plus variant="success"></b-icon-clipboard-plus>
-              </td>
-
-              <td v-else>
-                <b-icon-clipboard-plus @click="meal"></b-icon-clipboard-plus>
-              </td>
+              <template>
+                <div>
+                  <b-dropdown variant="success">
+                    <template v-slot:button-content>
+                      <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
+                    </template>
+                    <b-dropdown-group header="Choose options" class="small">
+                      <b-dropdown-item-button @click="meal(4)">
+                        <b-icon icon="blank" aria-hidden="true"></b-icon>
+                        Option A <span class="sr-only">(Not selected)</span>
+                      </b-dropdown-item-button>
+                      <b-dropdown-item-button @click="meal(1)">
+                        <b-icon icon="check" aria-hidden="true"></b-icon>
+                        Option B <span class="sr-only">(Selected)</span>
+                      </b-dropdown-item-button>
+                      <b-dropdown-item-button @click="meal(2)">
+                        <b-icon icon="blank" aria-hidden="true"></b-icon>
+                        Option C <span class="sr-only">(Not selected)</span>
+                      </b-dropdown-item-button>
+                    </b-dropdown-group>
+                  </b-dropdown>
+                </div>
+              </template>
 
               <td v-if="watched">
                 <img class="center" src="../assets/visible.png" />
@@ -210,19 +226,19 @@ export default {
         return;
       }
     },
-    async meal() {
+    async meal(num) {
       this.mealRecipe = true;
       try {
         if (this.$root.store.username != undefined) {
-          console.log("meal url");
+          console.log("meal num"+num);
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
-              this.recipe.id +'/4'
+              this.recipe.id +'/'+num
           );
           console.log(this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
-              this.recipe.id +'/'+ 3);
+              this.recipe.id +'/'+ num);
         }
       } catch (error) {
         console.log("error.response.status", error.response.status);
