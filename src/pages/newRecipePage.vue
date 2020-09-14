@@ -1,7 +1,6 @@
 <template  class="container">
   <div>
-      <!-- @submit.prevent="saveRecipe" -->
-    <b-form >   
+    <b-form @submit.prevent="saveRecipe">   
         <b-form-group
         id="input-group-recipeName"
         label-cols-sm="3"
@@ -11,10 +10,13 @@
         <b-form-input
           id="recipeName"
           v-model="$v.form.recipeName.$model"
-          type="text">
+          type="text"
+          :state="validateState('recipeName')">
           </b-form-input>
         </b-form-group>
 
+        <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
+    </b-form> 
         <!-- <b-form-group
         id="input-group-recipePic"
         label-cols-sm="3"
@@ -62,8 +64,8 @@
         <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
         </b-form-group> -->
 
-        <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
-    </b-form>  
+        <!-- <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
+    </b-form>   -->
 </div>
 </template>
 
@@ -77,18 +79,28 @@ export default {
       },
       errors: [],
       validated: false
-    };
-  },
-    // methods: {
-    //     saveRecipe(){
-    //         alert("form submittesd")
-    //     }
-    //     validateState(param) {
-    //         const { $dirty, $error } = this.$v.form[param];
-    //         return $dirty ? !$error : null;
-    //     }
-    // }
-}
+    }
+    },
+    validations: {
+    form: {
+      recipeName: {
+        required,
+        alpha
+      }
+     }
+    }, 
+    methods: {
+        validateState(param) {
+      const { $dirty, $error } = this.$v.form[param];
+      return $dirty ? !$error : null;
+    },
+    saveRecipe(){
+            alert("form submittesd")
+    }
+    }
+    }
+
+   
 
 </script>
 
