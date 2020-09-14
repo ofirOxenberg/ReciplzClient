@@ -15,9 +15,7 @@
           </b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
-    </b-form> 
-        <!-- <b-form-group
+        <b-form-group
         id="input-group-recipePic"
         label-cols-sm="3"
         label="Recipe Picture URL:"
@@ -64,8 +62,8 @@
         <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
         </b-form-group> -->
 
-        <!-- <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
-    </b-form>   -->
+        <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
+    </b-form>  
 </div>
 </template>
 
@@ -87,24 +85,29 @@ export default {
     },
     validations: {
     form: {
-      recipeName: {
-        required,
-        alpha
-      }
+        recipeName: {
+            required,
+            alpha
+        },
+        PreparationTime: {
+            required,
+        },
+        instruction:{
+            required,
+            alpha
+        }
      }
     }, 
     methods: {
         validateState(param) {
-      const { $dirty, $error } = this.$v.form[param];
-      return $dirty ? !$error : null;
+            const { $dirty, $error } = this.$v.form[param];
+            return $dirty ? !$error : null;
     },
     saveRecipe(){
             alert("form submittesd")
     }
     }
     }
-
-   
 
 </script>
 
