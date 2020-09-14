@@ -70,6 +70,10 @@
 </template>
 
 <script>
+import {
+  required,
+  alpha,
+} from "vuelidate/lib/validators";
 export default {
     data() {
     return {
