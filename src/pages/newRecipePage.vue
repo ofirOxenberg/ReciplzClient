@@ -1,4 +1,4 @@
-<template  class="container">
+<template class="container">
   <div>
     <b-form @submit.prevent="saveRecipe">   
         <b-form-group
@@ -30,20 +30,15 @@
         <b-form-invalid-feedback>Recipe picture is required</b-form-invalid-feedback>
         </b-form-group>
 
-        <b-form-group
-        id="input-group-recipePreparationTime"
-        label-cols-sm="3"
-        label="Preparation Time:"
-        label-for="PreparationTime"
-        >
-        <b-form-input
+        <!-- <b-form-group id="input-group-recipePreparationTime" label-cols-sm="3" label="Country:" label-for="country">
+        <b-form-select
           id="PreparationTime"
           v-model="$v.form.PreparationTime.$model"
-          type="text"
+          :options="numbers"
           :state="validateState('PreparationTime')"
-        ></b-form-input>
+        ></b-form-select>
         <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback>
-        </b-form-group>
+        </b-form-group> -->
 
         <b-form-group
         id="input-group-instruction"
@@ -60,7 +55,9 @@
           :state="validateState('instruction')"
         ></b-form-textarea>
         <b-form-invalid-feedback>Instruction is required</b-form-invalid-feedback>
-        </b-form-group> -->
+        </b-form-group> 
+
+        <b-form-checkbox class="mb-3">Vegetarian</b-form-checkbox>
 
         <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
     </b-form>  
@@ -68,6 +65,7 @@
 </template>
 
 <script>
+import numbers from "../assets/numbers";
 import {
   required,
   alpha,
@@ -89,9 +87,12 @@ export default {
             required,
             alpha
         },
-        PreparationTime: {
-            required,
+        image: {
+          required
         },
+        // PreparationTime: {
+        //     required,
+        // },
         instruction:{
             required,
             alpha
