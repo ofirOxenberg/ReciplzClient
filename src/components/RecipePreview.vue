@@ -255,9 +255,9 @@ export default {
   //   "recipe_id": "638939"
   // },
           var myMeals = {}
-          for (meal_id in mealsList){
+          mealsList.forEach(meal_id=>{
             myMeals[meal_id] = mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0;
-          }
+          });
 
           this.myMeals = myMeals;
           console.log(this.myMeals);
