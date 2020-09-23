@@ -254,10 +254,14 @@ export default {
   //   "meal_id": "4",
   //   "recipe_id": "638939"
   // },
+          console.log(mealsList)
+          console.log(mealsListRecipies)
           var myMeals = {}
-          mealsList.forEach(meal_id=>{
+
+          for (index = 0; index < mealsList.length; ++index) {
+            var meal_id = mealsList[index];
             myMeals[meal_id] = mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0;
-          });
+          }
 
           this.myMeals = myMeals;
           console.log(this.myMeals);
