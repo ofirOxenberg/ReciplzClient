@@ -114,10 +114,19 @@
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
                     <b-dropdown-group header="Choose options" class="small">
-                      <div v-for="mealId in meals" :key="mealId">
+                      <div v-for="mealId in myMeals" :key="mealId">
                         <b-dropdown-item-button @click="meal(mealId)">
                           <b-icon icon="blank" aria-hidden="true"></b-icon>
-                          Meal {{mealId}} <span class="sr-only">(Not selected)</span>
+                          Meal {{mealId}} 
+
+                          <td v-if="myMeals[mealId]">
+                            <span class="sr-only">(Selected)</span>
+                          </td>
+
+                          <td v-else>
+                            <span class="sr-only">(Not selected)</span>
+                          </td>
+
                         </b-dropdown-item-button>
                       </div>
                       
@@ -171,7 +180,7 @@ export default {
       watched: false,
       saved: false,
       mealRecipe: false,
-      myMeals: []
+      myMeals: {}
     };
   },
   props: {
@@ -231,10 +240,26 @@ export default {
     async getMeals() {
       try {
         if (this.$root.store.username != undefined) {
-          this.myMeals = await this.axios.get(
+          var mealsList = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/myMeals/"
           );
+          var mealsListRecipies = await this.axios.get(
+            this.$root.store.BASE_URL +
+              "/users/myMealsRecipes/"
+          );
+          
+  //         {
+  //   "meal_name": "Almog",
+  //   "meal_id": "4",
+  //   "recipe_id": "638939"
+  // },
+          var myMeals = {}
+          for (meal_id in mealsList){
+            myMeals[meal_id] = mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0;
+          }
+
+          this.myMeals = myMeals;
           console.log(this.myMeals);
         }
       } catch (error) {
