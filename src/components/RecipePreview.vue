@@ -114,12 +114,12 @@
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
                     <b-dropdown-group header="Choose options" class="small">
-                      <div v-for="mealId in myMeals" :key="mealId">
-                        <b-dropdown-item-button @click="meal(mealId)">
+                      <li v-for="item in myMeals" :key="item.meal_id">
+                        <b-dropdown-item-button @click="meal(item.meal_id)">
                           <b-icon icon="blank" aria-hidden="true"></b-icon>
-                          Meal {{mealId}} 
+                          Meal {{item.meal_name}} 
 
-                          <td v-if="myMeals[mealId]">
+                          <td v-if="item.flag">
                             <span class="sr-only">(Selected)</span>
                           </td>
 
@@ -128,7 +128,7 @@
                           </td>
 
                         </b-dropdown-item-button>
-                      </div>
+                      </li>
                       
                     </b-dropdown-group>
 
@@ -260,8 +260,9 @@ export default {
           var myMeals = {}
           var index;
           for (index = 0; index < mealsList.length; index++) {
+            var meal_name = mealsList[index].meal_name;
             var meal_id = mealsList[index].meal_id;
-            myMeals[meal_id] = mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0;
+            myMeals[meal_name = {name = meal_name, meal_id = meal_id, flag = mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0};
           }
 
           this.myMeals = myMeals;
