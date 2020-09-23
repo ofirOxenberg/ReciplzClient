@@ -262,7 +262,7 @@ export default {
           for (index = 0; index < mealsList.length; index++) {
             var meal_name = mealsList[index].meal_name;
             var meal_id = mealsList[index].meal_id;
-            myMeals[meal_name = {name : meal_name, meal_id : meal_id, flag : mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0};
+            myMeals[meal_id] = {name : meal_name, meal_id : meal_id, flag : mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0};
           }
 
           this.myMeals = myMeals;
