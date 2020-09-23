@@ -240,15 +240,16 @@ export default {
     async getMeals() {
       try {
         if (this.$root.store.username != undefined) {
-          var mealsList = await this.axios.get(
+          var mealsListRes = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/myMeals/"
           );
-          var mealsListRecipies = await this.axios.get(
+          var mealsListRecipiesRes = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/myMealsRecipes/"
           );
-          
+          var mealsList = mealsListRes.data;
+          var mealsListRecipies = mealsListRecipiesRes.data;
   //         {
   //   "meal_name": "Almog",
   //   "meal_id": "4",
@@ -257,9 +258,9 @@ export default {
           console.log(mealsList)
           console.log(mealsListRecipies)
           var myMeals = {}
-
-          for (index = 0; index < mealsList.length; ++index) {
-            var meal_id = mealsList[index];
+          var index;
+          for (index = 0; index < mealsList.length; index++) {
+            var meal_id = mealsList[index].meal_id;
             myMeals[meal_id] = mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0;
           }
 
