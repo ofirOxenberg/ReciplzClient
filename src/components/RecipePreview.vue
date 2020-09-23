@@ -114,18 +114,12 @@
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
                     <b-dropdown-group header="Choose options" class="small">
-                      <b-dropdown-item-button @click="meal(4)">
-                        <b-icon icon="blank" aria-hidden="true"></b-icon>
-                        Option A <span class="sr-only">(Not selected)</span>
-                      </b-dropdown-item-button>
-                      <b-dropdown-item-button @click="meal(1)">
-                        <b-icon icon="check" aria-hidden="true"></b-icon>
-                        Option B <span class="sr-only">(Selected)</span>
-                      </b-dropdown-item-button>
-                      <b-dropdown-item-button @click="meal(2)">
-                        <b-icon icon="blank" aria-hidden="true"></b-icon>
-                        Option C <span class="sr-only">(Not selected)</span>
-                      </b-dropdown-item-button>
+                      <div v-for="mealId in meals" :key="mealId">
+                        <b-dropdown-item-button @click="meal(mealId)">
+                          <b-icon icon="blank" aria-hidden="true"></b-icon>
+                          Meal {{mealId}} <span class="sr-only">(Not selected)</span>
+                        </b-dropdown-item-button>
+                      </div>
                       
                     </b-dropdown-group>
 
@@ -176,7 +170,8 @@ export default {
       saveTheRecipe: false,
       watched: false,
       saved: false,
-      mealRecipe: false
+      mealRecipe: false,
+      myMeals: []
     };
   },
   props: {
@@ -197,6 +192,7 @@ export default {
   },
   mounted() {
     this.update();
+    this.getMeals();
   },
   methods: {
     async update() {
@@ -226,6 +222,20 @@ export default {
               "/users/add_to_favorites/recipeId/" +
               this.recipe.id
           );
+        }
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
+        return;
+      }
+    },
+    async getMeals() {
+      try {
+        if (this.$root.store.username != undefined) {
+          this.myMeals = await this.axios.get(
+            this.$root.store.BASE_URL +
+              "/users/myMeals/"
+          );
+          console.log(this.myMeals);
         }
       } catch (error) {
         console.log("error.response.status", error.response.status);

@@ -41,6 +41,7 @@ export default {
           _recipes.push(...recipes_resopnse);
           this.recipes = _recipes;
           // this.showMsg= false;
+        
         } catch (error) {
           // this.showMsg= true;
           console.log(error);
