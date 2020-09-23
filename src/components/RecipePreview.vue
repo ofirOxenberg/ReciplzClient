@@ -263,7 +263,7 @@ export default {
           console.log(this.myMeals);
         }
       } catch (error) {
-        console.log("error.response.status", error.response.status);
+        console.log(error);
         return;
       }
     },
