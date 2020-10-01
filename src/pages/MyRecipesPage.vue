@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       recipes: [],
-      showMsg: true
+      showMsg: false
     };
   },
   mounted() {
