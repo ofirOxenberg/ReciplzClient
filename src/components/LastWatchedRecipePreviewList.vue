@@ -2,7 +2,6 @@
   <div>
     <RecipePreviewList v-if="!showMsg" title="Last watched recipes" :recipes="recipes" :homePage="true" />
     <h1 v-else-if="showMsg">There arent any last watched recipes</h1> 
-    <!-- <RecipePreviewList title="Last watched recipes" :recipes="recipes" :homePage="true" /> -->
   </div>
 </template>
 
@@ -17,13 +16,6 @@ export default {
       recipes: [],
       showMsg: true,
     };
-  },
-  props: {
-    // showMsg: {
-    //   type: Boolean,
-    //   required: false,
-    //   default: false
-    // },
   },
   mounted() {
     this.updateRecipes();
