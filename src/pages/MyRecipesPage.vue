@@ -27,7 +27,6 @@ export default {
   methods: {
     async updateRecipes() {
       if (this.$root.store.username) {
-        console.log("eror");
         try {
           const response = await this.axios.get(
             this.$root.store.BASE_URL + "/users/my_recipes"
@@ -51,13 +50,14 @@ export default {
             family_recipe.recipe_owner = recipes_array[index][0].recipe_owner;
             this.recipes.push(family_recipe);
             this.showMsg= false;
+            console.log("eror");
           }
         } catch (error) {
           console.log("eror2");
           this.showMsg= true;
-          this.$router.push("/").catch(() => {
-            this.$forceUpdate();
-          });
+          // this.$router.push("/").catch(() => {
+          //   this.$forceUpdate();
+          // });
         }
       }else{
         console.log("eror3");
