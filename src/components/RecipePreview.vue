@@ -300,7 +300,7 @@ export default {
               "/users/creat_meal/" + mealName
           );
 
-          myMeals[response.data] = {name : mealName, meal_id : response.data, flag : true};
+          this.myMeals[response.data] = {name : mealName, meal_id : response.data, flag : true};
         }
       } catch (error) {
         console.log("error.response.status", error);
