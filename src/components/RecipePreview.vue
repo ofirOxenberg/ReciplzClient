@@ -240,32 +240,11 @@ export default {
         if (this.$root.store.username != undefined) {
           var mealsListRes = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/users/myMeals/"
+              "/users/getRecipesMealsFlags/"+this.recipe.id
           );
-          var mealsListRecipiesRes = await this.axios.get(
-            this.$root.store.BASE_URL +
-              "/users/myMealsRecipes/"
-          );
-          var mealsList = mealsListRes.data;
-          var mealsListRecipies = mealsListRecipiesRes.data;
-  //         {
-  //   "meal_name": "Almog",
-  //   "meal_id": "4",
-  //   "recipe_id": "638939"ד
-  // },
-          console.log("id === ",this.recipe.id )
-          console.log(mealsList)
-          console.log(mealsListRecipies)
-          var myMeals = {}
-          var index;
-          for (index = 0; index < mealsList.length; index++) {
-            var meal_name = mealsList[index].meal_name;
-            var meal_id = mealsList[index].meal_id;
-            console.log(meal_name, meal_id, mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id))
-            myMeals[meal_id] = {name : meal_name, meal_id : meal_id, flag : mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0};
-          }
+          
 
-          this.myMeals = myMeals;
+          this.myMeals = mealsListRes;
           console.log(this.myMeals);
         }
       } catch (error) {
@@ -277,10 +256,7 @@ export default {
       this.mealRecipe = true;
       try {
         if (this.$root.store.username != undefined) {
-          
-
-          var record = this.myMeals.filter(rec => rec.meal_id == num);
-          record.flag = true;
+          this.myMeals[num] = true;
 
           await this.axios.put(
             this.$root.store.BASE_URL +
