@@ -3,7 +3,7 @@
     <br />
     <br />
     <h1>creat new recipe</h1>
-    <b-form @submit.prevent="saveRecipe" style="width: 600px;">   
+    <b-form @submit.prevent="saveRecipe" style="width: 1000px;">   
         <b-form-group
         id="input-group-recipeName"
         label-cols-sm="3"
@@ -25,9 +25,12 @@
         </b-form-group>
         
         <b-row style="margin-bottom: 15px;"> 
-          <b-col>
-            number of servings: 
-            <b-form-select id="serving" v-model="$v.form.serving.$model" style="width:100px;">
+          <b-col> 
+            <b-form-select 
+            id="serving"
+            label="number of servings:" 
+            v-model="$v.form.serving.$model" 
+            style="width:100px;">
               <b-form-select-option :value="null" disabled>0</b-form-select-option>
               <b-form-select-option :value="1">1</b-form-select-option>
               <b-form-select-option :value="2">2</b-form-select-option>
@@ -42,9 +45,6 @@
             </b-form-select>
           </b-col>
         </b-row>
-
-        <br />
-        <br />
 
         <b-form-group
         id="input-group-recipePic"
@@ -85,8 +85,10 @@
           v-model="$v.form.instruction.$model"
           type="text"
           :state="validateState('instruction')"
-        ><b-form-textarea>
-        </b-form-textarea>
+        ><b-form-textarea
+          rows="3"
+          max-rows="20"
+        ></b-form-textarea>
         </b-form-input>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
@@ -143,15 +145,15 @@ export default {
       } 
     }, 
     methods: {
-        validateState(param) {
-            const { $dirty, $error } = this.$v.form[param];
-            return $dirty ? !$error : null;
-    },
-    saveRecipe(){
-            alert("form submittesd")
+      validateState(param) {
+          const { $dirty, $error } = this.$v.form[param];
+          return $dirty ? !$error : null;
+      },
+      saveRecipe(){
+        alert("form submittesd")
+      }
     }
-    }
-    }
+  }
 
 </script>
 
