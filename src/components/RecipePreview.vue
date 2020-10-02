@@ -279,7 +279,7 @@ export default {
         if (this.$root.store.username != undefined) {
           
 
-          var record = this.myMeals.find(rec => rec.meal_id == num);
+          var record = this.myMeals.filter(rec => rec.meal_id == num);
           record.flag = true;
 
           await this.axios.put(
