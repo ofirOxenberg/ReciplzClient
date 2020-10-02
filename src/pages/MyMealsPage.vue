@@ -29,6 +29,7 @@ export default {
         const response = await this.axios.get(
           this.$root.store.BASE_URL + "/users/preview/myMeals"
         );
+        console.log(response.data)
         var recipes_resopnse = response.data;
         this.recipes = recipes_resopnse;
       } catch (error) {
