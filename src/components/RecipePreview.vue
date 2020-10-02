@@ -113,24 +113,22 @@
                     <template v-slot:button-content>
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
-                    <b-dropdown-group header="Choose options" class="small">
-                      <li v-for="item in myMeals" :key="item.meal_id">
-                        <b-dropdown-item-button @click="meal(item.meal_id)">
-                          <b-icon icon="blank" aria-hidden="true"></b-icon>
-                          Meal {{item.meal_name}} 
 
-                          <td v-if="item.flag">
-                            <span class="sr-only">(Selected)</span>
-                          </td>
+                        <b-dropdown-group header="Choose options" class="small">
+                          <li v-for="item in myMeals" :key="item.meal_id">
+                          <b-dropdown-item-button>
+                            <b-icon icon="blank" aria-hidden="true"></b-icon>
+                            Option {{item.meal_id}} 
+                            <td v-if="item.flag">
+                              <span class="sr-only">(Selected)</span>
+                            </td>
 
-                          <td v-else>
-                            <span class="sr-only">(Not selected)</span>
-                          </td>
-
-                        </b-dropdown-item-button>
-                      </li>
-                      
-                    </b-dropdown-group>
+                            <td v-else>
+                              <span class="sr-only">(Not selected)</span>
+                            </td>
+                          </b-dropdown-item-button>
+                          </li>
+                        </b-dropdown-group>
 
                        <b-dropdown-item-button variant="success" @click="createMeal">
                           <b-icon icon="trash-fill" aria-hidden="true"></b-icon>
@@ -253,7 +251,7 @@ export default {
   //         {
   //   "meal_name": "Almog",
   //   "meal_id": "4",
-  //   "recipe_id": "638939"
+  //   "recipe_id": "638939"ד
   // },
           console.log(mealsList)
           console.log(mealsListRecipies)
