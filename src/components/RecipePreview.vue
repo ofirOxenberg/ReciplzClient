@@ -118,7 +118,7 @@
                           <li v-for="item in myMeals" :key="item.meal_id">
                           <b-dropdown-item-button @click="meal(item.meal_id)">
                             <b-icon icon="blank" aria-hidden="true"></b-icon>
-                            Option {{item.meal_id}} 
+                            Meal {{item.name}} 
                             <td v-if="item.flag">
                               <span class="sr-only">(Selected)</span>
                             </td>
@@ -290,7 +290,7 @@ export default {
         return;
       }
     },
-    async creatMeal(mealName) {
+    async createMeal(mealName) {
 
       try {
         if (this.$root.store.username != undefined) {
