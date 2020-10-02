@@ -158,11 +158,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  //max-width: 20000px;
-  display: grid;
-  justify-content: space-evenly;
-}
+// .container {
+//   max-width: 20000px;
+//   display: grid;
+//   justify-content: space-evenly;
+// }
 #lable {
   font-size: 20px;
 }
