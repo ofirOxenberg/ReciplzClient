@@ -3,7 +3,7 @@
     <br />
     <br />
     <h1>creat new recipe</h1>
-    <b-form @submit.prevent="saveRecipe" style="width: 1000px;">   
+    <b-form @submit.prevent="saveRecipe">   
         <b-form-group
         id="input-group-recipeName"
         label-cols-sm="3"
@@ -28,7 +28,7 @@
           <b-col> 
             <b-form-select 
             id="serving"
-            label="number of servings:" 
+            label-field="number of servings:"
             v-model="$v.form.serving.$model" 
             style="width:100px;">
               <b-form-select-option :value="null" disabled>0</b-form-select-option>
@@ -159,7 +159,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  max-width: 20000px;
+  //max-width: 20000px;
   display: grid;
   justify-content: space-evenly;
 }
