@@ -244,7 +244,7 @@ export default {
           );
           
 
-          this.myMeals = mealsListRes;
+          this.myMeals = mealsListRes.data;
           console.log(this.myMeals);
         }
       } catch (error) {
