@@ -34,6 +34,7 @@ export default {
         var recipes_resopnse = response.data;
         console.log("almog2")
         this.recipes = recipes_resopnse;
+        this.recipes.push(...recipes_resopnse);
       } catch (error) {
         console.log("almog catch")
         this.$router.push("/").catch(() => {
