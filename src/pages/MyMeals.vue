@@ -8,7 +8,6 @@
   </div>
 </template>
 
-
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
 
