@@ -29,7 +29,7 @@ export default {
         this.recipes = [];
         this.recipes.push(...recipes_resopnse);
       } catch (error) {
-        console.log(error);
+        console.log("error");
       }
     }
   },

@@ -36,7 +36,6 @@ export default {
         
         } catch (error) {
           this.showMsg= true;
-          console.log(error);
         }
       }
       else{
