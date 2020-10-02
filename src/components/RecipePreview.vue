@@ -261,6 +261,7 @@ export default {
           for (index = 0; index < mealsList.length; index++) {
             var meal_name = mealsList[index].meal_name;
             var meal_id = mealsList[index].meal_id;
+            console.log(meal_name, meal_id, mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id))
             myMeals[meal_id] = {name : meal_name, meal_id : meal_id, flag : mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0};
           }
 
@@ -277,17 +278,18 @@ export default {
       try {
         if (this.$root.store.username != undefined) {
           
+
+          var record = this.myMeals.find(rec => rec.meal_id == num);
+          record.flag = true;
+
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
               this.recipe.id +'/'+num
           );
-
-          var record = this.myMeals.find(rec => rec.meal_id == num);
-          record.flag = true;
         }
       } catch (error) {
-        console.log("error.response.status", error.response.status);
+        console.log("error.response.status", error);
         return;
       }
     },
