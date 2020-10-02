@@ -303,7 +303,7 @@ export default {
           myMeals[response.data] = {name : mealName, meal_id : response.data, flag : true};
         }
       } catch (error) {
-        console.log("error.response.status", error.response.status);
+        console.log("error.response.status", error);
         return;
       }
     }
