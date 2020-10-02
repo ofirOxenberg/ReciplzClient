@@ -29,10 +29,11 @@ export default {
         const response = await this.axios.get(
           this.$root.store.BASE_URL + "/users/preview/myMeals"
         );
-        console.log(response.data)
         var recipes_resopnse = response.data;
-        this.recipes = recipes_resopnse;
+        this.recipes = [];
+        this.recipes.push(...recipes_resopnse);
       } catch (error) {
+        console.log("almog catch")
         this.$router.push("/").catch(() => {
           this.$forceUpdate();
         });
