@@ -253,6 +253,7 @@ export default {
   //   "meal_id": "4",
   //   "recipe_id": "638939"ד
   // },
+          console.log("id === ",this.recipe.id )
           console.log(mealsList)
           console.log(mealsListRecipies)
           var myMeals = {}
@@ -282,7 +283,7 @@ export default {
               this.recipe.id +'/'+num
           );
 
-          var record = myMeals.find(rec => rec.meal_id == num);
+          var record = this.myMeals.find(rec => rec.meal_id == num);
           record.flag = true;
         }
       } catch (error) {
