@@ -245,6 +245,7 @@ export default {
           
 
           this.myMeals = mealsListRes.data;
+          console.log(this.recipe.title)
           console.log(this.myMeals);
         }
       } catch (error) {
@@ -256,7 +257,7 @@ export default {
       this.mealRecipe = true;
       try {
         if (this.$root.store.username != undefined) {
-          this.myMeals[num] = true;
+          this.myMeals[num].flag = true;
 
           await this.axios.put(
             this.$root.store.BASE_URL +
