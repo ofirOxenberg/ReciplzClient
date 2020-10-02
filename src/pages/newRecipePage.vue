@@ -17,24 +17,31 @@
           :state="validateState('recipeName')">
           </b-form-input>
           <b-form-invalid-feedback 
-          v-if="!$v.form.recipeName.required">
+          v-if="!$v.form.recipeName.$model">
           Recipe name is required</b-form-invalid-feedback>
           <b-form-invalid-feedback
           v-if="!$v.form.recipeName.alpha">
           Recipe name must contain letters only</b-form-invalid-feedback>
         </b-form-group>
-
-        <b-form-group 
-        id="input-group-serving" 
-        label-cols-sm="3" 
-        label="serving:" 
-        label-for="serving">
-        <b-form-select
-          id="serving"
-          v-model="$v.form.serving.$model"
-          :options="serving"
-        ></b-form-select>
-        </b-form-group>
+        
+        <b-row>
+          <b-col>
+            number of servings: 
+            <b-form-select id="serving" v-model="$v.form.serving.$model" style="width:100px;">
+              <b-form-select-option :value="null" disabled>0</b-form-select-option>
+              <b-form-select-option :value="1">1</b-form-select-option>
+              <b-form-select-option :value="2">2</b-form-select-option>
+              <b-form-select-option :value="3">3</b-form-select-option>
+              <b-form-select-option :value="4">4</b-form-select-option>
+              <b-form-select-option :value="5">5</b-form-select-option>
+              <b-form-select-option :value="6">6</b-form-select-option>
+              <b-form-select-option :value="7">7</b-form-select-option>
+              <b-form-select-option :value="8">8</b-form-select-option>
+              <b-form-select-option :value="9">9</b-form-select-option>
+              <b-form-select-option :value="10">10</b-form-select-option>
+            </b-form-select>
+          </b-col>
+        </b-row>
 
         <b-form-group
         id="input-group-recipePic"
@@ -60,25 +67,6 @@
         ></b-form-select>
         <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback>
         </b-form-group> -->
-
-        <b-row>
-          <b-col>
-            number of servings: 
-            <b-form-select id="serving" v-model="$v.form.num_of_serving.$model" style="width:100px;">
-              <b-form-select-option :value="null" disabled>0</b-form-select-option>
-              <b-form-select-option :value="1">1</b-form-select-option>
-              <b-form-select-option :value="2">2</b-form-select-option>
-              <b-form-select-option :value="3">3</b-form-select-option>
-              <b-form-select-option :value="4">4</b-form-select-option>
-              <b-form-select-option :value="5">5</b-form-select-option>
-              <b-form-select-option :value="6">6</b-form-select-option>
-              <b-form-select-option :value="7">7</b-form-select-option>
-              <b-form-select-option :value="8">8</b-form-select-option>
-              <b-form-select-option :value="9">9</b-form-select-option>
-              <b-form-select-option :value="10">10</b-form-select-option>
-            </b-form-select>
-          </b-col>
-        </b-row>
 
         <b-form-group
         id="input-group-instruction"
@@ -120,6 +108,7 @@ export default {
         form: {
           recipeName: "",
           instruction: "",
+          image: "",
           submitError: undefined,
           serving: null,
         },
