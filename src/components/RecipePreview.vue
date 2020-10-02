@@ -116,7 +116,7 @@
 
                         <b-dropdown-group header="Choose options" class="small">
                           <li v-for="item in myMeals" :key="item.meal_id">
-                          <b-dropdown-item-button>
+                          <b-dropdown-item-button @click="meal(item.meal_id)">
                             <b-icon icon="blank" aria-hidden="true"></b-icon>
                             Option {{item.meal_id}} 
                             <td v-if="item.flag">
@@ -129,8 +129,8 @@
                           </b-dropdown-item-button>
                           </li>
                         </b-dropdown-group>
-
-                       <b-dropdown-item-button variant="success" @click="createMeal">
+                        <input v-model="mealName" placeholder="new meal name">
+                       <b-dropdown-item-button variant="success" @click="createMeal(mealName)">
                           <b-icon icon="trash-fill" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
@@ -275,21 +275,39 @@ export default {
       this.mealRecipe = true;
       try {
         if (this.$root.store.username != undefined) {
-          console.log("meal num"+num);
+          
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
               this.recipe.id +'/'+num
           );
-          console.log(this.$root.store.BASE_URL +
-              "/users/recipesForMeal/recipeId/" +
-              this.recipe.id +'/'+ num);
+
+          var record = myMeals.find(rec => rec.meal_id == num);
+          record.flag = true;
+        }
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
+        return;
+      }
+    },
+    async creatMeal(mealName) {
+
+      try {
+        if (this.$root.store.username != undefined) {
+          
+          var response = await this.axios.put(
+            this.$root.store.BASE_URL +
+              "/users/creat_meal/" + mealName
+          );
+
+          myMeals[response.data] = {name : mealName, meal_id : response.data, flag : true};
         }
       } catch (error) {
         console.log("error.response.status", error.response.status);
         return;
       }
     }
+    
   }
 };
 </script>
