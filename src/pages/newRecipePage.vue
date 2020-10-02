@@ -3,7 +3,7 @@
     <br />
     <br />
     <h1>creat new recipe</h1>
-    <b-form @submit.prevent="saveRecipe">   
+    <b-form @submit.prevent="saveRecipe" style="width: 600px;">   
         <b-form-group
         id="input-group-recipeName"
         label-cols-sm="3"
@@ -24,7 +24,7 @@
           Recipe name must contain letters only</b-form-invalid-feedback>
         </b-form-group>
         
-        <b-row>
+        <b-row style="margin-bottom: 15px;"> 
           <b-col>
             number of servings: 
             <b-form-select id="serving" v-model="$v.form.serving.$model" style="width:100px;">
@@ -43,6 +43,9 @@
           </b-col>
         </b-row>
 
+        <br />
+        <br />
+
         <b-form-group
         id="input-group-recipePic"
         label-cols-sm="3"
@@ -58,7 +61,11 @@
         <b-form-invalid-feedback v-if="!$v.form.image.required">Recipe picture is required</b-form-invalid-feedback>
         </b-form-group>
 
-        <!-- <b-form-group id="input-group-recipePreparationTime" label-cols-sm="3" label="Country:" label-for="country">
+        <!-- <b-form-group 
+        id="input-group-recipePreparationTime" 
+        label-cols-sm="3" 
+        label="PreparationTime:" 
+        label-for="PreparationTime">
         <b-form-select
           id="PreparationTime"
           v-model="$v.form.PreparationTime.$model"
@@ -73,12 +80,14 @@
         label-cols-sm="3"
         label="Instruction:"
         label-for="instruction"
-        >
-        <b-form-textarea
+        > <b-form-input
           id="instruction"
           v-model="$v.form.instruction.$model"
+          type="text"
           :state="validateState('instruction')"
-        ></b-form-textarea>
+        ><b-form-textarea>
+        </b-form-textarea>
+        </b-form-input>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Instruction are required</b-form-invalid-feedback>
@@ -94,9 +103,6 @@
 
 <script>
 import numbers from "../assets/numbers";
-import cuisines from "../assets/cuisine";
-import diets from "../assets/diet";
-import intolerances from "../assets/intolerance";
 
 import {
   required,
