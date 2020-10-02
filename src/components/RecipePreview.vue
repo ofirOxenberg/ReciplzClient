@@ -113,26 +113,24 @@
                     <template v-slot:button-content>
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
-                    <b-dropdown-group header="Choose options" class="small">
-                      <li v-for="item in myMeals" :key="item.meal_id">
-                        <b-dropdown-item-button @click="meal(item.meal_id)">
-                          <b-icon icon="blank" aria-hidden="true"></b-icon>
-                          Meal {{item.meal_name}} 
 
-                          <td v-if="item.flag">
-                            <span class="sr-only">(Selected)</span>
-                          </td>
+                        <b-dropdown-group header="Choose options" class="small">
+                          <li v-for="item in myMeals" :key="item.meal_id">
+                          <b-dropdown-item-button @click="meal(item.meal_id)">
+                            <b-icon icon="blank" aria-hidden="true"></b-icon>
+                            Meal {{item.name}} 
+                            <td v-if="item.flag">
+                              <span class="sr-only">(Selected)</span>
+                            </td>
 
-                          <td v-else>
-                            <span class="sr-only">(Not selected)</span>
-                          </td>
-
-                        </b-dropdown-item-button>
-                      </li>
-                      
-                    </b-dropdown-group>
-
-                       <b-dropdown-item-button variant="success" @click="createMeal">
+                            <td v-else>
+                              <span class="sr-only">(Not selected)</span>
+                            </td>
+                          </b-dropdown-item-button>
+                          </li>
+                        </b-dropdown-group>
+                        <input v-model="mealName" placeholder="new meal name">
+                       <b-dropdown-item-button variant="success" @click="createMeal(mealName)">
                           <b-icon icon="trash-fill" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
@@ -242,30 +240,13 @@ export default {
         if (this.$root.store.username != undefined) {
           var mealsListRes = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/users/myMeals/"
+              "/users/getRecipesMealsFlags/"+this.recipe.id
           );
-          var mealsListRecipiesRes = await this.axios.get(
-            this.$root.store.BASE_URL +
-              "/users/myMealsRecipes/"
-          );
-          var mealsList = mealsListRes.data;
-          var mealsListRecipies = mealsListRecipiesRes.data;
-  //         {
-  //   "meal_name": "Almog",
-  //   "meal_id": "4",
-  //   "recipe_id": "638939"
-  // },
-          console.log(mealsList)
-          console.log(mealsListRecipies)
-          var myMeals = {}
-          var index;
-          for (index = 0; index < mealsList.length; index++) {
-            var meal_name = mealsList[index].meal_name;
-            var meal_id = mealsList[index].meal_id;
-            myMeals[meal_id] = {name : meal_name, meal_id : meal_id, flag : mealsListRecipies.filter(e => e.meal_id == meal_id && e.recipe_id == this.recipe.id).length > 0};
-          }
+          
 
-          this.myMeals = myMeals;
+          this.myMeals = mealsListRes.data;
+          console.log(this.recipe.title)
+          console.log(this.recipe.id)
           console.log(this.myMeals);
         }
       } catch (error) {
@@ -277,21 +258,37 @@ export default {
       this.mealRecipe = true;
       try {
         if (this.$root.store.username != undefined) {
-          console.log("meal num"+num);
+          this.myMeals[num].flag = true;
+
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
               this.recipe.id +'/'+num
           );
-          console.log(this.$root.store.BASE_URL +
-              "/users/recipesForMeal/recipeId/" +
-              this.recipe.id +'/'+ num);
         }
       } catch (error) {
-        console.log("error.response.status", error.response.status);
+        console.log("error.response.status", error);
+        return;
+      }
+    },
+    async createMeal(mealName) {
+
+      try {
+        if (this.$root.store.username != undefined) {
+          
+          var response = await this.axios.put(
+            this.$root.store.BASE_URL +
+              "/users/creat_meal/" + mealName
+          );
+
+          this.myMeals[response.data] = {name : mealName, meal_id : response.data, flag : true};
+        }
+      } catch (error) {
+        console.log("error.response.status", error);
         return;
       }
     }
+    
   }
 };
 </script>
