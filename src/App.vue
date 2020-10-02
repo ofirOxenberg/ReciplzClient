@@ -47,6 +47,7 @@
             <b-dropdown-item :to="{ name: 'myRecipes' }">My Recipes</b-dropdown-item>
             <!-- <b-dropdown-item :to="{ name: 'myRecipes' }">My Recipes</b-dropdown-item> -->
             <b-dropdown-item :to="{ name: 'myFavorites' }">My Favorites</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'myMeals' }">My Meals</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
