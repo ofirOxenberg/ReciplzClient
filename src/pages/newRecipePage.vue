@@ -2,6 +2,7 @@
   <div class="container">
     <br />
     <br />
+    <h1>creat new recipe</h1>
     <b-form @submit.prevent="saveRecipe">   
         <b-form-group
         id="input-group-recipeName"
@@ -21,6 +22,18 @@
           <b-form-invalid-feedback
           v-if="!$v.form.recipeName.alpha">
           Recipe name must contain letters only</b-form-invalid-feedback>
+        </b-form-group>
+
+        <b-form-group 
+        id="input-group-serving" 
+        label-cols-sm="3" 
+        label="serving:" 
+        label-for="serving">
+        <b-form-select
+          id="serving"
+          v-model="$v.form.serving.$model"
+          :options="serving"
+        ></b-form-select>
         </b-form-group>
 
         <b-form-group
@@ -50,13 +63,20 @@
 
         <b-row>
           <b-col>
-            <b-form-select style="width:185px;" v-model="cuisine_chosen" :options="cuisines"></b-form-select>
-          </b-col>
-          <b-col>
-            <b-form-select style="width:185px;" v-model="diet_chosen" :options="diets"></b-form-select>
-          </b-col>
-          <b-col>
-            <b-form-select style="width:185px;" v-model="intolerance_chosen" :options="intolerances"></b-form-select>
+            number of servings: 
+            <b-form-select id="serving" v-model="$v.form.num_of_serving.$model" style="width:100px;">
+              <b-form-select-option :value="null" disabled>0</b-form-select-option>
+              <b-form-select-option :value="1">1</b-form-select-option>
+              <b-form-select-option :value="2">2</b-form-select-option>
+              <b-form-select-option :value="3">3</b-form-select-option>
+              <b-form-select-option :value="4">4</b-form-select-option>
+              <b-form-select-option :value="5">5</b-form-select-option>
+              <b-form-select-option :value="6">6</b-form-select-option>
+              <b-form-select-option :value="7">7</b-form-select-option>
+              <b-form-select-option :value="8">8</b-form-select-option>
+              <b-form-select-option :value="9">9</b-form-select-option>
+              <b-form-select-option :value="10">10</b-form-select-option>
+            </b-form-select>
           </b-col>
         </b-row>
 
@@ -69,16 +89,13 @@
         <b-form-textarea
           id="instruction"
           v-model="$v.form.instruction.$model"
-          type="text"
-          rows="6"
-          max-rows="20"
           :state="validateState('instruction')"
         ></b-form-textarea>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Instruction are required</b-form-invalid-feedback>
         </b-form-group> 
-      
+    
         <br/>
         <br/>
         <br/>
@@ -104,14 +121,7 @@ export default {
           recipeName: "",
           instruction: "",
           submitError: undefined,
-          cuisine_chosen: null,
-            cuisines: [{ value: null, text: "-Select Cuisine-", disabled: true }],
-
-          diet_chosen: null,
-            diets: [{ value: null, text: "-Select Diet-", disabled: true }],
-
-          intolerance_chosen: null,
-            intolerances: [{ value: null, text: "-Select Intolerance-", disabled: true }],
+          serving: null,
         },
         errors: [],
         validated: false
@@ -122,6 +132,9 @@ export default {
           recipeName: {
               required,
               alpha
+          },
+          serving:{
+            required
           },
           image: {
             required
