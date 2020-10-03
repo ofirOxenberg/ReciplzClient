@@ -70,7 +70,7 @@
         <b-form-select
           id="ready_in_minutes"
           v-model="$v.form.ready_in_minutes.$model"
-          :options="Minutes"
+          :options="minutes"
           :state="validateState('ready_in_minutes')"
         ></b-form-select>
         <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback>

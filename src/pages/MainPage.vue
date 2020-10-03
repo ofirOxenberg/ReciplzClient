@@ -100,7 +100,7 @@ export default {
 }
 
 .jumbotron {
-  background-image: url(http://adwallpapers.xyz/uploads/posts/4518-healthy-food-background.jpg);
+  //: url(http://adwallpapers.xyz/uploads/posts/4518-healthy-food-background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   // max-width: 100%;
