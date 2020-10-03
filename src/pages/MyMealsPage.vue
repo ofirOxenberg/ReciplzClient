@@ -11,6 +11,9 @@
             <h2 label-cols-sm="2" for="mealNames">choose the required meal:</h2>
             <br/>
                   <b-dropdown variant="primary">
+                    <template v-slot:button-content>
+                      <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Choose meal
+                    </template>
                         <b-dropdown-group header="Choose options" class="small">
                           <li v-for="item in myMeals" :key="item.meal_id">
                           <b-dropdown-item-button @click="meal(item.meal_id)">
@@ -34,17 +37,6 @@
         <br />
         <b-row>
         </b-row>
-        <br />
-        <br />
-        <br />
-        <b-row>
-          <b-dropdown text="Sort By:" :disabled="!recipes || !recipes.length">
-            <b-dropdown-item @click="sortByPopularity()">Popularity</b-dropdown-item>
-            <b-dropdown-item @click="sortByDuration()">Duration</b-dropdown-item>
-          </b-dropdown>
-        </b-row>
-        <br />
-        <br />
       </div>
     </div>
     <div>
