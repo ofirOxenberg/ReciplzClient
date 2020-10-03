@@ -246,7 +246,7 @@ export default {
 
           this.myMeals = mealsListRes.data;
           console.log(this.recipe.title)
-          console.log(this.recipe.id)
+          console.log(this.recipe.title)
           console.log(this.myMeals);
         }
       } catch (error) {

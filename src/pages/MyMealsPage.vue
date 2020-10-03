@@ -1,53 +1,257 @@
-<template  class="container">
+<template>
   <div>
-    <li v-for="item in recipes" :key="item.meal_name">
-    <MealPreviewList v-bind:title="item.meal_name" :recipes="item.list" />
-    </li>
-    <br/>
-    
+    <div class="container">
+      <div :key="searchkey">
+        <br />
+        <h1 style="text-align:centerl; color:black;">My Meals</h1>
+        <br />
+        <br />
+        <b-row style="margin-bottom: 15px;"> 
+          <b-col> 
+            <label label-cols-sm="2" for="mealNames">choose the required meal:</label>
+            <br/>
+            <b-form-select 
+            id="mealNames"
+            v-model="$v.form.mealNames.$model" 
+            style="width:100px;">
+            <b-dropdown-group header="Choose meal" class="small">
+              <li v-for="item in myMeals" :key="item.meal_id">
+              <b-dropdown-item-button @click="meal(item.meal_id)">
+                <b-icon icon="blank" aria-hidden="true"></b-icon>
+                  Meal {{item.name}} 
+              </b-dropdown-item-button>
+              </li>
+            </b-dropdown-group>
+            </b-form-select>
+          </b-col>
+        </b-row>
+        <br />
+        <br />
+        <br />
+        <b-row>
+          <b-col>
+            <b-button @click="SendSearch" :disabled="search_query.length==0">Search</b-button>
+          </b-col>
+        </b-row>
+        <br />
+        <br />
+        <br />
+        <b-row>
+          <b-dropdown text="Sort By:" :disabled="!recipes || !recipes.length">
+            <b-dropdown-item @click="sortByPopularity()">Popularity</b-dropdown-item>
+            <b-dropdown-item @click="sortByDuration()">Duration</b-dropdown-item>
+          </b-dropdown>
+        </b-row>
+        <br />
+        <br />
+      </div>
+    </div>
+    <div>
+      <div v-if="recipes.length">
+        <RecipePreviewList title="Your Search Results " :recipes="recipes" />
+        <br />
+      </div>
+
+      <!-- gets the last query, only if there is no current search -->
+      <div v-if="last_search.length != 0 && !searched">
+        <RecipePreviewList title="Your Last Search Results " :recipes="last_search" />
+        <br />
+      </div>
+
+      <div
+        v-if="!recipes.length && searched"
+        style="text-align: center; margin-left: auto;
+  margin-right: auto; background-position: center; font-size: 21px;"
+      >
+        <strong>No results found. Try looking for a different recipe.</strong>
+      </div>
+      <br />
+      <br />
+      <br />
+      <b-row></b-row>
+    </div>
   </div>
 </template>
 
 <script>
-import MealPreviewList from "../components/MealPreviewList";
+import RecipePreviewList from "../components/RecipePreviewList.vue";
 
 export default {
   components: {
-    MealPreviewList
+    RecipePreviewList
   },
   data() {
     return {
-      recipes: []
+      recipes: [],
+      byPopularity: true,
+      search_results: [],
+      search_query: "",
+      sortby_selected: null,
+      searchkey: 0,
+      last_search: [],
+      //message: "",
+      searched: false,
+      search_history: [],
+      myMeals: {}
+
     };
   },
+
   mounted() {
-    this.updateRecipes();
+    this.update();
+    this.getMeals();
   },
   methods: {
-    async updateRecipes() {
+    async SendSearch() {
       try {
-        const meal_id = "'0F70D914-3712-46E1-A3E5-48CEA53E6FE7'"
+        console.log(this.search_query);
+        console.log("try send search");
+
         const response = await this.axios.get(
           this.$root.store.BASE_URL +
-           "/users/myMealRecipes/" +
-              meal_id 
+            "/recipes/search/query/" +
+            this.search_query +
+            "/amount/" +
+            this.num_of_results,
+          {
+            params: this.search_params
+            //withCredentials: true,
+          }
         );
-        console.log(response)
-        console.log("almog123")
-        console.log(response.data)
-        console.log("Al3333")
-        console.log(response.recipe_id)
 
-var recipes_resopnse = response.data;
         this.recipes = [];
-        this.recipes.push(...recipes_resopnse);
+        const results_dic = response.data;
+        this.recipes.push(...results_dic);
+
+        this.searched = true;
+
+        console.log(this.recipes);
+        //const recipe_ids = [];
+
+        // saves user's history
+        let userExists = false;
+        if (this.$root.store.username) {
+          let history_arr = JSON.parse(localStorage.getItem("search_history"));
+
+          for (let i = 0; i < history_arr.length; i++) {
+            if (
+              this.$root.store.username == history_arr[i].username &&
+              !userExists
+            ) {
+              history_arr[i].recipes = this.recipes;
+              userExists = true;
+              //this.$root.store.addSearchedRecipes(history_arr);
+            }
+          }
+
+          if (!userExists) {
+            //adds a new "key" (user) to the dic
+            history_arr.push({
+              username: this.$root.store.username,
+              recipes: this.recipes
+            });
+          }
+
+          this.$root.store.addSearchedRecipes(history_arr);
+        }
       } catch (error) {
-        console.log("almog catch")
-        this.$router.push("/").catch(() => {
-          this.$forceUpdate();
-        });
+        console.log(error);
+        console.log(error.response);
+      }
+    },
+
+    async getMeals() {
+      try {
+        if (this.$root.store.username != undefined) {
+          var mealsListRes = await this.axios.get(
+            this.$root.store.BASE_URL +
+              "/users/getRecipesMealsFlags/"+this.recipe.id
+          );
+          
+          this.myMeals = mealsListRes.data;
+          console.log(this.recipe.title)
+          console.log(this.myMeals);
+        }
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    },
+
+    async meal(num) {
+      this.mealRecipe = true;
+      try {
+        if (this.$root.store.username != undefined) {
+          this.myMeals[num].flag = true;
+
+          await this.axios.put(
+            this.$root.store.BASE_URL +
+              "/users/recipesForMeal/recipeId/" +
+              this.recipe.id +'/'+num
+          );
+        }
+      } catch (error) {
+        console.log("error.response.status", error);
+        return;
+      }
+    },
+
+    async sortByDuration() {
+      console.log("sorting results by duration");
+      this.recipes.sort(function(x, y) {
+        return x.readyInMinutes - y.readyInMinutes;
+      });
+    },
+
+    async sortByPopularity() {
+      console.log("sorting results by popularity");
+      this.recipes.sort(function(x, y) {
+        return y.aggregateLikes - x.aggregateLikes;
+      });
+    },
+
+    async update() {
+      //this.search_history = undefined;
+      //this.last_search = this.$root.store.search_history;
+
+      this.searched = false;
+
+      if (this.$root.store.username) {
+        if (this.$root.store.search_history.length == 0) {
+          // no history
+          this.$root.store.addSearchedRecipes([
+            {
+              username: this.$root.store.username,
+              recipes: []
+            }
+          ]);
+        } else {
+          // user already has history
+          let history_arr = JSON.parse(localStorage.getItem("search_history"));
+          for (let i = 0; i < history_arr.length; i++) {
+            // try to find the correct user.
+            if (this.$root.store.username == history_arr[i].username) {
+              // found
+              this.last_search.push(...history_arr[i].recipes);
+            }
+          }
+        }
       }
     }
-  }
+  },
+
 };
 </script>
+
+<style lang="scss" scoped>
+.container {
+  // max-width: 1400px;
+  display: grid;
+  justify-content: space-evenly;
+  // justify-content: space-around;
+}
+
+#results {
+  // max-width: 20%;
+}
+</style>

@@ -1,21 +1,39 @@
-<template  class="container">
-  <div>
+<template>  
+
+  <div class="container">
     <br/>
-    <RecipePreviewList title="My meal Page" :recipes="recipes" />
+    <!-- <RecipePreviewList title="My meal Page" :recipes="recipes" /> -->
+    <!-- Change to meal name -->
+    <h5
+      style="text-align: center; font-weight: bold; font-size: 24px;"
+      :title="meal.title"
+      class="meal-name"
+    >{{ recipe.title }}</h5>
+
+    <router-link
+      v-if="privateRecipes"
+      :to="{ name: 'recipe', params: { recipeId: recipe.id,
+    privateRecipes: true
+     } }"
+      class="recipe-body"
+    >
+      <div class="recipe-body">
+        <img :src="recipe.image" class="recipe-image" id="image" />
+      </div>
+    </router-link>
   </div>
 </template>
 
-
 <script>
-import RecipePreviewList from "./RecipePreviewList";
+//import RecipePreviewList from "./RecipePreviewList";
 
 export default {
-  components: {
-    RecipePreviewList
-  },
+//   components: {
+//     RecipePreviewList
+//   },
   data() {
     return {
-      recipes: []
+      recipes: [],
     };
   },
   mounted() {
@@ -44,3 +62,20 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.meal-name {
+  font-weight: bold;
+  padding: 15px 15px;
+  width: 100%;
+  font-size: 30pt;
+  font-family: "calibri";
+  color: white;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  margin-top: 60px;
+}
+</style>
