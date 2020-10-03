@@ -79,12 +79,10 @@ export default {
       byPopularity: true,
       search_results: [],
       search_query: "",
-      sortby_selected: null,
       searchkey: 0,
       last_search: [],
       //message: "",
       searched: false,
-      search_history: [],
       myMeals: {}
 
     };
@@ -191,19 +189,6 @@ export default {
       }
     },
 
-    async sortByDuration() {
-      console.log("sorting results by duration");
-      this.recipes.sort(function(x, y) {
-        return x.readyInMinutes - y.readyInMinutes;
-      });
-    },
-
-    async sortByPopularity() {
-      console.log("sorting results by popularity");
-      this.recipes.sort(function(x, y) {
-        return y.aggregateLikes - x.aggregateLikes;
-      });
-    },
 
     async update() {
       //this.search_history = undefined;
@@ -239,12 +224,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  // max-width: 1400px;
-  display: grid;
-  justify-content: space-evenly;
-  // justify-content: space-around;
-}
 
 #results {
   // max-width: 20%;
