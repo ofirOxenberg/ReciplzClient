@@ -183,7 +183,7 @@ export default {
       try {
           const response = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/preview/myMeals/" + num 
+              "/users/preview/myMeals/" + num 
           );
           console.log("Almog")
           this.recipes = []
