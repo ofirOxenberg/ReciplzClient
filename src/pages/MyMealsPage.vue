@@ -33,9 +33,6 @@
         <br />
         <br />
         <b-row>
-          <b-col>
-            <b-button @click="SendSearch" :disabled="search_query.length==0">Search</b-button>
-          </b-col>
         </b-row>
         <br />
         <br />
@@ -184,11 +181,18 @@ export default {
 
     async meal(num) {
       try {
-          await this.axios.put(
+          const response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/preview/myMeals/" + num
           );
           console.log(Almog)
+          this.recipes = []
+          const results_dic = response.data;
+        this.recipes.push(...results_dic);
+
+        this.searched = true;
+        console.log(this.recipes);
+
       } catch (error) {
         console.log("error.response.status", error);
         return;
