@@ -8,7 +8,6 @@
         <br />
         <b-row style="margin-bottom: 15px;"> 
           <b-col> 
-            <h2 label-cols-sm="2" for="mealNames">choose the required meal:</h2>
             <br/>
                   <b-dropdown variant="primary">
                     <template v-slot:button-content>
@@ -42,12 +41,6 @@
     <div>
       <div v-if="recipes.length">
         <RecipePreviewList title="Your Search Results " :recipes="recipes" />
-        <br />
-      </div>
-
-      <!-- gets the last query, only if there is no current search -->
-      <div v-if="last_search.length != 0 && !searched">
-        <RecipePreviewList title="Your Last Search Results " :recipes="last_search" />
         <br />
       </div>
 
