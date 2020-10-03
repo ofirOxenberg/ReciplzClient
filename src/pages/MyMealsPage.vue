@@ -1,7 +1,7 @@
 <template  class="container">
   <div>
     <li v-for="item in recipes" :key="item.meal_name">
-    <RecipePreviewList v-bind:title="item.meal_name" :recipes="item.list" />
+    <MealPreviewList v-bind:title="item.meal_name" :recipes="item.list" />
     </li>
     <br/>
     
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import RecipePreviewList from "../components/RecipePreviewList";
+import MealPreviewList from "../components/MealPreviewList";
 
 export default {
   components: {
-    RecipePreviewList
+    MealPreviewList
   },
   data() {
     return {
@@ -26,8 +26,13 @@ export default {
   methods: {
     async updateRecipes() {
       try {
+        const meal_id = "0F70D914-3712-46E1-A3E5-48CEA53E6FE7"
         const response = await this.axios.get(
-          this.$root.store.BASE_URL + "/users/preview/myMeals"
+          this.$root.store.BASE_URL +
+           "/users/myMealRecipes" +
+            "[" +
+              meal_id +
+              "]"
         );
         var recipes_resopnse = response.data;
         this.recipes = [];

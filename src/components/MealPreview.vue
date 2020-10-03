@@ -32,6 +32,7 @@ export default {
               meal_id +
               "]"
         );
+        console.log(response)
         var recipes_resopnse = response.data;
         this.recipes = [];
         this.recipes.push(...recipes_resopnse);
