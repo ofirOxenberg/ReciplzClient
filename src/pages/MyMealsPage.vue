@@ -13,7 +13,7 @@
                   <b-dropdown variant="primary">
                         <b-dropdown-group header="Choose options" class="small">
                           <li v-for="item in myMeals" :key="item.meal_id">
-                          <b-dropdown-item-button @click="meal(item.meal_id)">
+                          <b-dropdown-item-button @click="meal()">
                             <b-icon icon="blank" aria-hidden="true"></b-icon>
                             Meal {{item.name}} 
                             <td v-if="item.flag">
@@ -182,16 +182,12 @@ export default {
       }
     },
 
-    async meal(num) {
-      this.mealRecipe = true;
+    async meal() {
       try {
         if (this.$root.store.username != undefined) {
-          this.myMeals[num].flag = true;
-
           await this.axios.put(
             this.$root.store.BASE_URL +
-              "/users/recipesForMeal/recipeId/" +
-              this.recipe.id +'/'+num
+              "/users/myMeals"
           );
         }
       } catch (error) {
