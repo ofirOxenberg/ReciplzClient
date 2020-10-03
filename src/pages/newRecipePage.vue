@@ -6,7 +6,7 @@
     <b-form @submit.prevent="saveRecipe">   
         <b-form-group
         id="input-group-recipeName"
-        label-cols-sm="2"
+        label-cols-sm="3"
         label="Recipe Name:"
         label-for="recipeName"
         >
@@ -26,7 +26,7 @@
         
         <b-row style="margin-bottom: 15px;"> 
           <b-col> 
-            <label label-cols-sm="2" for="serving">number of servings:</label>
+            <label sm="3" for="serving">number of servings:</label>
             <b-form-select 
             id="serving"
             v-model="$v.form.serving.$model" 
@@ -48,7 +48,7 @@
 
         <b-form-group
         id="input-group-recipePic"
-        label-cols-sm="2"
+        label-cols-sm="3"
         label="Recipe Picture URL:"
         label-for="image"
         >
@@ -64,7 +64,7 @@
 
         <b-form-group 
         id="input-group-ready_in_minutes" 
-        label-cols-sm="2" 
+        label-cols-sm="3" 
         label="Preparation time in Minutes:" 
         label-for="ready_in_minutes">
         <b-form-select
@@ -78,7 +78,7 @@
 
         <b-form-group
         id="input-group-instruction"
-        label-cols-sm="2"
+        label-cols-sm="3"
         label="Instruction:"
         label-for="instruction"
         ><b-form-input
