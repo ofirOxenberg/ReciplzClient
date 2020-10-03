@@ -42,6 +42,7 @@
       <div v-if="recipes.length">
         <RecipePreviewList title="Your Search Results " :recipes="recipes" />
         <br />
+        <mdb-btn @click="startMeal()" color="primary">Start preparing meal</mdb-btn>
       </div>
 
       <div
@@ -69,6 +70,7 @@ export default {
   data() {
     return {
       recipes: [],
+      totalTime: [],
       byPopularity: true,
       search_results: [],
       search_query: "",
@@ -86,64 +88,6 @@ export default {
     this.getMeals();
   },
   methods: {
-    async SendSearch() {
-      try {
-        console.log(this.search_query);
-        console.log("try send search");
-
-        const response = await this.axios.get(
-          this.$root.store.BASE_URL +
-            "/recipes/search/query/" +
-            this.search_query +
-            "/amount/" +
-            this.num_of_results,
-          {
-            params: this.search_params
-            //withCredentials: true,
-          }
-        );
-
-        this.recipes = [];
-        const results_dic = response.data;
-        this.recipes.push(...results_dic);
-
-        this.searched = true;
-
-        console.log(this.recipes);
-        //const recipe_ids = [];
-
-        // saves user's history
-        let userExists = false;
-        if (this.$root.store.username) {
-          let history_arr = JSON.parse(localStorage.getItem("search_history"));
-
-          for (let i = 0; i < history_arr.length; i++) {
-            if (
-              this.$root.store.username == history_arr[i].username &&
-              !userExists
-            ) {
-              history_arr[i].recipes = this.recipes;
-              userExists = true;
-              //this.$root.store.addSearchedRecipes(history_arr);
-            }
-          }
-
-          if (!userExists) {
-            //adds a new "key" (user) to the dic
-            history_arr.push({
-              username: this.$root.store.username,
-              recipes: this.recipes
-            });
-          }
-
-          this.$root.store.addSearchedRecipes(history_arr);
-        }
-      } catch (error) {
-        console.log(error);
-        console.log(error.response);
-      }
-    },
-
     async getMeals() {
       try {
         if (this.$root.store.username != undefined) {
@@ -168,7 +112,6 @@ export default {
             this.$root.store.BASE_URL +
               "/users/preview/myMeals/" + num 
           );
-          console.log("Almog")
           this.recipes = []
           const results_dic = response.data;
           this.recipes.push(...results_dic);
@@ -181,6 +124,25 @@ export default {
         return;
       }
     },
+
+    async calculateMealTime()
+    {
+      var total =[]
+      const response = await this.axios.get(
+        this.$root.store.BASE_URL +
+        "/users/preview/myMeals/" + num 
+      );
+       this.totalTime =[]
+      const results_dic = response.data[0].ready_in_minutes;
+      this.recipe
+
+
+    },
+
+    async startMeal(){
+      
+    },
+
 
 
     async update() {
