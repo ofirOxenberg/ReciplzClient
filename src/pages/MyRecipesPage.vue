@@ -2,18 +2,18 @@
   <div class="container">
     <br/>
     <button @click="moveTo">Creat New Recipe</button>
-    <RecipePreview v-if="!showMsg" title="My Recipes Page" :recipes="recipes" :privateRecipes="true" />
+    <RecipePreviewList v-if="!showMsg" title="My Recipes Page" :recipes="recipes" :privateRecipes="true" />
     <h1 v-else-if="showMsg">There arent any private recipes</h1> 
   </div>
 </template>
 
 
 <script>
-import RecipePreview from "../components/RecipePreview";
+import RecipePreviewList from "../components/RecipePreviewList.vue";
 
 export default {
   components: {
-    RecipePreview
+    RecipePreviewList
   },
   data() {
     return {
