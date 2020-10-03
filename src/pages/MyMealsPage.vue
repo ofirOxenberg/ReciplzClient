@@ -8,12 +8,8 @@
         <br />
         <b-row style="margin-bottom: 15px;"> 
           <b-col> 
-            <label label-cols-sm="2" for="mealNames">choose the required meal:</label>
+            <h2 label-cols-sm="2" for="mealNames">choose the required meal:</h2>
             <br/>
-            <b-form-select 
-            id="mealNames"
-            v-model="$v.form.mealNames.$model" 
-            style="width:100px;">
             <b-dropdown-group header="Choose meal" class="small">
               <li v-for="item in myMeals" :key="item.meal_id">
               <b-dropdown-item-button @click="meal(item.meal_id)">
@@ -22,7 +18,6 @@
               </b-dropdown-item-button>
               </li>
             </b-dropdown-group>
-            </b-form-select>
           </b-col>
         </b-row>
         <br />
