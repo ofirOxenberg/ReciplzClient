@@ -10,14 +10,23 @@
           <b-col> 
             <h2 label-cols-sm="2" for="mealNames">choose the required meal:</h2>
             <br/>
-            <b-dropdown-group header="Choose meal" class="small">
-              <li v-for="item in myMeals" :key="item.meal_id">
-              <b-dropdown-item-button @click="meal(item.meal_id)">
-                <b-icon icon="blank" aria-hidden="true"></b-icon>
-                  Meal {{item.name}} 
-              </b-dropdown-item-button>
-              </li>
-            </b-dropdown-group>
+                  <b-dropdown variant="primary">
+                        <b-dropdown-group header="Choose options" class="small">
+                          <li v-for="item in myMeals" :key="item.meal_id">
+                          <b-dropdown-item-button @click="meal(item.meal_id)">
+                            <b-icon icon="blank" aria-hidden="true"></b-icon>
+                            Meal {{item.name}} 
+                            <td v-if="item.flag">
+                              <span class="sr-only">(Selected)</span>
+                            </td>
+
+                            <td v-else>
+                              <span class="sr-only">(Not selected)</span>
+                            </td>
+                          </b-dropdown-item-button>
+                          </li>
+                        </b-dropdown-group>
+                </b-dropdown>
           </b-col>
         </b-row>
         <br />
