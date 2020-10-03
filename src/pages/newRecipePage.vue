@@ -62,19 +62,19 @@
         <b-form-invalid-feedback v-if="!$v.form.image.url">Profile picture must be valid URL</b-form-invalid-feedback>
         </b-form-group>
 
-        <!-- <b-form-group 
-        id="input-group-recipePreparationTime" 
-        label-cols-sm="3" 
-        label="PreparationTime:" 
-        label-for="PreparationTime">
+        <b-form-group 
+        id="input-group-ready_in_minutes" 
+        label-cols-sm="2" 
+        label="Preparation time in Minutes:" 
+        label-for="ready_in_minutes">
         <b-form-select
-          id="PreparationTime"
-          v-model="$v.form.PreparationTime.$model"
-          :options="numbers"
-          :state="validateState('PreparationTime')"
+          id="ready_in_minutes"
+          v-model="$v.form.ready_in_minutes.$model"
+          :options="Minutes"
+          :state="validateState('ready_in_minutes')"
         ></b-form-select>
         <b-form-invalid-feedback>Recipe preparation time is required</b-form-invalid-feedback>
-        </b-form-group> -->
+        </b-form-group>
 
         <b-form-group
         id="input-group-instruction"
@@ -105,7 +105,7 @@
 </template>
 
 <script>
-import numbers from "../assets/numbers";
+import minutes from "../assets/minutes";
 
 import {
   required,
@@ -121,7 +121,9 @@ export default {
           image: "",
           submitError: undefined,
           serving: null,
+          ready_in_minutes: null,
         },
+        minutes: [{ value: null, text: "", disabled: true }],
         errors: [],
         validated: false
       }
@@ -139,21 +141,46 @@ export default {
             url,
             required
           },
-          // PreparationTime: {
-          //     required,
-          // },
+          ready_in_minutes: {
+             required,
+          },
           instruction:{
               required
           }
       } 
     }, 
+     mounted() {
+    this.minutes.push(...minutes);
+  },
     methods: {
       validateState(param) {
           const { $dirty, $error } = this.$v.form[param];
           return $dirty ? !$error : null;
       },
       saveRecipe(){
-        alert("form submittesd")
+        this.$v.form.$touch();
+        if (this.$v.form.$anyError) {
+          return;
+        }
+        this.sendingForm();
+      },
+      async sendingForm(){
+        try {
+        const response = await this.axios.post(
+          this.$root.store.BASE_URL + "/add_new_recipe",
+          {
+            username: this.username,
+            recipeName: this.form.recipeName,
+            instruction: this.form.instruction,
+            image: this.form.image,
+            ready_in_minutes: this.form.ready_in_minutes,
+          }
+        );
+        console.log(response)
+        } catch (err) {
+          console.log(err.response);
+          this.form.submitError = err.response.data.message;
+        }
       }
     }
   }
@@ -161,11 +188,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .container {
-//   max-width: 20000px;
-//   display: grid;
-//   justify-content: space-evenly;
-// }
 #lable {
   font-size: 20px;
 }

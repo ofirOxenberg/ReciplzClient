@@ -1,5 +1,5 @@
-<template  class="container">
-  <div>
+<template>
+  <div class="container">
     <br/>
     <button @click="moveTo">Creat New Recipe</button>
     <RecipePreviewList v-if="!showMsg" title="My Recipes Page" :recipes="recipes" :privateRecipes="true" />
