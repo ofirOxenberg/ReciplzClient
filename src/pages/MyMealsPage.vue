@@ -13,7 +13,7 @@
                   <b-dropdown variant="primary">
                         <b-dropdown-group header="Choose options" class="small">
                           <li v-for="item in myMeals" :key="item.meal_id">
-                          <b-dropdown-item-button @click="meal()">
+                          <b-dropdown-item-button @click="meal(item.meal_id)">
                             <b-icon icon="blank" aria-hidden="true"></b-icon>
                             Meal {{item.name}} 
                             <td v-if="item.flag">
@@ -169,7 +169,7 @@ export default {
         if (this.$root.store.username != undefined) {
           var mealsListRes = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/users/getRecipesMealsFlags/"+this.recipe.id
+              "/users/myMeals"
           );
           
           this.myMeals = mealsListRes.data;
@@ -182,14 +182,13 @@ export default {
       }
     },
 
-    async meal() {
+    async meal(num) {
       try {
-        if (this.$root.store.username != undefined) {
           await this.axios.put(
             this.$root.store.BASE_URL +
-              "/users/myMeals"
+              "/preview/myMeals/" + num
           );
-        }
+          console.log(Almog)
       } catch (error) {
         console.log("error.response.status", error);
         return;
