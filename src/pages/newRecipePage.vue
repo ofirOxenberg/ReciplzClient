@@ -6,7 +6,7 @@
     <b-form @submit.prevent="saveRecipe">   
         <b-form-group
         id="input-group-recipeName"
-        label-cols-sm="3"
+        label-cols-sm="2"
         label="Recipe Name:"
         label-for="recipeName"
         >
@@ -26,9 +26,9 @@
         
         <b-row style="margin-bottom: 15px;"> 
           <b-col> 
+            <label label-cols-sm="2" for="serving">number of servings:</label>
             <b-form-select 
             id="serving"
-            label-field="number of servings:"
             v-model="$v.form.serving.$model" 
             style="width:100px;">
               <b-form-select-option :value="null" disabled>0</b-form-select-option>
@@ -48,7 +48,7 @@
 
         <b-form-group
         id="input-group-recipePic"
-        label-cols-sm="3"
+        label-cols-sm="2"
         label="Recipe Picture URL:"
         label-for="image"
         >
@@ -59,6 +59,7 @@
           :state="validateState('image')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.image.required">Recipe picture is required</b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.image.url">Profile picture must be valid URL</b-form-invalid-feedback>
         </b-form-group>
 
         <!-- <b-form-group 
@@ -77,10 +78,10 @@
 
         <b-form-group
         id="input-group-instruction"
-        label-cols-sm="3"
+        label-cols-sm="2"
         label="Instruction:"
         label-for="instruction"
-        > <b-form-input
+        ><b-form-input
           id="instruction"
           v-model="$v.form.instruction.$model"
           type="text"
@@ -109,6 +110,7 @@ import numbers from "../assets/numbers";
 import {
   required,
   alpha,
+  url
 } from "vuelidate/lib/validators";
 export default {
     data() {
@@ -134,6 +136,7 @@ export default {
             required
           },
           image: {
+            url,
             required
           },
           // PreparationTime: {

@@ -141,6 +141,7 @@
           :state="validateState('image')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.image.required">Profile picture is required</b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.image.url">Profile picture must be valid URL</b-form-invalid-feedback>
       </b-form-group>
 
       <b-button type="reset" variant="danger">Reset</b-button>
@@ -177,7 +178,8 @@ import {
   maxLength,
   alpha,
   sameAs,
-  email
+  email,
+  url
 } from "vuelidate/lib/validators";
 export default {
   name: "Register",
@@ -236,6 +238,7 @@ export default {
         email
       },
       image: {
+        url,
         required
       }
     }
