@@ -32,7 +32,13 @@ export default {
            "/users/myMealRecipes/" +
               meal_id 
         );
-        var recipes_resopnse = response.data;
+        console.log(response)
+        console.log("almog123")
+        console.log(response.data)
+        console.log("Al3333")
+        console.log(response.recipe_id)
+
+var recipes_resopnse = response.data;
         this.recipes = [];
         this.recipes.push(...recipes_resopnse);
       } catch (error) {
