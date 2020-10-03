@@ -13,7 +13,7 @@
                   <b-dropdown variant="primary">
                         <b-dropdown-group header="Choose options" class="small">
                           <li v-for="item in myMeals" :key="item.meal_id">
-                          <b-dropdown-item-button @click="meal()">
+                          <b-dropdown-item-button @click="meal(item.meal_id)">
                             <b-icon icon="blank" aria-hidden="true"></b-icon>
                             Meal {{item.name}} 
                             <td v-if="item.flag">
@@ -33,9 +33,6 @@
         <br />
         <br />
         <b-row>
-          <b-col>
-            <b-button @click="SendSearch" :disabled="search_query.length==0">Search</b-button>
-          </b-col>
         </b-row>
         <br />
         <br />
@@ -169,7 +166,7 @@ export default {
         if (this.$root.store.username != undefined) {
           var mealsListRes = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/users/getRecipesMealsFlags/"+this.recipe.id
+              "/users/myMeals"
           );
           
           this.myMeals = mealsListRes.data;
@@ -182,14 +179,20 @@ export default {
       }
     },
 
-    async meal() {
+    async meal(num) {
       try {
-        if (this.$root.store.username != undefined) {
-          await this.axios.put(
+          const response = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/users/myMeals"
+              "/preview/myMeals/" + num
           );
-        }
+          console.log(Almog)
+          this.recipes = []
+          const results_dic = response.data;
+        this.recipes.push(...results_dic);
+
+        this.searched = true;
+        console.log(this.recipes);
+
       } catch (error) {
         console.log("error.response.status", error);
         return;
