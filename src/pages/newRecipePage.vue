@@ -27,13 +27,16 @@
           Recipe name must contain English letters only</b-form-invalid-feedback>
         </b-form-group>
         
-        <b-row style="margin-bottom: 15px;"> 
-          <b-col> 
-            <label sm="3" for="serving">number of servings:</label>
+        <b-form-group 
+          id="input-group-serving" 
+          label-cols-sm="3" 
+          label="Number of servings:" 
+          label-for="serving">
             <b-form-select 
             id="serving"
             v-model="$v.form.serving.$model" 
-            style="width:100px;">
+            style="width:100px;"
+            :state="validateState('serving')">
               <b-form-select-option :value="null" disabled>0</b-form-select-option>
               <b-form-select-option :value="1">1</b-form-select-option>
               <b-form-select-option :value="2">2</b-form-select-option>
@@ -46,8 +49,7 @@
               <b-form-select-option :value="9">9</b-form-select-option>
               <b-form-select-option :value="10">10</b-form-select-option>
             </b-form-select>
-          </b-col>
-        </b-row>
+        </b-form-group>
 
         <b-form-group
         id="input-group-recipePic"
@@ -196,7 +198,7 @@ export default {
         const response = await this.axios.put(
           this.$root.store.BASE_URL + "/users/add_new_recipe",
           {
-            username: this.username,
+            //username: this.username,
             recipeName: this.form.recipeName,
             instruction: this.form.instruction,
             image: this.form.image,
