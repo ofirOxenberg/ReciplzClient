@@ -85,7 +85,7 @@ export default {
       searched: false,
       myMeals: {},
       timeLimit: 0,
-      timePassed: 45
+      timePassed: 0
 
 
     };
@@ -126,6 +126,7 @@ export default {
           results_dic.forEach(recipe => {
             counter = counter + recipe.readyInMinutes
           });
+          this.timePassed.push(...counter)
           this.recipes.push(...results_dic);
 
         this.searched = true;
@@ -139,20 +140,6 @@ export default {
     
     async startTimer() {
       this.timerInterval = setInterval(() => (this.timePassed -= 1), 1000*60);
-    },
-
-    async calculateMealTime()
-    {
-      var total =[]
-      const response = await this.axios.get(
-        this.$root.store.BASE_URL +
-        "/users/preview/myMeals/" + num 
-      );
-       this.totalTime =[]
-      const results_dic = response.data[0].ready_in_minutes;
-      this.recipe
-
-
     },
 
     async startMeal(){
