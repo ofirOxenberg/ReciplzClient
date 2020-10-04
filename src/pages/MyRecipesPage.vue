@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <br/>
-    <v-btn @click="moveTo">Creat New Recipe</v-btn>
+    <b-button @click="moveTo">Creat New Recipe</b-button>
     <RecipePreviewList v-if="!showMsg" title="My Recipes Page" :recipes="recipes" :privateRecipes="true" />
     <h1 v-else-if="showMsg">There arent any private recipes</h1> 
   </div>

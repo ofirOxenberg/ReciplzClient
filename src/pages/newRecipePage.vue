@@ -80,6 +80,26 @@
         </b-form-group>
 
         <b-form-group
+        id="input-group-ingredients"
+        label-cols-sm="3"
+        label="ingredients:"
+        label-for="ingredients"
+        ><b-form-input
+          id="ingredients"
+          v-model="$v.form.ingredients.$model"
+          type="text"
+          :state="validateState('ingredients')"
+        ><b-form-textarea
+          rows="3"
+          max-rows="20"
+        ></b-form-textarea>
+        </b-form-input>
+        <b-form-invalid-feedback 
+          v-if="!$v.form.instruction.required">
+          Ingredients are required</b-form-invalid-feedback>
+        </b-form-group> 
+
+        <b-form-group
         id="input-group-instruction"
         label-cols-sm="3"
         label="Instruction:"
@@ -121,6 +141,7 @@ export default {
         form: {
           recipeName: "",
           instruction: "",
+          ingredients: "",
           image: "",
           submitError: undefined,
           serving: null,
@@ -148,6 +169,9 @@ export default {
              required,
           },
           instruction:{
+              required
+          },
+          ingredients:{
               required
           }
       } 
@@ -177,6 +201,8 @@ export default {
             instruction: this.form.instruction,
             image: this.form.image,
             ready_in_minutes: this.form.ready_in_minutes,
+            serving: this.form.serving,
+            ingredients: this.form.ingredients,
           }
         );
         console.log(response)

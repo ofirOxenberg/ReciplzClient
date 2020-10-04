@@ -99,6 +99,7 @@ export default {
 
 .jumbotron {
   //background-image: url(http://adwallpapers.xyz/uploads/posts/4518-healthy-food-background.jpg);
+  background-color: pink;
   background-size: cover;
   background-repeat: no-repeat;
   // max-width: 100%;
@@ -106,6 +107,7 @@ export default {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-attachment: fixed;
+  margin-bottom: 0px;
 }
 #nav a.router-link-exact-active {
   color: black;
