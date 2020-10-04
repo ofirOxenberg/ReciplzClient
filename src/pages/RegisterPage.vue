@@ -20,7 +20,7 @@
         <b-form-invalid-feedback
           v-else-if="!$v.form.username.length"
         >Username length should be between 3-8 characters long</b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.username.alpha">Username alpha</b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.username.alpha">User name must contain English letters only</b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
@@ -38,7 +38,7 @@
         <b-form-invalid-feedback v-if="!$v.form.firstName.required">First name is required</b-form-invalid-feedback>
         <b-form-invalid-feedback
           v-if="!$v.form.firstName.alpha"
-        >First name must contain only letters</b-form-invalid-feedback>
+        >First name must contain English letters onlys</b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
@@ -54,7 +54,7 @@
           :state="validateState('lastName')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.lastName.required">Last name is required</b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">Last name must contain only letters</b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">Last name must contain English letters only</b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group id="input-group-country" label-cols-sm="3" label="Country:" label-for="country">

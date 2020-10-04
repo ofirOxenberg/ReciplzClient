@@ -3,6 +3,9 @@
     <br />
     <br />
     <h1>creat new recipe</h1>
+    <br/>
+    <br/>
+    <br/>
     <b-form @submit.prevent="saveRecipe">   
         <b-form-group
         id="input-group-recipeName"
@@ -21,7 +24,7 @@
           Recipe name is required</b-form-invalid-feedback>
           <b-form-invalid-feedback
           v-if="!$v.form.recipeName.alpha">
-          Recipe name must contain letters only</b-form-invalid-feedback>
+          Recipe name must contain English letters only</b-form-invalid-feedback>
         </b-form-group>
         
         <b-row style="margin-bottom: 15px;"> 
