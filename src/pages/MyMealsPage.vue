@@ -67,6 +67,8 @@
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList.vue";
+import { BProgress } from 'bootstrap-vue'
+Vue.component('b-progress', BProgress)
 
 export default {
   components: {
@@ -84,7 +86,7 @@ export default {
       //message: "",
       searched: false,
       myMeals: {},
-      timeLimit: 0,  
+      timeLimit: 0,
       timePassed: 45
 
 
