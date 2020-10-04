@@ -85,7 +85,7 @@ export default {
       searched: false,
       myMeals: {},
       timeLimit: 0,
-      timePassed: 0
+      timePassed: 2
 
 
     };
@@ -126,7 +126,7 @@ export default {
           results_dic.forEach(recipe => {
             counter = counter + recipe.readyInMinutes
           });
-          this.timePassed.push(...counter)
+          this.timePassed= counter
           this.recipes.push(...results_dic);
 
         this.searched = true;
