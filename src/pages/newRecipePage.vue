@@ -36,8 +36,10 @@
             id="serving"
             v-model="$v.form.serving.$model" 
             style="width:100px;"
-            :state="validateState('serving')">
-              <b-form-select-option :value="null" disabled>0</b-form-select-option>
+            :options="serving"
+            :state="validateState('serving')"
+            >
+              <!-- <b-form-select-option :value="null" disabled>0</b-form-select-option>
               <b-form-select-option :value="1">1</b-form-select-option>
               <b-form-select-option :value="2">2</b-form-select-option>
               <b-form-select-option :value="3">3</b-form-select-option>
@@ -47,7 +49,7 @@
               <b-form-select-option :value="7">7</b-form-select-option>
               <b-form-select-option :value="8">8</b-form-select-option>
               <b-form-select-option :value="9">9</b-form-select-option>
-              <b-form-select-option :value="10">10</b-form-select-option>
+              <b-form-select-option :value="10">10</b-form-select-option> -->
             </b-form-select>
         </b-form-group>
 
@@ -150,6 +152,19 @@ export default {
           ready_in_minutes: null,
         },
         minutes: [{ value: null, text: "", disabled: true }],
+        serving: [
+              {value="null", text: 0, disabled: true},
+              {value="1" , text: 1},
+              {value="2" , text: 2},
+              {value="3" , text: 3},
+              {value="4" , text: 4},
+              {value="5" , text: 5},
+              {value="6" , text: 6},
+              {value="7" , text: 7},
+              {value="8" , text: 8},
+              {value="9" , text: 9},
+              {value="10" , text: 10}
+        ],
         errors: [],
         validated: false
       }
@@ -198,7 +213,6 @@ export default {
         const response = await this.axios.put(
           this.$root.store.BASE_URL + "/users/add_new_recipe",
           {
-            //username: this.username,
             recipeName: this.form.recipeName,
             instruction: this.form.instruction,
             image: this.form.image,
