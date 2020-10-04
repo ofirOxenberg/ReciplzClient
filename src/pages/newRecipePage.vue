@@ -153,7 +153,7 @@ export default {
         },
         minutes: [{ value: null, text: "", disabled: true }],
         serving: [
-              {value="null", text: 0, disabled: true},
+              {value=null, text: 0, disabled: true},
               {value="1" , text: 1},
               {value="2" , text: 2},
               {value="3" , text: 3},
