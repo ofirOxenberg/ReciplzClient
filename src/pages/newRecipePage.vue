@@ -193,7 +193,7 @@ export default {
       },
       async sendingForm(){
         try {
-        const response = await this.axios.post(
+        const response = await this.axios.put(
           this.$root.store.BASE_URL + "/users/add_new_recipe",
           {
             username: this.username,
