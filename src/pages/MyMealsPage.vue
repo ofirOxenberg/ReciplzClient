@@ -40,9 +40,14 @@
     </div>
     <div>
       <div v-if="recipes.length">
-        <RecipePreviewList title="Your Search Results " :recipes="recipes" />
-        <br />
-        <mdb-btn @click="startMeal()" color="primary">Start preparing meal</mdb-btn>
+        <h1> Your Search Results </h1>
+        <br/>
+        <div>
+          <b-progress :value="timePassed" :max="timeLimit" show-progress animated></b-progress>    
+          <b-button class="mt-3" @click="startTimer">Click me</b-button>
+      </div>
+      <br/>
+      <RecipePreviewList :recipes="recipes" />
       </div>
 
       <div
@@ -62,6 +67,8 @@
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList.vue";
+import { BProgress } from 'bootstrap-vue'
+Vue.component('b-progress', BProgress)
 
 export default {
   components: {
@@ -78,7 +85,10 @@ export default {
       last_search: [],
       //message: "",
       searched: false,
-      myMeals: {}
+      myMeals: {},
+      timeLimit: 0,
+      timePassed: 45
+
 
     };
   },
@@ -113,7 +123,11 @@ export default {
               "/users/preview/myMeals/" + num 
           );
           this.recipes = []
-          const results_dic = response.data;
+          var counter = 0
+          var results_dic = response.data;
+          results_dic.forEach(recipe => {
+            counter = counter + recipe.readyInMinutes
+          });
           this.recipes.push(...results_dic);
 
         this.searched = true;
@@ -123,6 +137,10 @@ export default {
         console.log("error.response.status", error);
         return;
       }
+    },
+    
+    async startTimer() {
+      this.timerInterval = setInterval(() => (this.timePassed -= 1), 1000*60);
     },
 
     async calculateMealTime()
@@ -140,7 +158,7 @@ export default {
     },
 
     async startMeal(){
-      
+
     },
 
 
