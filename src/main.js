@@ -9,6 +9,8 @@ import VueRouter from "vue-router";
 Vue.use(VueCookies);
 Vue.use(VueRouter);
 
+import { BProgress } from 'bootstrap-vue'
+Vue.component('b-progress', BProgress)
 
 import VueStar from 'vue-star'
 Vue.component('VueStar', VueStar)

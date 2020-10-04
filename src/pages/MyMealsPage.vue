@@ -67,8 +67,6 @@
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList.vue";
-import { BProgress } from 'bootstrap-vue'
-Vue.component('b-progress', BProgress)
 
 export default {
   components: {
