@@ -210,6 +210,13 @@ export default {
           }
         );
         console.log(response)
+        if(!response.success){
+          alert(response.message)
+        }else{
+          this.$router.push("/myRecipes").catch(() => {
+          this.$forceUpdate();
+        });
+        }
         } catch (err) {
           console.log(err.response);
           this.form.submitError = err.response.data.message;
