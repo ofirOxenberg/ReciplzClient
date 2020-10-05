@@ -1,12 +1,15 @@
 <template>
   <div class="container">
       <div>
+        <br />
+        <br />
+        <br />
       <b-progress :max="timeLimit" variant="danger" show-progress animated>
         <b-progress-bar :value="timeLeft">
           <span>Minutes: <strong>{{timeLeft}}</strong></span>
         </b-progress-bar>
       </b-progress> 
-      <h1>{{ "time left " + timeLeft }}</h1>
+      <h1>{{ "recipe total time1 " + recipeTotalTime }}</h1>
         <b-button class="mt-3" @click="startProgress">Start recipe</b-button>
         <!-- <div v-if="">
 
@@ -105,7 +108,7 @@ export default {
   data() {
     return {
       recipe: null,
-      recipeTotalTime: this.recipe.readyInMinutes,
+      recipeTotalTime: 0,
       timeLimit: 0,
       timeForStep: 0 
     };
@@ -126,13 +129,14 @@ export default {
             return;
       }
       let instructions = [];
+      this.recipeTotalTime = response.readyInMinutes
       instructions = response.data[0].instructions;
       var counter = 0;
       instructions.forEach(step => {
         countr = counter + 1;
       });
-
         this.timeForStep = this.recipeTotalTime / counter;
+        
     },
   },
 
