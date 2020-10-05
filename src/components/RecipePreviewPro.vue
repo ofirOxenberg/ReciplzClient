@@ -1,6 +1,5 @@
 <template>
   <div class="main-preview">
-      <h1>This is a new recipe page with progress bar</h1>
     <h5
       style="text-align: center; font-weight: bold; font-size: 24px;"
       :title="recipe.title"

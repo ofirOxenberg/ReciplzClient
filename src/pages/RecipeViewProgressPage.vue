@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+      <h1>This is a new recipe page with progress bar</h1>
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
         <h1 style="text-align:centerl; color:black;">{{ recipe.title }}</h1>
