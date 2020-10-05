@@ -38,19 +38,7 @@
             style="width:100px;"
             :options="serving"
             :state="validateState('serving')"
-            >
-              <!-- <b-form-select-option :value="null" disabled>0</b-form-select-option>
-              <b-form-select-option :value="1">1</b-form-select-option>
-              <b-form-select-option :value="2">2</b-form-select-option>
-              <b-form-select-option :value="3">3</b-form-select-option>
-              <b-form-select-option :value="4">4</b-form-select-option>
-              <b-form-select-option :value="5">5</b-form-select-option>
-              <b-form-select-option :value="6">6</b-form-select-option>
-              <b-form-select-option :value="7">7</b-form-select-option>
-              <b-form-select-option :value="8">8</b-form-select-option>
-              <b-form-select-option :value="9">9</b-form-select-option>
-              <b-form-select-option :value="10">10</b-form-select-option> -->
-            </b-form-select>
+            ></b-form-select>
         </b-form-group>
 
         <b-form-group

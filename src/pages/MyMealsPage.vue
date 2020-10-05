@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="container">
+    <div>
       <div :key="searchkey">
         <br />
         <h1 style="text-align:centerl; color:black;">My Meals</h1>
@@ -9,26 +9,26 @@
         <b-row style="margin-bottom: 15px;"> 
           <b-col> 
             <br/>
-                  <b-dropdown variant="primary">
-                    <template v-slot:button-content>
-                      <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Choose meal
-                    </template>
-                        <b-dropdown-group header="Choose options" class="small">
-                          <li v-for="item in myMeals" :key="item.meal_id">
-                          <b-dropdown-item-button @click="meal(item.meal_id)">
-                            <b-icon icon="blank" aria-hidden="true"></b-icon>
-                            Meal {{item.name}} 
-                            <td v-if="item.flag">
-                              <span class="sr-only">(Selected)</span>
-                            </td>
+              <b-dropdown variant="primary">
+                <template v-slot:button-content>
+                  <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Choose meal
+                </template>
+                  <b-dropdown-group header="Choose options" class="small">
+                    <li v-for="item in myMeals" :key="item.meal_id">
+                    <b-dropdown-item-button @click="meal(item.meal_id)">
+                      <!-- <b-icon icon="blank" aria-hidden="true"></b-icon>
+                      Meal {{item.name}} 
+                      <td v-if="item.flag">
+                        <span class="sr-only">(Selected)</span>
+                      </td>
 
-                            <td v-else>
-                              <span class="sr-only">(Not selected)</span>
-                            </td>
-                          </b-dropdown-item-button>
-                          </li>
-                        </b-dropdown-group>
-                </b-dropdown>
+                      <td v-else>
+                        <span class="sr-only">(Not selected)</span>
+                      </td> -->
+                    </b-dropdown-item-button>
+                    </li>
+                  </b-dropdown-group>
+              </b-dropdown>
           </b-col>
         </b-row>
         <br />
@@ -40,31 +40,26 @@
     </div>
     <div>
       <div v-if="recipes.length">
-        <h1> Your Search Results </h1>
+        <h1>Your Search Results:</h1>
         <br/>
         <div>
-        <b-progress :max="timeLimit" show-progress animated>
-          <b-progress-bar :value="timePassed">
-            <span>Minutes : <strong>{{ timePassed}}</strong></span>
-          </b-progress-bar>
-        </b-progress>    
-          <b-button class="mt-3" @click="startTimer">Click me</b-button>
-      </div>
+          <b-progress :max="timeLimit" show-progress animated>
+            <b-progress-bar :value="timePassed">
+              <span>Minutes : <strong>{{ timePassed}}</strong></span>
+            </b-progress-bar>
+          </b-progress>    
+            <b-button class="mt-3" @click="startTimer">Start meal</b-button>
+        </div>
       <br/>
       <RecipePreviewList :recipes="recipes" />
       </div>
-
-      <div
+      <!-- <div
         v-if="!recipes.length && searched"
         style="text-align: center; margin-left: auto;
-  margin-right: auto; background-position: center; font-size: 21px;"
-      >
-        <strong>No results found. Try looking for a different recipe.</strong>
-      </div>
+        margin-right: auto; background-position: center; font-size: 21px;"
+      ><strong>No results found. Try looking for a different recipe.</strong>
+      </div> -->
       <br />
-      <br />
-      <br />
-      <b-row></b-row>
     </div>
   </div>
 </template>
@@ -90,8 +85,6 @@ export default {
       myMeals: {},
       timeLimit: 0,
       timePassed: 2
-
-
     };
   },
 
@@ -149,8 +142,6 @@ export default {
     async startMeal(){
 
     },
-
-
 
     async update() {
       //this.search_history = undefined;
