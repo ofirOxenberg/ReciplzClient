@@ -5,7 +5,7 @@
   <div v-else class="d-flex flex-column justify-content-center mb-3">
     <div v-if="homePage">
       <br />
-      <h3 style="text-align:center">{{ title }}:</h3>
+      <h3 style="text-align:center">{{ title }}</h3>
       <br />
       <div v-for="m in Meals" :key="m.id">
         <MealPreview class="mealPreview" :meals="m"/>
