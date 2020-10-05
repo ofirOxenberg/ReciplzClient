@@ -100,11 +100,6 @@
 
 <script>
 export default {
-  props:
-  {
-    timePassed: Number,
-    timeLimit: Number
-  },
   data() {
     return {
       recipe: null
