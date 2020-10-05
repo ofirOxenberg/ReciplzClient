@@ -42,7 +42,7 @@
       <div v-if="recipes.length">
         <h1>Recipes in your meal:</h1>
         <br/>
-        <b-progress :max="timeLimit" show-progress animated>
+        <b-progress :max="timeLimit" variant="danger" show-progress animated>
           <b-progress-bar :value="timePassed">
             <span>Minutes: <strong>{{timePassed}}</strong></span>
           </b-progress-bar>
