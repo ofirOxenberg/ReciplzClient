@@ -1,14 +1,16 @@
 <template>
   <div class="container">
-      <h1>This is a new recipe page with progress bar</h1>
       <div>
       <b-progress :max="timeLimit" variant="danger" show-progress animated>
-        <b-progress-bar :value="timePassed">
-          <span>Minutes: <strong>{{timePassed}}</strong></span>
+        <b-progress-bar :value="timeLeft">
+          <span>Minutes: <strong>{{timeLeft}}</strong></span>
         </b-progress-bar>
       </b-progress> 
-      <h1>{{ "time left " + timePassed }}</h1>
+      <h1>{{ "time left " + timeLeft }}</h1>
+        <b-button class="mt-3" @click="startProgress">Start recipe</b-button>
+        <!-- <div v-if="">
 
+        </div> -->
 
       </div>
       <br/>
@@ -100,16 +102,44 @@
 
 <script>
 export default {
-  props:
-  {
-    timePassed: Number,
-    timeLimit: Number
-  },
   data() {
     return {
-      recipe: null
+      recipe: null,
+      recipeTotalTime: this.recipe.readyInMinutes,
+      timeLimit: 0,
+      timeForStep: 0 
     };
   },
+  mounted(){
+      this.startTimerStep();
+  },
+  methods:{
+    async startTimerStep() {
+      try{    
+        response = await this.axios.get(
+            this.$root.store.BASE_URL +
+              "/recipes/fullview/recipeId/" + this.$route.params.recipeId)
+        
+        } catch (error) {
+            console.log("error.response.status", error.response.status);
+            this.$router.replace("/NotFound");
+            return;
+      }
+      let instructions = [];
+      instructions = response.data[0].instructions;
+      var counter = 0;
+      instructions.forEach(step => {
+        countr = counter + 1;
+      });
+
+        this.timeForStep = this.recipeTotalTime / counter;
+    },
+  },
+
+  async startProgress(){
+      this.timerInterval = setInterval(() => (this.timeForStep -= 1), 1000*60);
+  },
+
   async created() {
     try {
       let response;
