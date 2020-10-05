@@ -18,13 +18,13 @@
                     <b-dropdown-item-button @click="meal(item.meal_id)">
                       <b-icon icon="blank" aria-hidden="true"></b-icon>
                       Meal {{item.name}} 
-                      <!-- <td v-if="item.flag">
+                      <td v-if="item.flag">
                         <span class="sr-only">(Selected)</span>
                       </td>
 
                       <td v-else>
                         <span class="sr-only">(Not selected)</span>
-                      </td> -->
+                      </td>
                     </b-dropdown-item-button>
                     </li>
                   </b-dropdown-group>
@@ -42,16 +42,16 @@
       <div v-if="recipes.length">
         <h1>Recipes in your meal:</h1>
         <br/>
+        <b-progress :max="timeLimit" show-progress animated>
+          <b-progress-bar :value="timePassed">
+            <span>Minutes: <strong>{{timePassed}}</strong></span>
+          </b-progress-bar>
+        </b-progress>    
+          <b-button class="mt-3" @click="startTimer">Start meal</b-button>
+        <br/>
         <div>
-          <b-progress :max="timeLimit" show-progress animated>
-            <b-progress-bar :value="timePassed">
-              <span>Minutes: <strong>{{timePassed}}</strong></span>
-            </b-progress-bar>
-          </b-progress>    
-            <b-button class="mt-3" @click="startTimer">Start meal</b-button>
-        </div> 
-      <br/>
-      <RecipePreviewList :recipes="recipes" />
+          <RecipePreviewList :recipes="recipes" />
+        </div>
       </div>
       <!-- <div
         v-if="!recipes.length && searched"
