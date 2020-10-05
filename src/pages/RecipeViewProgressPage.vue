@@ -5,11 +5,11 @@
         <br />
         <br />
       <b-progress :max="timeLimit" variant="danger" show-progress animated>
-        <b-progress-bar :value="timeLeft">
-          <span>Minutes: <strong>{{timeLeft}}</strong></span>
+        <b-progress-bar :value="timeForStep">
+          <span>Minutes: <strong>{{timeForStep}}</strong></span>
         </b-progress-bar>
       </b-progress> 
-      <h1>{{ "recipe total time1 " + recipeTotalTime }}</h1>
+      <h1> recipe total time " {{recipeTotalTime}}</h1>
         <b-button class="mt-3" @click="startProgress">Start recipe</b-button>
         <!-- <div v-if="">
 
@@ -128,13 +128,16 @@ export default {
             this.$router.replace("/NotFound");
             return;
       }
+      console.log(response);
       let instructions = [];
-      this.recipeTotalTime = response.readyInMinutes
+      this.recipeTotalTime = response.readyInMinutes;
+      console.log(this.recipeTotalTime);
       instructions = response.data[0].instructions;
       var counter = 0;
       instructions.forEach(step => {
         countr = counter + 1;
       });
+      console.log(counter);
         this.timeForStep = this.recipeTotalTime / counter;
         
     },
