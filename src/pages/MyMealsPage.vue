@@ -50,7 +50,7 @@
           <b-button class="mt-3" @click="startTimer">Start meal</b-button>
         <br/>
         <div>
-          <RecipePreviewList :recipes="recipes" />
+          <RecipePreviewProList :recipes="recipes" />
         </div>
       </div>
       <!-- <div
@@ -65,11 +65,11 @@
 </template>
 
 <script>
-import RecipePreviewList from "../components/RecipePreviewList.vue";
+import RecipePreviewProList from "../components/RecipePreviewProList.vue";
 
 export default {
   components: {
-    RecipePreviewList
+    RecipePreviewProList
   },
   data() {
     return {
@@ -136,7 +136,7 @@ export default {
     },
     
     async startTimer() {
-      this.timerInterval = setInterval(() => (this.timePassed -= 1), 1000*60);
+      this.timerInterval = setInterval(() => {this.timePassed -= 1; localStorage.setItem("recipeTimer", this.timePassed)}, 1000*60);
     },
 
     async startMeal(){

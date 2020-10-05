@@ -38,6 +38,12 @@ const routes = [{
             import ("./pages/RecipeViewPage"),
     },
     {
+        path: "/recipe/:recipeId",
+        name: "recipeWithProgress",
+        component: () =>
+            import ("./pages/RecipeViewProgressPage"),
+    },
+    {
         path: "/about",
         name: "about",
         component: () =>
