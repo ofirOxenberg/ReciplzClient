@@ -12,6 +12,9 @@ Vue.use(VueRouter);
 import { BProgress } from 'bootstrap-vue'
 Vue.component('b-progress', BProgress)
 
+import { BProgressBar } from 'bootstrap-vue'
+Vue.component('b-progress-bar', BProgressBar)
+
 import VueStar from 'vue-star'
 Vue.component('VueStar', VueStar)
 
