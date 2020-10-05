@@ -7,6 +7,9 @@
           <span>Minutes: <strong>{{timePassed}}</strong></span>
         </b-progress-bar>
       </b-progress> 
+      <h1>{{ "time left " + timePassed }}</h1>
+
+
       </div>
       <br/>
     <div v-if="recipe">

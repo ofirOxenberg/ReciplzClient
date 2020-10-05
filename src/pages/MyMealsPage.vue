@@ -50,7 +50,8 @@
           <b-button class="mt-3" @click="startTimer">Start meal</b-button>
         <br/>
         <div>
-          <RecipePreviewProList :recipes="recipes" :timePassed = timePassed />
+          <RecipePreviewProList :recipes="recipes" />
+          <RecipeViewProgressPage :timePassed="timePassed"/>
         </div>
       </div>
       <!-- <div
