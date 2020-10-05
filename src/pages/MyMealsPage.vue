@@ -43,7 +43,11 @@
         <h1> Your Search Results </h1>
         <br/>
         <div>
-          <b-progress :value="timePassed" :max="timeLimit" show-progress animated></b-progress>    
+        <b-progress :max="timeLimit" show-progress animated>
+          <b-progress-bar :value="timePassed">
+            <span>Minutes : <strong>{{ timePassed}}</strong></span>
+          </b-progress-bar>
+        </b-progress>    
           <b-button class="mt-3" @click="startTimer">Click me</b-button>
       </div>
       <br/>
