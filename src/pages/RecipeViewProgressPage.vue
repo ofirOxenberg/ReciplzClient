@@ -1,6 +1,14 @@
 <template>
   <div class="container">
       <h1>This is a new recipe page with progress bar</h1>
+      <div>
+      <b-progress :max="timeLimit" variant="danger" show-progress animated>
+        <b-progress-bar :value="timePassed">
+          <span>Minutes: <strong>{{timePassed}}</strong></span>
+        </b-progress-bar>
+      </b-progress> 
+      </div>
+      <br/>
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
         <h1 style="text-align:centerl; color:black;">{{ recipe.title }}</h1>
@@ -89,6 +97,11 @@
 
 <script>
 export default {
+  props:
+  {
+    timePassed: Number,
+    timeLimit: Number
+  },
   data() {
     return {
       recipe: null
