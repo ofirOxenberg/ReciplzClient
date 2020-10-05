@@ -213,6 +213,7 @@ export default {
         if(!response.success){
           alert(response.message)
         }else{
+          alert("The recipe was saved Successfully")
           this.$router.push("/myRecipes").catch(() => {
           this.$forceUpdate();
         });
