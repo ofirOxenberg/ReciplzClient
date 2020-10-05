@@ -210,8 +210,8 @@ export default {
           }
         );
         console.log(response)
-        if(!response.success){
-          alert(response.message)
+        if(!response.data.success){
+          alert(response.data.message)
         }else{
           alert("The recipe was saved Successfully")
           this.$router.push("/myRecipes").catch(() => {
