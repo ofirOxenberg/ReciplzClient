@@ -16,9 +16,9 @@
                   <b-dropdown-group header="Choose options" class="small">
                     <li v-for="item in myMeals" :key="item.meal_id">
                     <b-dropdown-item-button @click="meal(item.meal_id)">
-                      <!-- <b-icon icon="blank" aria-hidden="true"></b-icon>
+                      <b-icon icon="blank" aria-hidden="true"></b-icon>
                       Meal {{item.name}} 
-                      <td v-if="item.flag">
+                      <!-- <td v-if="item.flag">
                         <span class="sr-only">(Selected)</span>
                       </td>
 
