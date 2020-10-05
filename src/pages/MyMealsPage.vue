@@ -9,7 +9,7 @@
         <b-row style="margin-bottom: 15px;"> 
           <b-col> 
             <br/>
-              <b-dropdown variant="primary">
+              <b-dropdown variant="outline-danger">
                 <template v-slot:button-content>
                   <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Choose meal
                 </template>
@@ -40,16 +40,16 @@
     </div>
     <div>
       <div v-if="recipes.length">
-        <h1>Your Search Results:</h1>
+        <h1>Recipes in your meal:</h1>
         <br/>
         <div>
           <b-progress :max="timeLimit" show-progress animated>
             <b-progress-bar :value="timePassed">
-              <span>Minutes : <strong>{{ timePassed}}</strong></span>
+              <span>Minutes: <strong>{{timePassed}}</strong></span>
             </b-progress-bar>
           </b-progress>    
             <b-button class="mt-3" @click="startTimer">Start meal</b-button>
-        </div>
+        </div> 
       <br/>
       <RecipePreviewList :recipes="recipes" />
       </div>
@@ -178,7 +178,4 @@ export default {
 
 <style lang="scss" scoped>
 
-#results {
-  // max-width: 20%;
-}
 </style>
