@@ -111,7 +111,8 @@ export default {
   },
   mounted(){
     this.recipeTotalTime = localStorage.getItem("recipeTimer");      
-      this.startProgress();
+    this.startProgress();
+    this.created();
 
   },
   methods:{
