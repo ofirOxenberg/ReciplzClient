@@ -69,6 +69,7 @@
                 viewBox="0 0 172 172"
                 style=" fill:#000000;"
               >
+              
                 <g
                   fill="none"
                   fill-rule="nonzero"

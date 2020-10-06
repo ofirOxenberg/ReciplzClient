@@ -131,6 +131,7 @@
                 <img class="center" src="../assets/vegetarian-food-symbol.png" />
               </td>
 
+
               <template>
                 <div>
                   <b-dropdown variant="outline-danger">

@@ -2,7 +2,9 @@
   <div class="container">
     <br/>
     <b-button @click="moveTo">Creat New Recipe</b-button>
-    <RecipePreviewList v-if="!showMsg" title="My Recipes Page" :recipes="recipes" :privateRecipes="true" />
+    <br/>
+    <br/>
+    <RecipePreviewList v-if="!showMsg" title="My Recipes" :recipes="recipes" :privateRecipes="true" />
     <h1 v-else-if="showMsg">There arent any private recipes</h1> 
   </div>
 </template>
