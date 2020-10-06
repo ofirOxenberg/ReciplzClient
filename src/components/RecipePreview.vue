@@ -139,6 +139,7 @@
                               <span class="sr-only">(Selected)</span>
                             </td>
 
+
                             <td v-else>
                               <span class="sr-only">(Not selected)</span>
                             </td>
@@ -270,6 +271,9 @@ export default {
               "/users/recipesForMeal/recipeId/" +
               this.recipe.id +'/'+num
           );
+          alert("The recipe was saved successfully")
+          this.$router.go(0).catch(() => {
+          this.$forceUpdate();})
         }
       } catch (error) {
         console.log("error.response.status", error);
@@ -287,7 +291,7 @@ export default {
           );
 
           this.myMeals[response.data] = {name : mealName, meal_id : response.data, flag : true};
-          alert("The meal was saved Successfully")
+          alert("The meal created successfully")
           this.$router.go(0).catch(() => {
           this.$forceUpdate();})
         }

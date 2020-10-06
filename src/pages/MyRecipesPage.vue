@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <br/>
-    <b-button variant="outline-danger" @click="moveTo">Create New Recipe</b-button>
+    <br/>
+    <b-button variant="danger" @click="moveTo">Create New Recipe</b-button>
     <br/>
     <br/>
     <RecipePreviewList v-if="!showMsg" title="My Recipes" :recipes="recipes" :privateRecipes="true" />
