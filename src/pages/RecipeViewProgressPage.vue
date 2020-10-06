@@ -115,6 +115,9 @@ export default {
   },
   mounted(){
       this.startTimerStep();
+      this.recipeTotalTime = localStorage.getItem("recipeTimer");
+      this.startProgress();
+
   },
   methods:{
     async startTimerStep() {
@@ -144,7 +147,10 @@ export default {
   },
 
   async startProgress(){
-      this.timerInterval = setInterval(() => (this.timeForStep -= 1), 1000*60);
+      this.timerInterval = setInterval(() => {
+        this.timePassed -= 1; 
+        localStorage.setItem("recipeTimer", this.timePassed)
+        }, 1000*60);
   },
 
   async created() {

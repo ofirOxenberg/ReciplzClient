@@ -92,6 +92,11 @@ export default {
   mounted() {
     this.update();
     this.getMeals();
+    const meailId = window.localStorage.getItem('selectedMeal');
+    if(meailId){
+      meal(meailId);
+      //
+    }
   },
   methods: {
     async getMeals() {
@@ -114,6 +119,7 @@ export default {
 
     async meal(num) {
       try {
+          window.localStorage.setItem('selectedMeal',num)
           const response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/preview/myMeals/" + num 
@@ -121,6 +127,7 @@ export default {
           this.recipes = []
           var counter = 0
           var results_dic = response.data;
+          window.localStorage.setItem('Recipies',JSON.stringify(results_dic))
           results_dic.forEach(recipe => {
             counter = counter + recipe.readyInMinutes
           });
@@ -137,7 +144,10 @@ export default {
     },
     
     async startTimer() {
-      this.timerInterval = setInterval(() => {this.timePassed -= 1; localStorage.setItem("recipeTimer", this.timePassed)}, 1000*60);
+      this.timerInterval = setInterval(() => {
+        this.timePassed -= 1; 
+        localStorage.setItem("recipeTimer", this.timePassed)
+        }, 1000*60);
     },
 
     async startMeal(){
