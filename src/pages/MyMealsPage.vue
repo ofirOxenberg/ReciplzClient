@@ -51,7 +51,6 @@
         <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
-          <RecipeViewProgressPage :timePassed="timePassed"/>
         </div>
       </div>
       <!-- <div
@@ -94,7 +93,7 @@ export default {
     this.getMeals();
     const meailId = window.localStorage.getItem('selectedMeal');
     if(meailId){
-      meal(meailId);
+      this.meal(meailId);
       //
     }
   },
@@ -108,8 +107,6 @@ export default {
           );
           
           this.myMeals = mealsListRes.data;
-          console.log(this.recipe.title)
-          console.log(this.myMeals);
         }
       } catch (error) {
         console.log(error);
@@ -127,7 +124,9 @@ export default {
           this.recipes = []
           var counter = 0
           var results_dic = response.data;
-          window.localStorage.setItem('Recipies',JSON.stringify(results_dic))
+          window.localStorage.removeItem('Recipies');
+
+          window.localStorage.setItem('Recipies',JSON.stringify(response))
           results_dic.forEach(recipe => {
             counter = counter + recipe.readyInMinutes
           });
@@ -144,6 +143,7 @@ export default {
     },
     
     async startTimer() {
+      window.localStorage.removeItem('recipeTimer');
       this.timerInterval = setInterval(() => {
         this.timePassed -= 1; 
         localStorage.setItem("recipeTimer", this.timePassed)
