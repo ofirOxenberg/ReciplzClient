@@ -144,6 +144,7 @@ export default {
     
     async startTimer() {
       window.localStorage.removeItem('recipeTimer');
+      window.localStorage.setItem('recipeTimer',this.timePassed);
       this.timerInterval = setInterval(() => {
         this.timePassed -= 1; 
         localStorage.setItem("recipeTimer", this.timePassed)
