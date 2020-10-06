@@ -10,7 +10,7 @@
         </b-progress-bar>
       </b-progress> 
       <h1> recipe total time " {{recipeTotalTime}}</h1>
-        <b-button class="mt-3" @click="startProgress">Start recipe</b-button>
+        <b-button variant="outline-danger" class="mt-3" @click="startProgress">Start cooking recipe</b-button>
         <!-- <div v-if="">
 
         </div> -->

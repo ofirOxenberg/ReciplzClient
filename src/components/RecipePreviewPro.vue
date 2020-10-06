@@ -97,8 +97,9 @@
           <tr style="text-align:center;">
             <div
               style="text-align:center;"
-              v-if="this.$root.store.username != undefined && !privateRecipes && !myRecipes"
+              v-if="this.$root.store.username != undefined"
             >
+              <!-- v-if="this.$root.store.username != undefined && !privateRecipes && !myRecipes" -->
               <td v-if=" saveTheRecipe == true || saved == true">
                 <b-icon-heart-fill variant="danger"></b-icon-heart-fill>
               </td>
@@ -143,7 +144,7 @@
                           </li>
                         </b-dropdown-group>
                         <input v-model="mealName" placeholder="new meal name">
-                       <b-dropdown-item-button variant="success" @click="createMeal(mealName)">
+                       <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
                           <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
@@ -283,6 +284,9 @@ export default {
           );
 
           this.myMeals[response.data] = {name : mealName, meal_id : response.data, flag : true};
+          alert("The meal was saved Successfully")
+          this.$router.go(0).catch(() => {
+          this.$forceUpdate();})
         }
       } catch (error) {
         console.log("error.response.status", error);

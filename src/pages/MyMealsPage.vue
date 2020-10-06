@@ -3,7 +3,7 @@
     <div>
       <div :key="searchkey">
         <br />
-        <h1 style="text-align:centerl; color:black;">My Meals</h1>
+        <h1 style="text-align:center; color: black;">My Meals</h1>
         <br />
         <br />
         <b-row style="margin-bottom: 15px;"> 

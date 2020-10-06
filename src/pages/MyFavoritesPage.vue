@@ -1,7 +1,7 @@
 <template  class="container">
   <div>
     <br/>
-    <RecipePreviewList title="My Favorites Page" :recipes="recipes" />
+    <RecipePreviewList title="My Favorites" :recipes="recipes" />
   </div>
 </template>
 

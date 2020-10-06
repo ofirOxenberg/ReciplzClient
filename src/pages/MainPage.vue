@@ -7,7 +7,7 @@
         <br />
         <br />
         <div class="vertical-center">
-          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes !</b-button>
+          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
         </div>
         <br />
         <br />
@@ -93,7 +93,7 @@ export default {
 
 .vertical-center {
   margin: 0;
-  position: absolute;
+  //position: absolute;
   top: 96%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);

@@ -2,7 +2,7 @@
   <div class="container">
     <br />
     <br />
-    <h1>creat new recipe</h1>
+    <h1 style="text-align: center;">Create new recipe</h1>
     <br/>
     <br/>
     <br/>
