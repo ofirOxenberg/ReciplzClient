@@ -119,20 +119,8 @@
               <td v-if="recipe.vegetarian">
                 <img class="center" src="../assets/vegetarian-food-symbol.png" />
               </td>
-            </div>
-            <div v-else>
-              <td v-if="recipe.glutenFree">
-                <img class="center" src="../assets/no-gluten.png" />
-              </td>
-              <td v-if="recipe.vegan">
-                <img class="center" src="../assets/vegan-food.png" />
-              </td>
-              <td v-if="recipe.vegetarian">
-                <img class="center" src="../assets/vegetarian-food-symbol.png" />
-              </td>
-
-
-              <template>
+              <tr>
+                <template>
                 <div>
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
@@ -162,6 +150,18 @@
                   </b-dropdown>
                 </div>
               </template>
+              </tr>
+            </div>
+            <div v-else>
+              <td v-if="recipe.glutenFree">
+                <img class="center" src="../assets/no-gluten.png" />
+              </td>
+              <td v-if="recipe.vegan">
+                <img class="center" src="../assets/vegan-food.png" />
+              </td>
+              <td v-if="recipe.vegetarian">
+                <img class="center" src="../assets/vegetarian-food-symbol.png" />
+              </td>
             </div>
           </tr>
         </table>
