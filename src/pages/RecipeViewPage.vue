@@ -45,9 +45,9 @@
               <div>Servings: {{ recipe.servings }}</div>
 
               <div v-if="this.$route.params.privateRecipes">
-                <div>Autour Name: {{ recipe.author_username }}</div>
+                <!-- <div>Autour Name: {{ recipe.author_username }}</div>
                 <div>Occasion: {{ recipe.occasion }}</div>
-                <div>Recipe Owner: {{ recipe.recipe_owner }}</div>
+                <div>Recipe Owner: {{ recipe.recipe_owner }}</div> -->
               </div>
             </div>Ingredients:
             <ul>
