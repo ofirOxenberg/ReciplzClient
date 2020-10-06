@@ -5,15 +5,12 @@
         <br />
         <br />
       <b-progress :max="timeLimit" variant="danger" show-progress animated>
-        <b-progress-bar :value="timeForStep">
-          <span>Minutes: <strong>{{timeForStep}}</strong></span>
+        <b-progress-bar :value="recipeTotalTime">
+          <span>Minutes: <strong>{{recipeTotalTime}}</strong></span>
         </b-progress-bar>
       </b-progress> 
       <h1> recipe total time " {{recipeTotalTime}}</h1>
-        <b-button variant="outline-danger" class="mt-3" @click="startProgress">Start cooking recipe</b-button>
-        <!-- <div v-if="">
-
-        </div> -->
+        <!-- <b-button variant="outline-danger" class="mt-3" @click="startProgress">Start cooking recipe</b-button> -->
 
       </div>
       <br/>
@@ -110,46 +107,44 @@ export default {
       recipe: null,
       recipeTotalTime: 0,
       timeLimit: 0,
-      timeForStep: 0 
     };
   },
   mounted(){
-      this.startTimerStep();
-      this.recipeTotalTime = localStorage.getItem("recipeTimer");
+    this.recipeTotalTime = localStorage.getItem("recipeTimer");      
       this.startProgress();
 
   },
   methods:{
-    async startTimerStep() {
-      try{    
-        response = await this.axios.get(
-            this.$root.store.BASE_URL +
-              "/recipes/fullview/recipeId/" + this.$route.params.recipeId)
+  //   async startTimerStep() {
+  //     try{    
+  //       response = await this.axios.get(
+  //           this.$root.store.BASE_URL +
+  //             "/recipes/fullview/recipeId/" + this.$route.params.recipeId)
         
-        } catch (error) {
-            console.log("error.response.status", error.response.status);
-            this.$router.replace("/NotFound");
-            return;
-      }
-      console.log(response);
-      let instructions = [];
-      this.recipeTotalTime = response.readyInMinutes;
-      console.log(this.recipeTotalTime);
-      instructions = response.data[0].instructions;
-      var counter = 0;
-      instructions.forEach(step => {
-        countr = counter + 1;
-      });
-      console.log(counter);
-        this.timeForStep = this.recipeTotalTime / counter;
+  //       } catch (error) {
+  //           console.log("error.response.status", error.response.status);
+  //           this.$router.replace("/NotFound");
+  //           return;
+  //     }
+  //     console.log(response);
+  //     let instructions = [];
+  //     this.recipeTotalTime = response.readyInMinutes;
+  //     console.log(this.recipeTotalTime);
+  //     instructions = response.data[0].instructions;
+  //     var counter = 0;
+  //     instructions.forEach(step => {
+  //       countr = counter + 1;
+  //     });
+  //     console.log(counter);
+  //       //this.timeForStep = this.recipeTotalTime / counter;
         
-    },
-  },
+  //   },
+  // },
 
   async startProgress(){
       this.timerInterval = setInterval(() => {
-        this.timePassed -= 1; 
-        localStorage.setItem("recipeTimer", this.timePassed)
+        this.recipeTotalTime -= 1; 
+        localStorage.setItem("recipeTimer", this.recipeTotalTime)
         }, 1000*60);
   },
 
@@ -251,7 +246,7 @@ export default {
       console.log(error);
     }
   }
-};
+}
 </script>
 
 <style scoped>
