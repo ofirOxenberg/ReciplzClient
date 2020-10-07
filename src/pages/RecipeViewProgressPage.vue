@@ -113,41 +113,12 @@ export default {
   setInterval(()=>{
       this.recipeTotalTime = window.localStorage.getItem("recipeTimer");  
   }, 60*1000)
+   
+    //this.startProgress();
+    this.created();
+
   },
   methods:{
-  //   async startTimerStep() {
-  //     try{    
-  //       response = await this.axios.get(
-  //           this.$root.store.BASE_URL +
-  //             "/recipes/fullview/recipeId/" + this.$route.params.recipeId)
-        
-  //       } catch (error) {
-  //           console.log("error.response.status", error.response.status);
-  //           this.$router.replace("/NotFound");
-  //           return;
-  //     }
-  //     console.log(response);
-  //     let instructions = [];
-  //     this.recipeTotalTime = response.readyInMinutes;
-  //     console.log(this.recipeTotalTime);
-  //     instructions = response.data[0].instructions;
-  //     var counter = 0;
-  //     instructions.forEach(step => {
-  //       countr = counter + 1;
-  //     });
-  //     console.log(counter);
-  //       //this.timeForStep = this.recipeTotalTime / counter;
-        
-  //   },
-  // },
-
-  // async startProgress(){
-  //     this.timerInterval = setInterval(() => {
-  //       this.recipeTotalTime -= 1; 
-  //       localStorage.setItem("recipeTimer", this.recipeTotalTime)
-  //       }, 1000*60);
-  // },
-
   async created() {
     try {
       let response;
@@ -211,8 +182,10 @@ export default {
           }
         }
 
-        if (response.status !== 200) this.$router.replace("/NotFound");
-      } catch (error) {
+        if (response.status !== 200){
+          this.$router.replace("/NotFound");}
+
+    } catch (error) {
         console.log("error.response.status", error.response.status);
         this.$router.replace("/NotFound");
         return;
@@ -246,8 +219,11 @@ export default {
       console.log(error);
     }
   }
-}
-}
+
+}}
+
+
+
 </script>
 
 <style scoped>
@@ -271,3 +247,6 @@ export default {
 /* .recipe-header{
 } */
 </style>
+
+
+
