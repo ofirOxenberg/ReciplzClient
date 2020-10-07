@@ -42,12 +42,12 @@
       <div v-if="recipes.length">
         <h1>Recipes in your meal:</h1>
         <br/>
-        <b-progress :max="timeLimit" variant="danger" show-progress animated>
+        <!-- <b-progress :max="timeLimit" variant="danger" show-progress animated>
           <b-progress-bar :value="timePassed">
             <span>Minutes: <strong>{{timePassed}}</strong></span>
           </b-progress-bar>
-        </b-progress>    
-          <b-button class="mt-3" @click="startTimer">Start meal</b-button>
+        </b-progress>     -->
+          <b-button class="mt-3" @click="startMeal">Start meal</b-button>
         <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
@@ -121,6 +121,13 @@ export default {
             this.$root.store.BASE_URL +
               "/users/preview/myMeals/" + num 
           );
+          //save recepies ids in local storage
+          var recipesForMeal = [];
+          response.forEach((recipe) => {
+            recipesForMeal.push(recipe.id);
+          });
+          window.localStorage.setItem('recipesForMeal', recipesForMeal);
+
           this.recipes = []
           var counter = 0
           var results_dic = response.data;
@@ -141,19 +148,30 @@ export default {
         return;
       }
     },
-    
-    async startTimer() {
-      window.localStorage.removeItem('recipeTimer');
-      window.localStorage.setItem('recipeTimer',this.timePassed);
-      this.timerInterval = setInterval(() => {
-        this.timePassed -= 1; 
-        if(this.timePassed <= 0){
-          localStorage.setItem("recipeTimer", 0)
-        }else{
-          localStorage.setItem("recipeTimer", this.timePassed)
-        }
-        }, 1000*60);
+
+    async startMeal(){
+      var recipes = window.localStorage.getItem('recipesForMeal');
+      if(recipes.length >= 1) {
+          window.localStorage.setItem('currentRecipe', 0);
+          this.$router.push(`/recipe/${recipes[0]}`).catch(() => {
+          this.$forceUpdate();
+        }); 
+      }
+
     },
+    
+    // async startTimer() {
+    //   window.localStorage.removeItem('recipeTimer');
+    //   window.localStorage.setItem('recipeTimer',this.timePassed);
+    //   this.timerInterval = setInterval(() => {
+    //     this.timePassed -= 1; 
+    //     if(this.timePassed <= 0){
+    //       localStorage.setItem("recipeTimer", 0)
+    //     }else{
+    //       localStorage.setItem("recipeTimer", this.timePassed)
+    //     }
+    //     }, 1000*60);
+    // },
 
     async update() {
       //this.search_history = undefined;

@@ -9,6 +9,8 @@
           <span>Minutes: <strong>{{recipeTotalTime}}</strong></span>
         </b-progress-bar>
       </b-progress> 
+      <b-button variant="danger" @click="nextRecipe">Next recipe</b-button>
+      <b-button variant="danger" @click="backRecipe">Previous recipe</b-button>
 
       </div>
       <br/>
@@ -103,38 +105,52 @@ export default {
   data() {
     return {
       recipe: null,
-      recipeTotalTime: null,
+      recipeTotalTime: recipe.readyInMinutes,
       timeLimit: 0,
     };
   },
   mounted(){
-  
-  window.localStorage.setItem('recipeProTime',recipe.readyInMinutes);
-  
   //this.recipeTotalTime = window.localStorage.getItem("recipeTimer");  
   setInterval(()=>{
-      this.recipeTotalTime = window.localStorage.getItem("recipeProTime");  
-  }, 10*1000)
+      if(this.recipeTotalTime <= 0){
+          this.recipeTotalTime = 0;
+        }else{
+          this.recipeTotalTime -=1;
+        }
+  }, 60*1000)
 
-  this.startTimer();
-   
     //this.startProgress();
     this.created();
 
   },
   methods:{
+  async nextRecipe(){
+    var currentItem = window.localStorage.getItem('currentRecipe');
+    var recipes = window.localStorage.getItem('recipesForMeal');
+    if(currentItem === recipes.length) {
+      alert('The meal has ended!');
+    }
+    else {
+      window.localStorage.setItem('currentRecipe', currentItem + 1);
+      this.$router.push(`/recipe/${recipes[currentItem + 1]}`).catch(() => {
+          this.$forceUpdate();
+    });
+    }  
+  },
 
-  async startTimer() {
-      //window.localStorage.removeItem('recipeProTime');
-      this.timerInterval = setInterval(() => {
-        this.timePassed -= 1; 
-        if(this.timePassed <= 0){
-          localStorage.setItem("recipeProTime", 0)
-        }else{
-          localStorage.setItem("recipeProTime", this.timePassed)
-        }
-        }, 1000*60);
-    },
+  async backRecipe(){
+    var currentItem = window.localStorage.getItem('currentRecipe');
+    var recipes = window.localStorage.getItem('recipesForMeal');
+    if(currentItem === 0) {
+      alert('You are already in the first recipe');
+    }
+    else {
+      window.localStorage.setItem('currentRecipe', currentItem - 1);
+      this.$router.push(`/recipe/${recipes[currentItem -1]}`).catch(() => {
+          this.$forceUpdate();
+    });
+    }  
+  },
 
   async created() {
     try {
