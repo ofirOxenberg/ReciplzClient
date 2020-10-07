@@ -132,7 +132,7 @@ export default {
     }
     else {
       window.localStorage.setItem('currentRecipe', currentItem + 1);
-      this.$router.push(`/recipe/${recipes[currentItem + 1]}`).catch(() => {
+      this.$router.push(`/recipeWithProgress/${recipes[currentItem + 1]}`).catch(() => {
           this.$forceUpdate();
     });
     }  
@@ -146,7 +146,7 @@ export default {
     }
     else {
       window.localStorage.setItem('currentRecipe', currentItem - 1);
-      this.$router.push(`/recipe/${recipes[currentItem -1]}`).catch(() => {
+      this.$router.push(`/recipeWithProgress/${recipes[currentItem -1]}`).catch(() => {
           this.$forceUpdate();
     });
     }  

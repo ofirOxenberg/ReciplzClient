@@ -153,7 +153,7 @@ export default {
       var recipes = window.localStorage.getItem('recipesForMeal');
       if(recipes.length >= 1) {
           window.localStorage.setItem('currentRecipe', 0);
-          this.$router.push(`/recipe/${recipes[0]}`).catch(() => {
+          this.$router.push(`/recipeWithProgress/${recipes[0]}`).catch(() => {
           this.$forceUpdate();
         }); 
       }
