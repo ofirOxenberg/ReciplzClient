@@ -9,7 +9,6 @@
           <span>Minutes: <strong>{{recipeTotalTime}}</strong></span>
         </b-progress-bar>
       </b-progress> 
-        <!-- <b-button variant="outline-danger" class="mt-3" @click="startProgress">Start cooking recipe</b-button> -->
 
       </div>
       <br/>
@@ -104,21 +103,39 @@ export default {
   data() {
     return {
       recipe: null,
-      recipeTotalTime: 0,
+      recipeTotalTime: null,
       timeLimit: 0,
     };
   },
   mounted(){
-    //this.recipeTotalTime = window.localStorage.getItem("recipeTimer");  
+  
+  window.localStorage.setItem('recipeProTime',recipe.readyInMinutes);
+  
+  //this.recipeTotalTime = window.localStorage.getItem("recipeTimer");  
   setInterval(()=>{
-      this.recipeTotalTime = window.localStorage.getItem("recipeTimer");  
-  }, 60*1000)
+      this.recipeTotalTime = window.localStorage.getItem("recipeProTime");  
+  }, 10*1000)
+
+  this.startTimer();
    
     //this.startProgress();
     this.created();
 
   },
   methods:{
+
+  async startTimer() {
+      //window.localStorage.removeItem('recipeProTime');
+      this.timerInterval = setInterval(() => {
+        this.timePassed -= 1; 
+        if(this.timePassed <= 0){
+          localStorage.setItem("recipeProTime", 0)
+        }else{
+          localStorage.setItem("recipeProTime", this.timePassed)
+        }
+        }, 1000*60);
+    },
+
   async created() {
     try {
       let response;
