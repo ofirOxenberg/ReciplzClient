@@ -123,7 +123,7 @@ export default {
           );
           //save recepies ids in local storage
           var recipesForMeal = [];
-          response.forEach((recipe) => {
+          response.data.forEach((recipe) => {
             recipesForMeal.push(recipe.id);
           });
           window.localStorage.setItem('recipesForMeal', recipesForMeal);
