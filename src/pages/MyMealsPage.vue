@@ -126,6 +126,7 @@ export default {
           response.data.forEach((recipe) => {
             recipesForMeal.push({id:recipe.id,readyInMinutes:recipe.readyInMinutes});
           });
+          var allRecipesInMeal = JSON.stringify(recipesForMeal);
           window.localStorage.setItem('recipesForMeal', recipesForMeal);
 
           this.recipes = []

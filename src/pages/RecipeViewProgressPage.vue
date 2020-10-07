@@ -105,8 +105,8 @@
 <script>
 export default {
   data() {
-    var recipes = window.localStorage.getItem('recipesForMeal');
-    var current = window.localStorage.getItem('currentItem');   
+    var recipes = JSON.parse(window.localStorage.getItem('recipesForMeal'));
+    var current = window.localStorage.getItem('currentRecipe');   
     return {
       recipe: null,
       recipeTotalTime: recipes[current].readyInMinutes,
