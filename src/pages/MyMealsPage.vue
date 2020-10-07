@@ -127,7 +127,7 @@ export default {
             recipesForMeal.push({id:recipe.id,readyInMinutes:recipe.readyInMinutes});
           });
           var allRecipesInMeal = JSON.stringify(recipesForMeal);
-          window.localStorage.setItem('recipesForMeal', recipesForMeal);
+          window.localStorage.setItem('recipesForMeal', allRecipesInMeal);
 
           this.recipes = []
           var counter = 0
