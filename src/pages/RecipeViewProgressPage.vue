@@ -9,8 +9,10 @@
           <span>Minutes: <strong>{{recipeTotalTime}}</strong></span>
         </b-progress-bar>
       </b-progress> 
-      <b-button variant="danger" @click="nextRecipe">Next recipe</b-button>
-      <b-button variant="danger" @click="backRecipe">Previous recipe</b-button>
+      <div>
+      <b-button class="next-back" variant="danger" @click="nextRecipe">Next recipe</b-button>
+      <b-button class="next-back" variant="danger" @click="backRecipe">Previous recipe</b-button>
+      </div>
 
       </div>
       <br/>
@@ -103,9 +105,11 @@
 <script>
 export default {
   data() {
+    var recipes = window.localStorage.getItem('recipesForMeal');
+    var current = window.localStorage.getItem('currentItem');   
     return {
       recipe: null,
-      recipeTotalTime: recipe.readyInMinutes,
+      recipeTotalTime: recipes[current].readyInMinutes,
       timeLimit: 0,
     };
   },
@@ -115,7 +119,7 @@ export default {
       if(this.recipeTotalTime <= 0){
           this.recipeTotalTime = 0;
         }else{
-          this.recipeTotalTime -=1;
+          this.recipeTotalTime = this.recipeTotalTime - 1;
         }
   }, 60*1000)
 
@@ -126,8 +130,7 @@ export default {
   methods:{
   async nextRecipe(){
     var currentItem = window.localStorage.getItem('currentRecipe');
-    var recipes = window.localStorage.getItem('recipesForMeal');
-    if(currentItem === recipes.length) {
+    if(currentItem === this.recipes.length) {
       alert('The meal has ended!');
     }
     else {
@@ -277,8 +280,11 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
 }
-/* .recipe-header{
-} */
+.next-back{
+  text-align: center;
+  margin-right: 7px;
+  margin-left: 7px;
+}
 </style>
 
 

@@ -40,14 +40,14 @@
     </div>
     <div>
       <div v-if="recipes.length">
-        <h1>Recipes in your meal:</h1>
+        <h1 style="text-align: center;">Recipes in your meal:</h1>
         <br/>
         <!-- <b-progress :max="timeLimit" variant="danger" show-progress animated>
           <b-progress-bar :value="timePassed">
             <span>Minutes: <strong>{{timePassed}}</strong></span>
           </b-progress-bar>
         </b-progress>     -->
-          <b-button class="mt-3" @click="startMeal">Start meal</b-button>
+          <b-button class="mt-3" variant="danger" @click="startMeal">Start meal</b-button>
         <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
@@ -124,7 +124,7 @@ export default {
           //save recepies ids in local storage
           var recipesForMeal = [];
           response.data.forEach((recipe) => {
-            recipesForMeal.push(recipe.id);
+            recipesForMeal.push({id:recipe.id,readyInMinutes:recipe.readyInMinutes});
           });
           window.localStorage.setItem('recipesForMeal', recipesForMeal);
 
@@ -153,7 +153,7 @@ export default {
       var recipes = window.localStorage.getItem('recipesForMeal');
       if(recipes.length >= 1) {
           window.localStorage.setItem('currentRecipe', 0);
-          this.$router.push(`/recipeWithProgress/${recipes[0]}`).catch(() => {
+          this.$router.push(`/recipeWithProgress/${recipes[0].id}`).catch(() => {
           this.$forceUpdate();
         }); 
       }
