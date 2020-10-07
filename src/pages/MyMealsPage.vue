@@ -147,12 +147,12 @@ export default {
       window.localStorage.setItem('recipeTimer',this.timePassed);
       this.timerInterval = setInterval(() => {
         this.timePassed -= 1; 
-        localStorage.setItem("recipeTimer", this.timePassed)
+        if(this.timePassed <= 0){
+          localStorage.setItem("recipeTimer", 0)
+        }else{
+          localStorage.setItem("recipeTimer", this.timePassed)
+        }
         }, 1000*60);
-    },
-
-    async startMeal(){
-
     },
 
     async update() {
