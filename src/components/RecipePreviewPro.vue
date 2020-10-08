@@ -88,7 +88,7 @@
               <tr>
                 <template>
                 <div>
-                  <b-dropdown variant="outline-danger">
+                  <!-- <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
@@ -113,7 +113,7 @@
                           <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
-                  </b-dropdown>
+                  </b-dropdown> -->
                 </div>
               </template>
               </tr>
