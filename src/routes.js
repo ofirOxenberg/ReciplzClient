@@ -38,7 +38,7 @@ const routes = [{
             import ("./pages/RecipeViewPage"),
     },
     {
-        path: "/recipeWithProgress/:recipeId",
+        path: "/recipeWithProgress?recipeId=",
         name: "recipeWithProgress",
         component: () =>
             import ("./pages/RecipeViewProgressPage"),
