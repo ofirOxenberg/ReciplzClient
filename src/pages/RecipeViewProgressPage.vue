@@ -131,13 +131,13 @@ export default {
   methods:{
   async nextRecipe(){
     var currentItem = window.localStorage.getItem('currentRecipe');
-    if(currentItem === this.recipes.length) {
+    if(currentItem === this.recipes.length -1 ) {
       alert("The meal has ended!");
     }
     else {
       var curr = parseInt(currentItem + 1);
       window.localStorage.setItem('currentRecipe', curr);
-      this.$router.push(`/recipeWithProgress/${this.recipes[curr].id}`).catch(() => {
+      this.$router.push({path: '/recipeWithProgress', query:{recipeId: this.recipes[curr].id}}).catch(() => {
           this.$forceUpdate();
     });
     }  
@@ -151,7 +151,7 @@ export default {
     else {
       var curr = parseInt(currentItem - 1);
       window.localStorage.setItem('currentRecipe', curr);
-      this.$router.push(`/recipeWithProgress/${this.recipes[curr].id}`).catch(() => {
+      this.$router.push({path: '/recipeWithProgress', query:{recipeId: this.recipes[curr].id}}).catch(() => {
           this.$forceUpdate();
     });
     }  
