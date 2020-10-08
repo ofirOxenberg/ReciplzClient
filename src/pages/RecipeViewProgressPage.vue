@@ -137,7 +137,7 @@ export default {
     else {
       var curr = parseInt(currentItem + 1);
       window.localStorage.setItem('currentRecipe', curr);
-      window.location.href=`http://http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
+      window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
     }  
   },
 
@@ -149,7 +149,7 @@ export default {
     else {
       var curr = parseInt(currentItem - 1);
       window.localStorage.setItem('currentRecipe', curr);
-      window.location.href=`http://http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
+      window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
     }  
   },
 
