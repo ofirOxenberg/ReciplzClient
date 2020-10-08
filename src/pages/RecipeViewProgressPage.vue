@@ -135,8 +135,9 @@ export default {
       alert("The meal has ended!");
     }
     else {
-      window.localStorage.setItem('currentRecipe', currentItem + 1);
-      this.$router.push(`/recipeWithProgress/${this.recipes[currentItem + 1]}`).catch(() => {
+      var curr = parseInt(currentItem + 1);
+      window.localStorage.setItem('currentRecipe', curr);
+      this.$router.push(`/recipeWithProgress/${this.recipes[curr]}`).catch(() => {
           this.$forceUpdate();
     });
     }  
@@ -148,8 +149,9 @@ export default {
       alert("You are already in the first recipe of this meal");
     }
     else {
-      window.localStorage.setItem('currentRecipe', currentItem - 1);
-      this.$router.push(`/recipeWithProgress/${this.recipes[currentItem -1]}`).catch(() => {
+      var curr = parseInt(currentItem - 1);
+      window.localStorage.setItem('currentRecipe', curr);
+      this.$router.push(`/recipeWithProgress/${this.recipes[curr]}`).catch(() => {
           this.$forceUpdate();
     });
     }  
