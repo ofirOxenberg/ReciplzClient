@@ -137,7 +137,7 @@ export default {
     else {
       var curr = parseInt(currentItem + 1);
       window.localStorage.setItem('currentRecipe', curr);
-      this.$router.push(`/recipeWithProgress/${this.recipes[curr]}`).catch(() => {
+      this.$router.push(`/recipeWithProgress/${this.recipes[curr].id}`).catch(() => {
           this.$forceUpdate();
     });
     }  
@@ -151,7 +151,7 @@ export default {
     else {
       var curr = parseInt(currentItem - 1);
       window.localStorage.setItem('currentRecipe', curr);
-      this.$router.push(`/recipeWithProgress/${this.recipes[curr]}`).catch(() => {
+      this.$router.push(`/recipeWithProgress/${this.recipes[curr].id}`).catch(() => {
           this.$forceUpdate();
     });
     }  
