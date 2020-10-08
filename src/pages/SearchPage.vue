@@ -36,7 +36,7 @@
             ></b-form-select>
           </b-col>
           <b-col>
-            <b-button @click="SendSearch" >Search</b-button>
+            <b-button @click="SendSearch" :disabled=false >Search</b-button>
             <!-- :disabled="search_query.length==0" -->
           </b-col>
         </b-row>
