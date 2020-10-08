@@ -78,7 +78,7 @@
           </div>
 
           <div
-            v-if="this.$route.params.privateRecipes || this.$route.params.myRecipes "
+            v-if="this.$route.query.privateRecipes || this.$route.query.myRecipes "
             class="wrapped"
           >
             Instructions:
@@ -161,11 +161,11 @@ export default {
     try {
       let response;
       try {
-        if (this.$route.params.privateRecipes) {
+        if (this.$route.query.privateRecipes) {
           response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/my_recipes/recipeId/" +
-              this.$route.params.recipeId
+              this.$route.query.recipeId
           );
           this.recipe = new Object();
           this.recipe.title = response.data[0].recipe_name;
@@ -182,12 +182,12 @@ export default {
           this.recipe.occasion = response.data[0].occasion;
           this.recipe.recipe_owner = response.data[0].recipe_owner;
           return;
-        } else if (this.$route.params.myRecipes) {
+        } else if (this.$route.query.myRecipes) {
           console.log("my recipes!!!");
           response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/fullview/my_recipes/recipeId/" +
-              this.$route.params.recipeId
+              this.$route.query.recipeId
           );
           console.log(response);
           const keys = Object.keys(response.data);
@@ -209,13 +209,13 @@ export default {
           response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/recipes/fullview/recipeId/" +
-              this.$route.params.recipeId
+              this.$route.query.recipeId
           );
           if (this.$root.store.username != undefined) {
             await this.axios.put(
               this.$root.store.BASE_URL +
                 "/users/add_to_watched/recipeId/" +
-                this.$route.params.recipeId
+                this.$route.query.recipeId
             );
           }
         }
