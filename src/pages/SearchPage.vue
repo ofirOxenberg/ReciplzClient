@@ -127,7 +127,7 @@ export default {
       try {
         console.log(this.search_query);
         console.log("try send search");
-        if(this.search_query == "")
+        if(this.search_query == null)
         {
         const response = await this.axios.get(
           this.$root.store.BASE_URL +
