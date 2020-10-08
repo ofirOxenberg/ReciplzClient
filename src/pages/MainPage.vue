@@ -6,8 +6,10 @@
         <br />
         <br />
         <br />
-        <div class="vertical-center">
+        <div class="vertical">
+        <div class="center">
           <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
+        </div>
         </div>
         <br />
         <br />
@@ -90,10 +92,13 @@ export default {
   //top:100%;
   left: 115%;
 }
+.vertical{
+  position: relative;
+}
 
-.vertical-center {
+.center {
   margin: 0;
-  //position: absolute;
+  position: absolute;
   top: 96%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
