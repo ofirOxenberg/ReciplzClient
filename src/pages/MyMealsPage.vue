@@ -152,9 +152,10 @@ export default {
 
     async startMeal(){
       var recipes = window.localStorage.getItem('recipesForMeal');
+      var recipesObject = JSON.parse(recipes);
       if(recipes.length >= 1) {
           window.localStorage.setItem('currentRecipe', 0);
-          this.$router.push(`/recipeWithProgress/${recipes[0].id}`).catch(() => {
+          this.$router.push(`/recipeWithProgress/${recipesObject[0].id}`).catch(() => {
           this.$forceUpdate();
         }); 
       }

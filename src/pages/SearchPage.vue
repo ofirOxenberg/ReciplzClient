@@ -66,8 +66,7 @@
 
       <div
         v-if="!recipes.length && searched"
-        style="text-align: center; margin-left: auto;
-  margin-right: auto; background-position: center; font-size: 21px;"
+        style="text-align: center; margin-left: auto;margin-right: auto; background-position: center; font-size: 21px;"
       >
         <strong>No results found. Try looking for a different recipe.</strong>
       </div>

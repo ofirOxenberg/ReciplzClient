@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="relative container">
       <div>
         <br />
         <br />
@@ -9,9 +9,9 @@
           <span>Minutes: <strong>{{recipeTotalTime}}</strong></span>
         </b-progress-bar>
       </b-progress> 
-      <div>
-      <b-button class="next-back" variant="danger" @click="nextRecipe">Next recipe</b-button>
+      <div class="center">
       <b-button class="next-back" variant="danger" @click="backRecipe">Previous recipe</b-button>
+      <b-button class="next-back" variant="danger" @click="nextRecipe">Next recipe</b-button>
       </div>
 
       </div>
@@ -131,7 +131,7 @@ export default {
   async nextRecipe(){
     var currentItem = window.localStorage.getItem('currentRecipe');
     if(currentItem === this.recipes.length) {
-      alert('The meal has ended!');
+      alert("The meal has ended!");
     }
     else {
       window.localStorage.setItem('currentRecipe', currentItem + 1);
@@ -145,7 +145,7 @@ export default {
     var currentItem = window.localStorage.getItem('currentRecipe');
     var recipes = window.localStorage.getItem('recipesForMeal');
     if(currentItem === 0) {
-      alert('You are already in the first recipe');
+      alert("You are already in the first recipe of this meal");
     }
     else {
       window.localStorage.setItem('currentRecipe', currentItem - 1);
@@ -281,9 +281,17 @@ export default {
   background-repeat: no-repeat;
 }
 .next-back{
-  text-align: center;
   margin-right: 7px;
   margin-left: 7px;
+}
+.center{
+  position: absolute;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.relative{
+  position: relative;
 }
 </style>
 
