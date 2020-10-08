@@ -159,7 +159,7 @@ export default {
           this.$forceUpdate();
         }); 
       }
-RecipeViewProgressPage
+
     },
     
     // async startTimer() {
