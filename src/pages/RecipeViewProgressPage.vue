@@ -78,7 +78,7 @@
           </div>
 
           <div
-            v-if="this.$route.query.privateRecipes || this.$route.query.myRecipes "
+            v-if="this.$route.params.privateRecipes || this.$route.params.myRecipes "
             class="wrapped"
           >
             Instructions:
@@ -137,9 +137,7 @@ export default {
     else {
       var curr = parseInt(currentItem + 1);
       window.localStorage.setItem('currentRecipe', curr);
-      this.$router.push({path: '/recipeWithProgress', query:{recipeId: this.recipes[curr].id}}).catch(() => {
-          this.$forceUpdate();
-    });
+      window.location.href=`http://recip-lz-server.herokuapp.com/RecipeViewProgressPage/${this.recipes[curr].id}`
     }  
   },
 
@@ -151,9 +149,7 @@ export default {
     else {
       var curr = parseInt(currentItem - 1);
       window.localStorage.setItem('currentRecipe', curr);
-      this.$router.push({path: '/recipeWithProgress', query:{recipeId: this.recipes[curr].id}}).catch(() => {
-          this.$forceUpdate();
-    });
+      window.location.href=`http://recip-lz-server.herokuapp.com/RecipeViewProgressPage/${this.recipes[curr].id}`
     }  
   },
 
@@ -161,11 +157,11 @@ export default {
     try {
       let response;
       try {
-        if (this.$route.query.privateRecipes) {
+        if (this.$route.params.privateRecipes) {
           response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/my_recipes/recipeId/" +
-              this.$route.query.recipeId
+              this.$route.params.recipeId
           );
           this.recipe = new Object();
           this.recipe.title = response.data[0].recipe_name;
@@ -182,12 +178,12 @@ export default {
           this.recipe.occasion = response.data[0].occasion;
           this.recipe.recipe_owner = response.data[0].recipe_owner;
           return;
-        } else if (this.$route.query.myRecipes) {
+        } else if (this.$route.params.myRecipes) {
           console.log("my recipes!!!");
           response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/fullview/my_recipes/recipeId/" +
-              this.$route.query.recipeId
+              this.$route.params.recipeId
           );
           console.log(response);
           const keys = Object.keys(response.data);
@@ -209,13 +205,13 @@ export default {
           response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/recipes/fullview/recipeId/" +
-              this.$route.query.recipeId
+              this.$route.params.recipeId
           );
           if (this.$root.store.username != undefined) {
             await this.axios.put(
               this.$root.store.BASE_URL +
                 "/users/add_to_watched/recipeId/" +
-                this.$route.query.recipeId
+                this.$route.params.recipeId
             );
           }
         }

@@ -155,11 +155,11 @@ export default {
       var recipesObject = JSON.parse(recipes);
       if(recipes.length >= 1) {
           window.localStorage.setItem('currentRecipe', 0);
-          this.$router.push({path:'/recipeWithProgress', query: {recipeId: recipesObject[0].id}}).catch(() => {
+          this.$router.push(`/recipeWithProgress/${recipesObject[0].id}`).catch(() => {
           this.$forceUpdate();
         }); 
       }
-
+RecipeViewProgressPage
     },
     
     // async startTimer() {
