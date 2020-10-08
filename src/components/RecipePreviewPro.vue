@@ -5,46 +5,11 @@
       :title="recipe.title"
       class="recipe-title"
     >{{ recipe.title }}</h5>
-    <!-- family recipes -->
-    <!-- <router-link
-      v-if="privateRecipes"
-      :to="{ name: 'recipeWithProgress', params: { recipeId: recipe.id,
-    privateRecipes: true
-     } }"
-      class="recipe-body"
-    > -->
+
       <div class="recipe-body">
         <img :src="recipe.image" class="recipe-image" id="image" />
       </div>
-    <!-- </router-link> -->
-    <!-- family recipes -->
-
-    <!-- My recipes -->
-    <!-- <router-link
-      v-else-if="myRecipes"
-      :to="{ name: 'recipeWithProgress', params: { recipeId: recipe.id,
-    myRecipes: true
-     } }"
-      class="recipe-body"
-    > -->
-      <div class="recipe-body">
-        <img :src="recipe.image" class="recipe-image" id="image" />
-      </div>
-    <!-- </router-link> -->
-    <!-- My recipes -->
-
-    <!-- API recipes -->
-    <!-- <router-link
-      v-else
-      :to="{ name: 'recipeWithProgress', params: { recipeId: recipe.id } }"
-      class="recipe-body"
-    > -->
-      <div class="recipe-body">
-        <img :src="recipe.image" class="recipe-image" id="image" />
-      </div>
-    <!-- </router-link> -->
-    <!-- API recipes -->
-
+    
     <div>
       <div class="recipe-preview">
         <a href="https://icons8.com/icon/43628/facebook-like"></a>

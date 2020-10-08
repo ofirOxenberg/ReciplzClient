@@ -1,5 +1,5 @@
 <template>
-  <div class="relative container">
+  <div class="container">
       <div>
         <br />
         <br />
@@ -110,6 +110,7 @@ export default {
     return {
       recipe: null,
       recipeTotalTime: recipes[current].readyInMinutes,
+      recipes: recipes,
       timeLimit: 0,
     };
   },
@@ -135,7 +136,7 @@ export default {
     }
     else {
       window.localStorage.setItem('currentRecipe', currentItem + 1);
-      this.$router.push(`/recipeWithProgress/${recipes[currentItem + 1]}`).catch(() => {
+      this.$router.push(`/recipeWithProgress/${this.recipes[currentItem + 1]}`).catch(() => {
           this.$forceUpdate();
     });
     }  
@@ -143,13 +144,12 @@ export default {
 
   async backRecipe(){
     var currentItem = window.localStorage.getItem('currentRecipe');
-    var recipes = window.localStorage.getItem('recipesForMeal');
     if(currentItem === 0) {
       alert("You are already in the first recipe of this meal");
     }
     else {
       window.localStorage.setItem('currentRecipe', currentItem - 1);
-      this.$router.push(`/recipeWithProgress/${recipes[currentItem -1]}`).catch(() => {
+      this.$router.push(`/recipeWithProgress/${this.recipes[currentItem -1]}`).catch(() => {
           this.$forceUpdate();
     });
     }  
