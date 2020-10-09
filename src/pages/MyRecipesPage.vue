@@ -6,7 +6,7 @@
     <br/>
     <br/>
     <RecipePreviewList v-if="!showMsg" title="My Recipes" :recipes="recipes" :privateRecipes="true" />
-    <h1 v-else-if="showMsg">There arent any private recipes</h1> 
+    <h1 v-else-if="showMsg" style="text-align:center">There arent any private recipes</h1> 
   </div>
 </template>
 
