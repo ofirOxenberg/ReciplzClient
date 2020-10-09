@@ -1,19 +1,15 @@
 <template >
   <b-container fluid class="jumbotron">
     <b-row>
-      <b-col>
-        <div class="col">
+      <b-col class="col">
           <RandomRecipePreviewList class="RandomRecipes center" />
           <br />
           <br />
           <br />
           <!-- class="vertical-center" -->
-          <div>
-            <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
-          </div>
+          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
           <br />
           <br />
-        </div>
       </b-col>
       
 
