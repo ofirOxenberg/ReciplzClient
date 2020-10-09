@@ -6,8 +6,8 @@
         <br />
         <br />
         <br />
-        <div class="vertical">
-          <b-button class="center" id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
+        <div class="vertical-center">
+          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
         </div>
         <br />
         <br />
@@ -91,16 +91,12 @@ export default {
   left: 115%;
 }
 
-.vertical {
+.vertical-center {
   margin: 0;
-  position: relative;
+  position: absolute;
   top: 96%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-.center{
-  position: absolute;
 }
 
 .jumbotron {
