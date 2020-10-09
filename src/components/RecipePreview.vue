@@ -52,7 +52,7 @@
         <table class="center">
           <tr class="center">
             <td>
-              {{ recipe.readyInMinutes }} min
+              {{ recipe.readyInMinutes }} minuets
             </td>
             <td>
               <img src="../assets/clock.png" />
@@ -62,7 +62,7 @@
               {{ recipe.aggregateLikes }}
             </td>
             <td>
-              <img src="../assets/like.png" />
+              <img class="center" src="../assets/like.png" />
               <!-- <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -456,9 +456,9 @@ export default {
 .center {
   margin: 0 auto;
   /* margin-left: auto;
-  margin-right: auto;
+  margin-right: auto;*/
   width: 30px;
-  height: 30px; */
+  height: 30px; 
 }
 #image {
   height: 250px;

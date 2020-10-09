@@ -134,7 +134,7 @@ export default {
   },
   mounted() {
     this.update();
-    this.getMeals();
+    //this.getMeals();
   },
   methods: {
     async update() {

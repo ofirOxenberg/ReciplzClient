@@ -15,31 +15,31 @@
               <div>
                 <div v-if="recipe.vegan">
                   Vegan:
-                  <img src="../assets/V.png" />
+                  <img class="sizeLimit" src="../assets/V.png" />
                 </div>
                 <div v-else>
                   Vegan:
-                  <img src="../assets/x.png" />
+                  <img class="sizeLimit" src="../assets/x.png" />
                 </div>
               </div>
               <div>
                 <div v-if="recipe.vegetarian">
                   Vegetarian:
-                  <img src="../assets/V.png" />
+                  <img class="sizeLimit" src="../assets/V.png" />
                 </div>
                 <div v-else>
                   Vegetarian:
-                  <img src="../assets/x.png" />
+                  <img class="sizeLimit" src="../assets/x.png" />
                 </div>
               </div>
               <div>
                 <div v-if="recipe.glutenFree">
                   GlutenFree:
-                  <img src="../assets/V.png" />
+                  <img class="sizeLimit" src="../assets/V.png" />
                 </div>
                 <div v-else>
                   GlutenFree:
-                  <img src="../assets/x.png" />
+                  <img class="sizeLimit" src="../assets/x.png" />
                 </div>
               </div>
               <div>Servings: {{ recipe.servings }}</div>
@@ -213,6 +213,8 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
 }
-/* .recipe-header{
-} */
+.sizeLimit{
+  width: 30px;
+  height: 30px; 
+}
 </style>
