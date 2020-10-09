@@ -140,8 +140,7 @@ export default {
       curr = curr + 1;
       window.localStorage.setItem('currentRecipe', curr);
       window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
-      this.$router.go(0).catch(() => {
-          this.$forceUpdate();})
+      this.$router.go(0)
     }  
   },
 
@@ -155,8 +154,7 @@ export default {
       curr = curr - 1;
       window.localStorage.setItem('currentRecipe', curr);
       window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
-      this.$router.go(0).catch(() => {
-          this.$forceUpdate();})
+      this.$router.go(0)
     }  
   },
 
