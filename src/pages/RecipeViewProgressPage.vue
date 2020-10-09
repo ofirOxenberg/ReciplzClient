@@ -138,18 +138,22 @@ export default {
       var curr = parseInt(currentItem + 1);
       window.localStorage.setItem('currentRecipe', curr);
       window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
+      this.$router.go(0).catch(() => {
+          this.$forceUpdate();})
     }  
   },
 
   async backRecipe(){
     var currentItem = window.localStorage.getItem('currentRecipe');
-    if(currentItem === 0) {
+    if(currentItem === "0") {
       alert("You are already in the first recipe of this meal");
     }
     else {
       var curr = parseInt(currentItem - 1);
       window.localStorage.setItem('currentRecipe', curr);
       window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
+      this.$router.go(0).catch(() => {
+          this.$forceUpdate();})
     }  
   },
 
