@@ -60,7 +60,7 @@
               {{ recipe.aggregateLikes }}
             </td>
             <td class="img">
-              <img class="center" src="../assets/like.png" />
+              <img style="width: 30px; height: 30px;" src="../assets/like.png" />
             </td>
           </tr>
           <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
