@@ -1,16 +1,19 @@
 <template >
   <b-container fluid class="jumbotron">
     <b-row>
-      <b-col class="col">
-        <RandomRecipePreviewList class="RandomRecipes center" />
-        <br />
-        <br />
-        <br />
-        <div class="vertical-center">
-          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
+      <b-col>
+        <div class="col">
+          <RandomRecipePreviewList class="RandomRecipes center" />
+          <br />
+          <br />
+          <br />
+          <!-- class="vertical-center" -->
+          <div>
+            <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
+          </div>
+          <br />
+          <br />
         </div>
-        <br />
-        <br />
       </b-col>
       
 
@@ -74,6 +77,7 @@ export default {
 }
 
 .col {
+  text-align: center;
   border-style: solid;
   border-width: 0.5px;
   color: black;
