@@ -42,23 +42,12 @@
       <div v-if="recipes.length">
         <h1 style="text-align: center;">Recipes in your meal:</h1>
         <br/>
-        <!-- <b-progress :max="timeLimit" variant="danger" show-progress animated>
-          <b-progress-bar :value="timePassed">
-            <span>Minutes: <strong>{{timePassed}}</strong></span>
-          </b-progress-bar>
-        </b-progress>     -->
           <b-button class="mt-3" variant="danger" @click="startMeal">Start meal</b-button>
         <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
         </div>
       </div>
-      <!-- <div
-        v-if="!recipes.length && searched"
-        style="text-align: center; margin-left: auto;
-        margin-right: auto; background-position: center; font-size: 21px;"
-      ><strong>No results found. Try looking for a different recipe.</strong>
-      </div> -->
       <br />
     </div>
   </div>
@@ -80,7 +69,6 @@ export default {
       search_query: "",
       searchkey: 0,
       last_search: [],
-      //message: "",
       searched: false,
       myMeals: {},
       timeLimit: 0,
@@ -94,7 +82,6 @@ export default {
     const meailId = window.localStorage.getItem('selectedMeal');
     if(meailId){
       this.meal(meailId);
-      //
     }
   },
   methods: {
@@ -161,19 +148,6 @@ export default {
       }
 
     },
-    
-    // async startTimer() {
-    //   window.localStorage.removeItem('recipeTimer');
-    //   window.localStorage.setItem('recipeTimer',this.timePassed);
-    //   this.timerInterval = setInterval(() => {
-    //     this.timePassed -= 1; 
-    //     if(this.timePassed <= 0){
-    //       localStorage.setItem("recipeTimer", 0)
-    //     }else{
-    //       localStorage.setItem("recipeTimer", this.timePassed)
-    //     }
-    //     }, 1000*60);
-    // },
 
     async update() {
       //this.search_history = undefined;

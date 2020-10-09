@@ -5,6 +5,7 @@
       :title="recipe.title"
       class="recipe-title"
     >{{ recipe.title }}</h5>
+    <br>
     <!-- family recipes -->
     <router-link
       v-if="privateRecipes"
@@ -47,19 +48,21 @@
 
     <div>
       <div class="recipe-preview">
-        <a href="https://icons8.com/icon/43628/facebook-like"></a>
+        <!-- <a href="https://icons8.com/icon/43628/facebook-like"></a> -->
         <table class="center">
-          <tr>
+          <tr class="center">
             <td>
               {{ recipe.readyInMinutes }} min
-              <img class="center" src="../assets/clock.png" />
+            </td>
+            <td>
+              <img src="../assets/clock.png" />
             </td>
             <td></td>
-            <td></td>
-            <td id="ppp">,,,</td>
             <td>
               {{ recipe.aggregateLikes }}
-              <img class="center" src="../assets/like.png" />
+            </td>
+            <td>
+              <img src="../assets/like.png" />
               <!-- <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -102,11 +105,10 @@
               v-if="this.$root.store.username != undefined"
             >
               <!-- v-if="this.$root.store.username != undefined && !privateRecipes && !myRecipes" -->
-              <td v-if=" saveTheRecipe == true || saved == true">
+              <td v-if=" saveTheRecipe == true || saved == true" class="center">
                 <b-icon-heart-fill variant="danger"></b-icon-heart-fill>
               </td>
-
-              <td v-else>
+              <td v-else class="center">
                 <b-icon-heart @click="heart"></b-icon-heart>
               </td>
 
@@ -123,7 +125,7 @@
                 <img class="center" src="../assets/vegetarian-food-symbol.png" />
               </td>
               <tr>
-                <template>
+                <!-- <template>
                 <div>
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
@@ -150,6 +152,34 @@
                           <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
+                  </b-dropdown>
+                </div>
+              </template> -->
+
+              <template>
+                <div>
+                  <b-dropdown variant="outline-danger">
+                    <template v-slot:button-content>
+                      <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
+                    </template>
+
+                        <b-dropdown-group class="small">
+                          <li v-for="item in myMeals" :key="item.meal_id">
+                          <b-dropdown-item-button @click="meal(item.meal_id)">
+                            <!-- v-if="isInMeal" -->
+                            <b-icon icon="check" aria-hidden="true"></b-icon>
+                            {{item.name}} Meal 
+                          </b-dropdown-item-button>
+                          </li>
+                        </b-dropdown-group>
+                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-group>
+                        <input v-model="mealName" placeholder="Enter new meal name">
+                       <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
+                          <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
+                          Create new meal
+                      </b-dropdown-item-button>
+                      </b-dropdown-group>
                   </b-dropdown>
                 </div>
               </template>
@@ -183,6 +213,7 @@ export default {
       watched: false,
       saved: false,
       mealRecipe: false,
+      isInMeal: null,
       myMeals: {}
     };
   },
@@ -204,7 +235,7 @@ export default {
   },
   mounted() {
     this.update();
-    this.getMeals();
+    //this.getMeals();
   },
   methods: {
     async update() {
@@ -243,16 +274,16 @@ export default {
     async getMeals() {
       try {
         if (this.$root.store.username != undefined) {
-          var mealsListRes = await this.axios.get(
+          var isInMealBoolean = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/users/getRecipesMealsFlags/"+this.recipe.id
+              "/users/getRecipesMealsFlags/"+this.recipe.id+'/'+item.meal_id
           );
-          
+          this.isInMeal = isInMealBoolean;
 
           this.myMeals = mealsListRes.data;
-          console.log(this.recipe.title)
-          console.log(this.recipe.title)
-          console.log(this.myMeals);
+          console.log("flag test")
+          console.log(isInMealBoolean)
+          console.log(this.isInMeal);
         }
       } catch (error) {
         console.log(error);
@@ -261,10 +292,10 @@ export default {
     },
     async meal(num) {
       this.mealRecipe = true;
+      //this.getMeals();
       try {
         if (this.$root.store.username != undefined) {
-          this.myMeals[num].flag = true;
-
+          //this.myMeals[num].flag = true;
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
@@ -423,14 +454,11 @@ export default {
   padding: 20px 30px;
 }
 .center {
-  margin-left: auto;
+  margin: 0 auto;
+  /* margin-left: auto;
   margin-right: auto;
   width: 30px;
-  height: 30px;
-  /* position: fixed; */
-  /* top: 50%; */
-  /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
+  height: 30px; */
 }
 #image {
   height: 250px;

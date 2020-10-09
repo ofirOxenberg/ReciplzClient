@@ -18,9 +18,11 @@
       <br/>
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
-        <h1 style="text-align:centerl; color:black;">{{ recipe.title }}</h1>
+        <h1 style="text-align:center; color:black;">{{ recipe.title }}</h1>
+        <br />
         <img :src="recipe.image" class="center" />
       </div>
+      <br />
       <div class="recipe-body">
         <div class="wrapper">
           <div class="wrapped">
@@ -30,40 +32,34 @@
               <div>
                 <div v-if="recipe.vegan">
                   Vegan:
-                  <img src="../assets/checkmark.png" />
+                  <img src="../assets/V.png" />
                 </div>
                 <div v-else>
                   Vegan:
-                  <img src="../assets/x-coordinate.png" />
+                  <img src="../assets/x.png" />
                 </div>
               </div>
               <div>
                 <div v-if="recipe.vegetarian">
                   Vegetarian:
-                  <img src="../assets/checkmark.png" />
+                  <img src="../assets/V.png" />
                 </div>
                 <div v-else>
                   Vegetarian:
-                  <img src="../assets/x-coordinate.png" />
+                  <img src="../assets/x.png" />
                 </div>
               </div>
               <div>
                 <div v-if="recipe.glutenFree">
                   GlutenFree:
-                  <img src="../assets/checkmark.png" />
+                  <img src="../assets/V.png" />
                 </div>
                 <div v-else>
                   GlutenFree:
-                  <img src="../assets/x-coordinate.png" />
+                  <img src="../assets/x.png" />
                 </div>
               </div>
               <div>Servings: {{ recipe.servings }}</div>
-
-              <!-- <div v-if="this.$route.params.privateRecipes">
-                <div>Autour Name: {{ recipe.author_username }}</div>
-                <div>Occasion: {{ recipe.occasion }}</div>
-                <div>Recipe Owner: {{ recipe.recipe_owner }}</div>
-              </div> -->
             </div>Ingredients:
             <ul>
               <li

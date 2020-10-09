@@ -3,7 +3,7 @@
   <div class="container">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
-        <h1 style="text-align:centerl; color:black;">{{ recipe.title }}</h1>
+        <h1 style="text-align:center; color:black;">{{ recipe.title }}</h1>
         <img :src="recipe.image" class="center" />
       </div>
       <div class="recipe-body">
@@ -15,31 +15,31 @@
               <div>
                 <div v-if="recipe.vegan">
                   Vegan:
-                  <img src="../assets/checkmark.png" />
+                  <img src="../assets/V.png" />
                 </div>
                 <div v-else>
                   Vegan:
-                  <img src="../assets/x-coordinate.png" />
+                  <img src="../assets/x.png" />
                 </div>
               </div>
               <div>
                 <div v-if="recipe.vegetarian">
                   Vegetarian:
-                  <img src="../assets/checkmark.png" />
+                  <img src="../assets/V.png" />
                 </div>
                 <div v-else>
                   Vegetarian:
-                  <img src="../assets/x-coordinate.png" />
+                  <img src="../assets/x.png" />
                 </div>
               </div>
               <div>
                 <div v-if="recipe.glutenFree">
                   GlutenFree:
-                  <img src="../assets/checkmark.png" />
+                  <img src="../assets/V.png" />
                 </div>
                 <div v-else>
                   GlutenFree:
-                  <img src="../assets/x-coordinate.png" />
+                  <img src="../assets/x.png" />
                 </div>
               </div>
               <div>Servings: {{ recipe.servings }}</div>
