@@ -36,8 +36,8 @@
             ></b-form-select>
           </b-col>
           <b-col>
-            <b-button @click="SendSearch" :disabled=false >Search</b-button>
-            <!-- :disabled="search_query.length==0" -->
+            <b-button @click="SendSearch" :disabled="search_query.length==0 >Search</b-button>
+            <!-- " -->
           </b-col>
         </b-row>
         <br />
@@ -140,18 +140,6 @@ export default {
             //withCredentials: true,
           }
         );
-        } 
-        else{
-          const response = await this.axios.get(
-          this.$root.store.BASE_URL +
-            "/recipes/search/query/" +
-            "/amount/" +
-            this.num_of_results,
-          {
-            params: this.search_params
-            //withCredentials: true,
-          }
-          );
         }
 
         this.recipes = [];
