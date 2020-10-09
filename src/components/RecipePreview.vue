@@ -15,7 +15,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 100%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- family recipes -->
@@ -29,7 +29,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 100%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- My recipes -->
@@ -41,7 +41,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 100%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- API recipes -->
@@ -127,7 +127,7 @@
               </td>
             </tr>
           <template>
-                <div>
+                <div style="margin-top: 10px;">
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
