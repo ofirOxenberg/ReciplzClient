@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <br />
-    <h1 style="text-align:centerl; color:black;">Register</h1>
+    <h1 style="text-align:center; color:black;">Register</h1>
     <br />
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
       <b-form-group

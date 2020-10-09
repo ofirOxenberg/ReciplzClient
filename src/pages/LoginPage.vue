@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <br />
-    <h1 style="text-align:centerl; color:black;">Login</h1>
+    <h1 style="text-align:center; color:black;">Login</h1>
     <br />
     <br />
     <b-form @submit.prevent="onLogin">
