@@ -4,23 +4,26 @@
         <br />
         <br />
         <br />
+        <br />
       <b-progress :max="timeLimit" variant="danger" show-progress animated>
         <b-progress-bar :value="recipeTotalTime">
           <span>Minutes: <strong>{{recipeTotalTime}}</strong></span>
         </b-progress-bar>
+        <br/>
       </b-progress> 
-      <div class="center">
+      <div style="text-align:center">
       <b-button class="next-back" variant="danger" @click="backRecipe">Previous recipe</b-button>
       <b-button class="next-back" variant="danger" @click="nextRecipe">Next recipe</b-button>
       </div>
 
       </div>
       <br/>
+      <br />
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
         <h1 style="text-align:center; color:black;">{{ recipe.title }}</h1>
         <br />
-        <img :src="recipe.image" class="center" />
+        <img :src="recipe.image" style="display: block; margin: 0 auto;" /> 
       </div>
       <br />
       <div class="recipe-body">
@@ -60,7 +63,7 @@
                 </div>
               </div>
               <div>Servings: {{ recipe.servings }}</div>
-            </div>Ingredients:
+            </div><span style="font-weight: bold"> Ingredients:</span>
             <ul>
               <li
                 v-for="(r, index) in recipe.ingredients"
@@ -76,8 +79,7 @@
           <div
             v-if="this.$route.params.privateRecipes || this.$route.params.myRecipes "
             class="wrapped"
-          >
-            Instructions:
+          ><span style="font-weight: bold">Instructions:</span>
             <ul>
               <li
                 v-for="(r, index) in recipe.instructions"

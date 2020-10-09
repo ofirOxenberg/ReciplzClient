@@ -11,7 +11,7 @@
             <br/>
               <b-dropdown variant="outline-danger">
                 <template v-slot:button-content>
-                  <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Choose meal
+                  <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon>Choose meal
                 </template>
                   <b-dropdown-group header="Choose options" class="small">
                     <li v-for="item in myMeals" :key="item.meal_id">
@@ -45,7 +45,7 @@
           <b-button class="mt-3" variant="danger" @click="startMeal">Start meal</b-button>
         <br/>
         <div>
-          <RecipePreviewProList :recipes="recipes" />
+          <RecipePreviewProList :title="item.name" :recipes="recipes" />
         </div>
       </div>
       <br />
