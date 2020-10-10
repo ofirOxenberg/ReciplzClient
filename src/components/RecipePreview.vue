@@ -209,7 +209,7 @@ export default {
           this.watched = watch_and_save_response.data[this.recipe.id].watched;
           this.saved = watch_and_save_response.data[this.recipe.id].saved;
         } catch (error) {
-          console.log(error);
+          console.log("error");
           return;
         }
       }

@@ -53,7 +53,6 @@ export default {
             family_recipe.recipe_owner = recipes_array[index][0].recipe_owner;
             this.recipes.push(family_recipe);
             this.showMsg= false;
-            console.log("eror");
           }
         } catch (error) {
           console.log("eror2");
