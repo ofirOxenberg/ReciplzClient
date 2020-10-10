@@ -46,8 +46,10 @@
         <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
-          <!-- :title="item.name" -->
         </div>
+      </div>
+      <div v-else>
+        <h2>There is no recipes in that meal</h2>
       </div>
       <br />
     </div>
@@ -109,9 +111,6 @@ export default {
             this.$root.store.BASE_URL +
               "/users/preview/myMeals/" + num 
           );
-          if(!response.data.success){
-            alert(response.data.message)
-          }
           //save recepies ids in local storage
           var recipesForMeal = [];
           response.data.forEach((recipe) => {

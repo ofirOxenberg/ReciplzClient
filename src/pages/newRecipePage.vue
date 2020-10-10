@@ -89,6 +89,9 @@
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Ingredients are required</b-form-invalid-feedback>
+          <b-form-invalid-feedback
+          v-if="!$v.form.recipeName.alpha">
+          Recipe name must contain English letters only</b-form-invalid-feedback>
         </b-form-group> 
 
         <b-form-group
@@ -109,6 +112,9 @@
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Instruction are required</b-form-invalid-feedback>
+          <b-form-invalid-feedback
+          v-if="!$v.form.recipeName.alpha">
+          Recipe name must contain English letters only</b-form-invalid-feedback>
         </b-form-group> 
     
         <br/>
@@ -174,9 +180,11 @@ export default {
              required,
           },
           instruction:{
+              alpha,
               required
           },
           ingredients:{
+              alpha,
               required
           }
       } 
