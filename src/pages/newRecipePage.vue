@@ -22,9 +22,9 @@
           <b-form-invalid-feedback 
           v-if="!$v.form.recipeName.$model">
           Recipe name is required</b-form-invalid-feedback>
-          <b-form-invalid-feedback
+          <!-- <b-form-invalid-feedback
           v-if="!$v.form.recipeName.alpha">
-          Recipe name must contain English letters only</b-form-invalid-feedback>
+          Recipe name must contain English letters only</b-form-invalid-feedback> -->
         </b-form-group>
         
         <b-form-group 
@@ -76,22 +76,19 @@
         label-cols-sm="3"
         label="ingredients:"
         label-for="ingredients"
-        ><b-form-input
+        ><b-form-textarea
+          rows="3"
+          max-rows="20"
+          ><b-form-input
           id="ingredients"
           v-model="$v.form.ingredients.$model"
           type="text"
           :state="validateState('ingredients')"
-        ><b-form-textarea
-          rows="3"
-          max-rows="20"
-        ></b-form-textarea>
-        </b-form-input>
+          ></b-form-input>
+        </b-form-textarea>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Ingredients are required</b-form-invalid-feedback>
-          <b-form-invalid-feedback
-          v-if="!$v.form.recipeName.alpha">
-          Recipe name must contain English letters only</b-form-invalid-feedback>
         </b-form-group> 
 
         <b-form-group
@@ -99,22 +96,19 @@
         label-cols-sm="3"
         label="Instruction:"
         label-for="instruction"
-        ><b-form-input
+        ><b-form-textarea
+          rows="3"
+          max-rows="20"
+          ><b-form-input
           id="instruction"
           v-model="$v.form.instruction.$model"
           type="text"
           :state="validateState('instruction')"
-        ><b-form-textarea
-          rows="3"
-          max-rows="20"
-        ></b-form-textarea>
-        </b-form-input>
+        ></b-form-input>
+        </b-form-textarea>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Instruction are required</b-form-invalid-feedback>
-          <b-form-invalid-feedback
-          v-if="!$v.form.recipeName.alpha">
-          Recipe name must contain English letters only</b-form-invalid-feedback>
         </b-form-group> 
     
         <br/>
@@ -167,7 +161,6 @@ export default {
       form: {
           recipeName: {
               required,
-              alpha
           },
           serving:{
             required
@@ -180,11 +173,9 @@ export default {
              required,
           },
           instruction:{
-              alpha,
               required
           },
           ingredients:{
-              alpha,
               required
           }
       } 
