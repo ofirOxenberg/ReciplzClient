@@ -85,7 +85,7 @@
                 <img class="center" src="../assets/vegetarian-food-symbol.png" />
               </td>
           </tr>
-                <template>
+                <!-- <template>
                 <div>
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
@@ -114,7 +114,7 @@
                       </b-dropdown-item-button>
                   </b-dropdown>
                 </div>
-              </template>
+              </template> -->
             <tr v-else>
               <td v-if="recipe.glutenFree" class="img">
                 <img class="center img" src="../assets/no-gluten.png" />
