@@ -153,7 +153,8 @@ export default {
       saved: false,
       mealRecipe: false,
       isInMeal: null,
-      myMeals: {}
+      myMeals: {},
+      mealName=''
     };
   },
   props: {
@@ -311,10 +312,8 @@ export default {
       }
     },
     async createMeal(mealName) {
-
       try {
-        if (this.$root.store.username != undefined) {
-          
+        if (this.$root.store.username != undefined && this.mealName !== "") {        
           var response = await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/creat_meal/" + mealName
@@ -324,6 +323,9 @@ export default {
           alert("The meal created successfully")
           this.$router.go(0).catch(() => {
           this.$forceUpdate();})
+        }
+        else{
+          alert("Please enter a name for the meal")
         }
       } catch (error) {
         console.log("error.response.status", error);

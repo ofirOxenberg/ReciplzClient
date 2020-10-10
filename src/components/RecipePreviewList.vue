@@ -82,9 +82,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  // min-height: 400px;
-}
 h3 {
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 40px;
