@@ -1,5 +1,6 @@
 <template >
   <b-container fluid class="jumbotron">
+    <img style="width: 100%; height: auto;" src="../assets/oldRecipe.jpg"  />
     <b-row>
       <b-col class="col">
           <div>

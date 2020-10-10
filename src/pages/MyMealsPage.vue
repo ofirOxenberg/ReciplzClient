@@ -44,6 +44,9 @@
         <br/>
           <b-button class="mt-3" variant="danger" @click="startMeal">Start meal</b-button>
         <br/>
+          <b-button variant="link" @click="deleteMeal">Delete meal permanently</b-button>
+        <br/>
+        <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
         </div>
@@ -88,6 +91,11 @@ export default {
     }
   },
   methods: {
+    async deleteMeal(){
+      alert("button worked")
+      //this.$router.go(0);
+    },
+
     async getMeals() {
       try {
         if (this.$root.store.username != undefined) {
