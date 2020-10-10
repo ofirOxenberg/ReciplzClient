@@ -76,7 +76,7 @@
         label-cols-sm="3"
         label="ingredients:"
         label-for="ingredients"
-        ><b-form-textarea
+        ><textarea
           rows="3"
           max-rows="20"
           label-cols-sm="7"
@@ -85,9 +85,7 @@
           v-model="$v.form.ingredients.$model"
           type="text"
           :state="validateState('ingredients')"
-          ><b-form-input
-          ></b-form-input>
-        </b-form-textarea>
+        ></textarea>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Ingredients are required</b-form-invalid-feedback>
@@ -101,7 +99,7 @@
         ><textarea
           rows="3"
           max-rows="20"
-          width= 100%
+          label-cols-sm="7"
           style="resize: vertical"
           id="instruction"
           v-model="$v.form.instruction.$model"
