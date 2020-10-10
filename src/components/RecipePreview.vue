@@ -134,7 +134,7 @@
           <tr v-if="this.$root.store.username != undefined && privateRecipes" style="text-align:center;">
             <div>
               <b-button variant="link" @click="deleteRecipe">Delete recipe permanently</b-button>
-            </div>
+            </div>           
           </tr>
         </table>
       </div>
@@ -178,8 +178,21 @@ export default {
   },
   methods: {
     async deleteRecipe(){
-      alert("the button worked");
-      //this.$router.go(0);
+      try{
+        const response = await this.axios.get(
+        this.$root.store.BASE_URL +
+          "/users/delete_recipe/" + this.recipe.id 
+        );
+        if(response.data.success){
+          alert(response.data.message);
+          this.$router.go(0);
+        }else{
+          alert("The recipe wasnt deleted");
+        }
+      }catch (error) {
+        console.log(error);
+        return;
+      }
     },
 
     async update() {

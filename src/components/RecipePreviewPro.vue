@@ -60,6 +60,11 @@
               <img class="center img" src="../assets/vegetarian-food-symbol.png" />
             </td>
           </tr>
+          <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
+            <div>
+              <b-button variant="link" @click="deleteRecipeFromMeal">Delete recipe permanently</b-button>
+            </div>           
+          </tr>
         </table>
       </div>
       <br />
@@ -100,6 +105,25 @@ export default {
     //this.getMeals();
   },
   methods: {
+    async deleteRecipeFromMeal(){
+      try{
+        var selectedMeal = window.localStorage.getItem('selectedMeal')
+        const response = await this.axios.get(
+        this.$root.store.BASE_URL +
+          "/users/deleteRecipeFromMeal/"+selectedMeal+'/'+this.recipe.id 
+        );
+        if(response.data.success){
+          alert(response.data.message);
+          this.$router.go(0);
+        }else{
+          alert("The recipe wasnt deleted");
+        }
+      }catch (error) {
+        console.log(error);
+        return;
+      }
+    },
+
     async update() {
       if (this.$root.store.username != undefined) {
         try {
