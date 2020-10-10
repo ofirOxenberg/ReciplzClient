@@ -85,7 +85,7 @@
                 <img class="center" src="../assets/vegetarian-food-symbol.png" />
               </td>
           </tr>
-              <!-- <template>
+                <!-- <template>
                 <div>
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
@@ -126,8 +126,7 @@
                 <img class="center img" src="../assets/vegetarian-food-symbol.png" />
               </td>
             </tr>
-            <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
-              <template>
+          <template>
                 <div style="margin-top: 10px;">
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
@@ -154,7 +153,6 @@
                   </b-dropdown>
                 </div>
               </template>
-            </tr>
         </table>
       </div>
       <br />

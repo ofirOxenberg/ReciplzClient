@@ -45,8 +45,7 @@
           <b-button class="mt-3" variant="danger" @click="startMeal">Start meal</b-button>
         <br/>
         <div>
-          <RecipePreviewProList :recipes="recipes" />
-          <!-- :title="item.name" -->
+          <RecipePreviewProList :title="item.name" :recipes="recipes" />
         </div>
       </div>
       <br />
