@@ -79,6 +79,7 @@
         ><b-form-textarea
           rows="3"
           max-rows="20"
+          style="resize: vertical"
           id="ingredients"
           v-model="$v.form.ingredients.$model"
           type="text"
@@ -96,16 +97,15 @@
         label-cols-sm="3"
         label="Instruction:"
         label-for="instruction"
-        ><b-form-textarea
+        ><textarea
           rows="3"
           max-rows="20"
+          style="resize: vertical"
           id="instruction"
           v-model="$v.form.instruction.$model"
           type="text"
           :state="validateState('instruction')"
-          ><b-form-input
-        ></b-form-input>
-        </b-form-textarea>
+        ></textarea>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Instruction are required</b-form-invalid-feedback>
@@ -122,11 +122,10 @@
           id="textarea-formatter"
           v-model="text1"
           placeholder="Enter your text1"
-          :formatter="formatter"
         ></b-form-textarea>
         </b-form-group> 
     
-          <b-form-textarea v-model="text2" style="resize: vertical"></b-form-textarea>
+          <textarea v-model="text2" style="resize: vertical"></textarea>
 
         <br/>
         <br/>

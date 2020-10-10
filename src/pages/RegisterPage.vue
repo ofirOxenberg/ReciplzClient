@@ -152,7 +152,8 @@
       <div class="mt-2">
         You already have an account ?
         <strong>
-          <router-link style="color: rgba(224, 140, 140, 0.911);" to="login">Log in here</router-link>
+          <router-link variant="warning" to="login">Log in here</router-link>
+          <!-- style="color: rgba(224, 140, 140, 0.911);" -->
         </strong>
       </div>
     </b-form>

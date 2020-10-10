@@ -29,7 +29,8 @@
         <br/>
          <br/>   
                
-         For the server side - we used an API and worked with <a style="color: rgba(238, 107, 107, 0.911)" href="https://spoonacular.com/food-api"><strong> spoonacular</strong></a> website to get recipes,
+         For the server side - we used an API and worked with <a variant="warning"  href="https://spoonacular.com/food-api"><strong> spoonacular</strong></a> website to get recipes,
+         <!-- style="color: rgba(238, 107, 107, 0.911)" -->
      <br/>
       along with using Azure DB ....
 

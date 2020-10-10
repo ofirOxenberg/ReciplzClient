@@ -46,7 +46,7 @@
       <br />
       <div class="mt-2">
         Do not have an account yet ?
-        <router-link to="register" id="texttt" variant="dark">Register in here</router-link>
+        <router-link to="register" id="texttt" variant="warning">Register in here</router-link>
       </div>
     </b-form>
     <b-alert
