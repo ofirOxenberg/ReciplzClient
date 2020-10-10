@@ -65,11 +65,11 @@
           </tr>
           <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
               <!-- v-if="this.$root.store.username != undefined && !privateRecipes && !myRecipes" -->
-              <td v-if=" saveTheRecipe == true || saved == true" class="center">
-                <b-icon-heart-fill variant="danger"></b-icon-heart-fill>
+              <td v-if=" saveTheRecipe == true || saved == true" class="img">
+                <b-icon-heart-fill variant="danger" @click="heart(false)"></b-icon-heart-fill>
               </td>
-               <td v-else class="center">
-                <b-icon-heart @click="heart"></b-icon-heart>
+               <td v-else class="img">
+                <b-icon-heart @click="heart(true)"></b-icon-heart>
               </td>
 
               <td class="img" v-if="watched">
@@ -212,41 +212,44 @@ export default {
         }
       }
     },
-    async heart() {
-      if(this.saveTheRecipe == ture)
+    async heart(flag) {
+      if(flag == false)
       {
-      try{
-        this.saveTheRecipe = false;
-          if (this.$root.store.username != undefined) {
-          await this.axios.put(
-            this.$root.store.BASE_URL +
-              "/users/remove_from_favorites/recipeId/" +
-              this.recipe.id
-          );
-        }
-      }catch (error) {
+        try{
+          this.saveTheRecipe = false;
+            if (this.$root.store.username != undefined) {
+            await this.axios.put(
+              this.$root.store.BASE_URL +
+                "/users/remove_from_favorites/recipeId/" +
+                this.recipe.id
+            );
+          }
+        }catch (error) 
+        {
         console.log("error.response.status", error.response.status);
         return;
+        }
       }
-      }else{
+      if(flag== true)
+      {
         this.saveTheRecipe = true;
-        try {
-          if (this.$root.store.username != undefined) {
+        try
+        {
+          if (this.$root.store.username != undefined)
+          {
             await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/add_to_favorites/recipeId/" +
               this.recipe.id
           );
+          }
         }
-      } catch (error) {
+        catch (error) {
         console.log("error.response.status", error.response.status);
         return;
-      }
+        }
 
       }
-      
-      
-    
     },
     async getMeals() {
       try {
