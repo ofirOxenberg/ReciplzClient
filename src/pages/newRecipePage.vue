@@ -120,26 +120,13 @@
         <b-form-textarea
           rows="10"
           id="textarea-formatter"
-          v-model="$v.form.text1.$model"
+          v-model="text1"
           placeholder="Enter your text1"
           :formatter="formatter"
         ></b-form-textarea>
         </b-form-group> 
     
-          <b-form-group
-          class="mb-0"
-          label="Textarea with formatter (on input)"
-          label-for="textarea-formatter"
-          description="We will convert your text to lowercase instantly"
-        >
-        <b-form-textarea
-          rows="5"
-          id="textarea-formatter"
-          v-model="$v.form.text2.$model"
-          placeholder="Enter your text2"
-          :formatter="formatter"
-        ></b-form-textarea>
-        </b-form-group> 
+          <b-form-textarea v-model="text2" style="resize: vertical"></b-form-textarea>
 
         <br/>
         <br/>
