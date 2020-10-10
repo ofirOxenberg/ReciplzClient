@@ -134,17 +134,23 @@
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
 
-                        <b-dropdown-group class="small">
-                          <li v-for="item in myMeals" :key="item.meal_id">
-                          <b-dropdown-item-button @click="meal(item.meal_id)">
-                            <!-- v-if="isInMeal" -->
-                            <b-icon icon="check" aria-hidden="true"></b-icon>
-                            {{item.name}} Meal 
-                          </b-dropdown-item-button>
-                          </li>
-                        </b-dropdown-group>
+                      <b-dropdown-group class="small">
+                        <li v-for="item in myMeals" :key="item.meal_id">
+                        <b-dropdown-item-button @click="meal(item.meal_id)">
+                          <!-- v-if="isInMeal" -->
+                          <b-icon icon="check" aria-hidden="true"></b-icon>
+                          {{item.name}} Meal 
+                          <td v-if="item.flag">
+                              <span class="sr-only">(Selected)</span>
+                            </td>
+                            <td v-else>
+                              <span class="sr-only">(Not selected)</span>
+                            </td>
+                        </b-dropdown-item-button>
+                        </li>
+                      </b-dropdown-group>
+                      <b-dropdown-group>
                         <b-dropdown-divider></b-dropdown-divider>
-                        <b-dropdown-group>
                         <input v-model="mealName" placeholder="Enter new meal name">
                       <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
                           <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
@@ -193,7 +199,7 @@ export default {
   },
   mounted() {
     this.update();
-    //this.getMeals();
+    this.getMeals();
   },
   methods: {
     async update() {
@@ -209,7 +215,7 @@ export default {
           this.watched = watch_and_save_response.data[this.recipe.id].watched;
           this.saved = watch_and_save_response.data[this.recipe.id].saved;
         } catch (error) {
-          console.log(error);
+          console.log("error");
           return;
         }
       }
@@ -256,28 +262,47 @@ export default {
     async getMeals() {
       try {
         if (this.$root.store.username != undefined) {
-          var isInMealBoolean = await this.axios.get(
+          var mealsListRes = await this.axios.get(
             this.$root.store.BASE_URL +
-              "/users/getRecipesMealsFlags/"+this.recipe.id+'/'+item.meal_id
+              "/users/getRecipesMealsFlags/"+this.recipe.id
           );
-          this.isInMeal = isInMealBoolean;
 
           this.myMeals = mealsListRes.data;
-          console.log("flag test")
-          console.log(isInMealBoolean)
-          console.log(this.isInMeal);
+          console.log(this.recipe.title)
+          console.log(this.recipe.title)
+          console.log(this.myMeals);
         }
       } catch (error) {
         console.log(error);
         return;
       }
     },
+
+    // async getMeals() {
+    //   try {
+    //     if (this.$root.store.username != undefined) {
+    //       var isInMealBoolean = await this.axios.get(
+    //         this.$root.store.BASE_URL +
+    //           "/users/getRecipesMealsFlags/"+this.recipe.id+'/'+item.meal_id
+    //       );
+    //       this.isInMeal = isInMealBoolean;
+
+    //       console.log("flag test")
+    //       console.log(isInMealBoolean)
+    //       console.log(this.isInMeal);
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //     return;
+    //   }
+    // },
+
     async meal(num) {
       this.mealRecipe = true;
-      //this.getMeals();
+      this.getMeals();
       try {
         if (this.$root.store.username != undefined) {
-          //this.myMeals[num].flag = true;
+          this.myMeals[num].flag = true;
           await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/recipesForMeal/recipeId/" +
