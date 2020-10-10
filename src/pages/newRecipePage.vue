@@ -120,7 +120,7 @@
         <br/>
         <br/>
         <br/>
-        <b-button type="submit" variant="danger" style="width:250px;">save recipe</b-button>
+        <b-button type="submit" variant="dark" style="width:250px;">save recipe</b-button>
     </b-form>  
 </div>
 </template>

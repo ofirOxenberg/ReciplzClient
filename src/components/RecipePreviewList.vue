@@ -1,6 +1,6 @@
 <template>
   <div v-if="recipes.length==0" class="d-flex justify-content-center mb-3">
-    <b-spinner style="width: 6rem; height: 6rem; align-items:center;" variant="danger"></b-spinner>
+    <b-spinner style="width: 6rem; height: 6rem; align-items:center;" variant="dark"></b-spinner>
   </div>
   <div v-else class="d-flex flex-column justify-content-center mb-3">
     <div v-if="homePage">

@@ -144,8 +144,8 @@
         <b-form-invalid-feedback v-if="!$v.form.image.url">Profile picture must be valid URL</b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button type="reset" variant="danger">Reset</b-button>
-      <b-button type="submit" variant="danger" style="width:250px;" class="ml-5 w-75">Register</b-button>
+      <b-button type="reset" variant="dark">Reset</b-button>
+      <b-button type="submit" variant="dark" style="width:250px;" class="ml-5 w-75">Register</b-button>
       <br />
       <br />
       <br />

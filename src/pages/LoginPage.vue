@@ -38,7 +38,7 @@
       <br />
       <b-button
         type="submit"
-        variant="danger"
+        variant="dark"
         style="width:100px; display:block; font-weight: 700;  border: 2px solid white;"
         class="mx-auto w-100"
       >Login</b-button>
@@ -46,7 +46,7 @@
       <br />
       <div class="mt-2">
         Do not have an account yet ?
-        <router-link to="register" id="texttt" variant="danger">Register in here</router-link>
+        <router-link to="register" id="texttt" variant="dark">Register in here</router-link>
       </div>
     </b-form>
     <b-alert

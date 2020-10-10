@@ -99,7 +99,7 @@
           <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
             <template>
                 <div style="margin-top: 10px;">
-                  <b-dropdown variant="outline-danger">
+                  <b-dropdown variant="outline-dark">
                     <template v-slot:button-content>
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
@@ -122,7 +122,7 @@
                       <b-dropdown-group>
                         <b-dropdown-divider></b-dropdown-divider>
                         <input v-model="mealName" placeholder="Enter new meal name">
-                      <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
+                      <b-dropdown-item-button variant="dark" @click="createMeal(mealName)">
                           <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
