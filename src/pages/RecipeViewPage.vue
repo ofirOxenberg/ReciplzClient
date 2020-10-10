@@ -53,7 +53,7 @@
                 <div>Occasion: {{ recipe.occasion }}</div>
                 <div>Recipe Owner: {{ recipe.recipe_owner }}</div> -->
               </div>
-            </div>Ingredients:
+            </div><span style="font-weight: bold">Ingredients:</span>:
             <ul>
               <li
                 v-for="(r, index) in recipe.ingredients"
@@ -70,7 +70,7 @@
             v-if="this.$route.params.privateRecipes || this.$route.params.myRecipes "
             class="wrapped"
           >
-            Instructions:
+            <span style="font-weight: bold">Instructions:</span>
             <ul>
               <li
                 v-for="(r, index) in recipe.instructions"
@@ -79,7 +79,7 @@
             </ul>
           </div>
           <div v-else class="wrapped">
-            Instructions:
+            <span style="font-weight: bold">Instructions:</span>
             <p>
               <span v-html="recipe.instructions"></span>
             </p>

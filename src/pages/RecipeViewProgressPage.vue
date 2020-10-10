@@ -88,7 +88,7 @@
             </ul>
           </div>
           <div v-else class="wrapped">
-            Instructions:
+            <span style="font-weight: bold">Instructions:</span>
             <p>
               <span v-html="recipe.instructions"></span>
             </p>
