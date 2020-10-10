@@ -6,6 +6,39 @@
       class="recipe-title"
     >{{ recipe.title }}</h5>
     <br>
+    
+     <!-- family recipes -->
+    <router-link
+      v-if="privateRecipes"
+      :to="{ name: 'recipe', params: { recipeId: recipe.id,
+    privateRecipes: true
+     } }"
+      class="recipe-body"
+    >
+      <div class="recipe-body">
+        <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
+      </div>
+    </router-link>
+    <!-- family recipes -->
+    <!-- My recipes -->
+    <router-link
+      v-else-if="myRecipes"
+      :to="{ name: 'recipe', params: { recipeId: recipe.id,
+    myRecipes: true
+     } }"
+      class="recipe-body"
+    >
+      <div class="recipe-body">
+        <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
+      </div>
+    </router-link>
+    <!-- My recipes -->
+    <!-- API recipes -->
+    <router-link
+      v-else
+      :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+      class="recipe-body"
+    >
     <div class="recipe-body">
       <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
     </div>
