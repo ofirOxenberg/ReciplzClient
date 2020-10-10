@@ -74,6 +74,7 @@ export default {
 }
 
 .col {
+  text-align: center;
   border-style: solid;
   border-width: 0.5px;
   color: black;
@@ -93,10 +94,10 @@ export default {
 
 .vertical-center {
   margin: 0;
-  position: absolute;
+  //position: absolute;
   top: 96%;
   -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: translateY(-70%);
 }
 
 .jumbotron {
