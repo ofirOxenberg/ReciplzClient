@@ -79,6 +79,7 @@
         ><b-form-textarea
           rows="3"
           max-rows="20"
+          label-cols-sm="7"
           style="resize: vertical"
           id="ingredients"
           v-model="$v.form.ingredients.$model"
@@ -100,6 +101,7 @@
         ><textarea
           rows="3"
           max-rows="20"
+          width= 100%
           style="resize: vertical"
           id="instruction"
           v-model="$v.form.instruction.$model"
@@ -110,23 +112,6 @@
           v-if="!$v.form.instruction.required">
           Instruction are required</b-form-invalid-feedback>
         </b-form-group>
-
-        <b-form-group
-          class="mb-0"
-          label="Textarea with formatter (on input)"
-          label-for="textarea-formatter"
-          description="We will convert your text to lowercase instantly"
-        >
-        <b-form-textarea
-          rows="10"
-          id="textarea-formatter"
-          v-model="text1"
-          placeholder="Enter your text1"
-        ></b-form-textarea>
-        </b-form-group> 
-    
-          <textarea v-model="text2" style="resize: vertical"></textarea>
-
         <br/>
         <br/>
         <br/>
@@ -147,8 +132,6 @@ export default {
     data() {
       return {
         form: {
-          text1: "",
-          text2: "",
           recipeName: "",
           instruction: "",
           ingredients: "",
@@ -177,8 +160,6 @@ export default {
     },
     validations: {
       form: {
-          text1: {},
-          text2: {},
           recipeName: {
               required,
           },
