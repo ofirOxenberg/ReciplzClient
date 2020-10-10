@@ -65,7 +65,7 @@
           </tr>
           <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
               <!-- v-if="this.$root.store.username != undefined && !privateRecipes && !myRecipes" -->
-              <td v-if=" saveTheRecipe == true || saved == true" class="img">
+              <td v-if=" saveTheRecipe == true" class="img">
                 <b-icon-heart-fill variant="danger" @click="heart(false)"></b-icon-heart-fill>
               </td>
                <td v-else class="img">
@@ -213,7 +213,7 @@ export default {
               "]"
           );
           this.watched = watch_and_save_response.data[this.recipe.id].watched;
-          this.saved = watch_and_save_response.data[this.recipe.id].saved;
+          this.saveTheRecipe = watch_and_save_response.data[this.recipe.id].saved;
         } catch (error) {
           console.log("error");
           return;
