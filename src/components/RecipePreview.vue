@@ -213,10 +213,26 @@ export default {
       }
     },
     async heart() {
-      this.saveTheRecipe = true;
-      try {
-        if (this.$root.store.username != undefined) {
+      if(this.saveTheRecipe == ture)
+      {
+      try{
+        this.saveTheRecipe = false;
+          if (this.$root.store.username != undefined) {
           await this.axios.put(
+            this.$root.store.BASE_URL +
+              "/users/remove_from_favorites/recipeId/" +
+              this.recipe.id
+          );
+        }
+      }catch (error) {
+        console.log("error.response.status", error.response.status);
+        return;
+      }
+      }else{
+        this.saveTheRecipe = true;
+        try {
+          if (this.$root.store.username != undefined) {
+            await this.axios.put(
             this.$root.store.BASE_URL +
               "/users/add_to_favorites/recipeId/" +
               this.recipe.id
@@ -226,6 +242,11 @@ export default {
         console.log("error.response.status", error.response.status);
         return;
       }
+
+      }
+      
+      
+    
     },
     async getMeals() {
       try {
