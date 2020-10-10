@@ -154,7 +154,7 @@ export default {
       mealRecipe: false,
       isInMeal: null,
       myMeals: {},
-      mealName=""
+      mealName: ""
     };
   },
   props: {
