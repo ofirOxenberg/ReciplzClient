@@ -191,6 +191,8 @@ export default {
     },
     validations: {
       form: {
+          text1: {},
+          text2: {},
           recipeName: {
               required,
           },
