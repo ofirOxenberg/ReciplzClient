@@ -2,15 +2,16 @@
   <b-container fluid class="jumbotron">
     <b-row>
       <b-col class="col">
-        <RandomRecipePreviewList class="RandomRecipes center" />
-        <br />
-        <br />
-        <br />
-        <div class="vertical-center">
-          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes !</b-button>
-        </div>
-        <br />
-        <br />
+          <div>
+          <RandomRecipePreviewList class="RandomRecipes center" />
+          <br />
+          <br />
+          <br />
+          <!-- class="vertical-center" -->
+          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
+          </div>
+          <br />
+          <br />
       </b-col>
       
 
@@ -89,7 +90,7 @@ export default {
   //margin: -20px -50px;
   position: relative;
   //top:100%;
-  
+  left: 115%;
 }
 
 .vertical-center {
@@ -97,7 +98,7 @@ export default {
   //position: absolute;
   top: 96%;
   -ms-transform: translateY(-50%);
-  transform: translateY(-70%);
+  transform: translateY(-50%);
 }
 
 .jumbotron {

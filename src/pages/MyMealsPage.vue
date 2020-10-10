@@ -109,6 +109,9 @@ export default {
             this.$root.store.BASE_URL +
               "/users/preview/myMeals/" + num 
           );
+          if(!response.data.success){
+            alert(response.data.message)
+          }
           //save recepies ids in local storage
           var recipesForMeal = [];
           response.data.forEach((recipe) => {
@@ -133,8 +136,8 @@ export default {
         console.log(this.recipes);
 
       } catch (error) {
-        console.log("error.response.status", error);
-        return;
+          console.log("error.response.status", error);
+          return;
       }
     },
 
