@@ -65,10 +65,10 @@
           </tr>
           <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
               <!-- v-if="this.$root.store.username != undefined && !privateRecipes && !myRecipes" -->
-              <td v-if=" saveTheRecipe == true || saved == true" class="img">
+              <td v-if=" saveTheRecipe == true || saved == true" class="center">
                 <b-icon-heart-fill variant="danger"></b-icon-heart-fill>
               </td>
-              <td v-else class="img">
+               <td v-else class="center">
                 <b-icon-heart @click="heart"></b-icon-heart>
               </td>
 
