@@ -10,7 +10,7 @@
           <br />
           <br />
           <!-- class="vertical-center" -->
-          <b-button id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
+          <b-button variant="dark" id="rand_button" @click="NewRandomRecipes">Watch 3 new recipes</b-button>
           </div>
           <br />
           <br />

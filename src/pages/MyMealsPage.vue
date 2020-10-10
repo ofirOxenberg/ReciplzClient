@@ -43,17 +43,19 @@
         <h1 style="text-align: center;">Recipes in the meal:</h1>
         <br/>
           <b-button class="mt-3" variant="dark" @click="startMeal">Start meal</b-button>
-        <br/>
+        <div>
+          <br/>
           <b-button variant="link" @click="deleteMeal">Delete meal permanently</b-button>
+        </div>
         <br/>
         <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
         </div>
       </div>
-      <div v-else>
+      <!-- <div v-else>
         <h2>There is no recipes in that meal</h2>
-      </div>
+      </div> -->
       <br />
     </div>
   </div>
@@ -92,8 +94,22 @@ export default {
   },
   methods: {
     async deleteMeal(){
-      alert("button worked")
-      //this.$router.go(0);
+      try{
+        var selectedMeal = window.localStorage.getItem('selectedMeal')
+        const response = await this.axios.get(
+        this.$root.store.BASE_URL +
+          "/users/delete_meal/" + selectedMeal 
+        );
+        if(response.data.success){
+          alert(response.data.message);
+          this.$router.go(0);
+        }else{
+          alert("The meal wasnt deleted");
+        }
+      }catch (error) {
+        console.log(error);
+        return;
+      }
     },
 
     async getMeals() {

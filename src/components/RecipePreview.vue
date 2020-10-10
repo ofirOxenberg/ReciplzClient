@@ -131,7 +131,7 @@
                 </div>
             </template>
           </tr>
-          <tr v-if="this.$root.store.username != undefined && privateRecipes && myRecipes" style="text-align:center;">
+          <tr v-if="this.$root.store.username != undefined && privateRecipes" style="text-align:center;">
             <div>
               <b-button variant="link" @click="deleteRecipe">Delete recipe permanently</b-button>
             </div>

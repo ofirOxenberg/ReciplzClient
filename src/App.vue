@@ -1,7 +1,7 @@
 
 <template>
   <div id="app" class="jumbotron">
-    <b-navbar toggleable="lg" type="dark" variant="warning" v-if="!$root.store.username">
+    <b-navbar toggleable="lg" type="light" variant="warning" v-if="!$root.store.username">
       <b-navbar-brand :to="{ name: 'main' }">Home</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
@@ -24,7 +24,7 @@
       </b-collapse>
     </b-navbar>
 
-    <b-navbar toggleable="lg" type="dark" variant="warning" v-else>
+    <b-navbar toggleable="lg" type="light" variant="warning" v-else>
       <b-navbar-brand :to="{ name: 'main' }">Home</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
