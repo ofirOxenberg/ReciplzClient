@@ -48,7 +48,7 @@
         <br/>
         <br/>
         <div>
-          <RecipePreviewProList :recipes="recipes" />
+          <RecipePreviewProList :recipes="recipes" :privateRecipes="true" />
         </div>
       </div>
       <div v-else>
