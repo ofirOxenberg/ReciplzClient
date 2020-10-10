@@ -40,7 +40,7 @@
     </div>
     <div>
       <div v-if="recipes.length">
-        <h1 style="text-align: center;">Recipes in your meal:</h1>
+        <h1 style="text-align: center;">Recipes in the meal:</h1>
         <br/>
           <b-button class="mt-3" variant="danger" @click="startMeal">Start meal</b-button>
         <br/>

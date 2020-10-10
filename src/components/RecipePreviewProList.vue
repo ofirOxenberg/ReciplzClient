@@ -5,14 +5,11 @@
   <div v-else class="d-flex flex-column justify-content-center mb-3">
     <div v-if="homePage">
       <br />
-      <h3 style="text-align:center">{{ title }}:</h3>
-      <br />
       <div v-for="r in recipes" :key="r.id">
         <RecipePreviewPro class="recipePreview" :recipe="r" :privateRecipes="privateRecipes" />
       </div>
     </div>
     <div v-else>
-      <h3 style="text-align:center">{{ title }}:</h3>
       <br />
       <div class="row" flex-grow-1 v-for="(group, i) in recipeGroups" :key="group">
         <div
