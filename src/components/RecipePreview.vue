@@ -15,7 +15,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" style="width: 100%;height: auto;" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 70%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- family recipes -->
@@ -29,7 +29,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" style="width: 100%;height: auto;" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 70%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- My recipes -->
@@ -41,7 +41,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" style="width: 100%;height: auto;" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 70%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- API recipes -->
