@@ -89,7 +89,7 @@ export default {
   //margin: -20px -50px;
   position: relative;
   //top:100%;
-  left: 115%;
+  
 }
 
 .vertical-center {
