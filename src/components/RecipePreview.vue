@@ -15,7 +15,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" style="width: 70%;height: auto;" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- family recipes -->
@@ -29,7 +29,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" style="width: 70%;height: auto;" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- My recipes -->
@@ -41,7 +41,7 @@
       class="recipe-body"
     >
       <div class="recipe-body">
-        <img :src="recipe.image" style="width: 70%;height: auto;" class="recipe-image" id="image" />
+        <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
     <!-- API recipes -->
@@ -84,8 +84,7 @@
               <td class="img" v-if="recipe.vegetarian">
                 <img class="center" src="../assets/vegetarian-food-symbol.png" />
               </td>
-          </tr>
-                <!-- <template>
+               <!-- <template>
                 <div>
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
@@ -115,18 +114,20 @@
                   </b-dropdown>
                 </div>
               </template> -->
-            <tr v-else>
-              <td v-if="recipe.glutenFree" class="img">
-                <img class="center img" src="../assets/no-gluten.png" />
-              </td>
-              <td v-if="recipe.vegan" class="img">
-                <img class="center img" src="../assets/vegan-food.png" />
-              </td>
-              <td v-if="recipe.vegetarian" class="img">
-                <img class="center img" src="../assets/vegetarian-food-symbol.png" />
-              </td>
-            </tr>
-          <template>
+          </tr>    
+          <tr v-else>
+            <td v-if="recipe.glutenFree" class="img">
+              <img class="center img" src="../assets/no-gluten.png" />
+            </td>
+            <td v-if="recipe.vegan" class="img">
+              <img class="center img" src="../assets/vegan-food.png" />
+            </td>
+            <td v-if="recipe.vegetarian" class="img">
+              <img class="center img" src="../assets/vegetarian-food-symbol.png" />
+            </td>
+          </tr>
+          <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
+            <template>
                 <div style="margin-top: 10px;">
                   <b-dropdown variant="outline-danger">
                     <template v-slot:button-content>
@@ -145,14 +146,15 @@
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-group>
                         <input v-model="mealName" placeholder="Enter new meal name">
-                       <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
+                      <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
                           <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
                       </b-dropdown-group>
                   </b-dropdown>
                 </div>
-              </template>
+            </template>
+          </tr>
         </table>
       </div>
       <br />

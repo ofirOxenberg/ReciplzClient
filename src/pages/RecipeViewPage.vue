@@ -2,10 +2,14 @@
 <template>
   <div class="container">
     <div v-if="recipe">
+      <br />
+      <br />
       <div class="recipe-header mt-3 mb-4">
         <h1 style="text-align:center; color:black;">{{ recipe.title }}</h1>
-        <img :src="recipe.image" class="center" />
+        <br />
+        <img :src="recipe.image" style="width: 70%;height: auto;" class="center" />
       </div>
+      <br />
       <div class="recipe-body">
         <div class="wrapper">
           <div class="wrapped">
