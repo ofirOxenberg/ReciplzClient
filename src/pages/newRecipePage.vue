@@ -79,11 +79,11 @@
         ><b-form-textarea
           rows="3"
           max-rows="20"
-          ><b-form-input
           id="ingredients"
           v-model="$v.form.ingredients.$model"
           type="text"
           :state="validateState('ingredients')"
+          ><b-form-input
           ></b-form-input>
         </b-form-textarea>
         <b-form-invalid-feedback 
@@ -99,18 +99,48 @@
         ><b-form-textarea
           rows="3"
           max-rows="20"
-          ><b-form-input
           id="instruction"
           v-model="$v.form.instruction.$model"
           type="text"
           :state="validateState('instruction')"
+          ><b-form-input
         ></b-form-input>
         </b-form-textarea>
         <b-form-invalid-feedback 
           v-if="!$v.form.instruction.required">
           Instruction are required</b-form-invalid-feedback>
+        </b-form-group>
+
+        <b-form-group
+          class="mb-0"
+          label="Textarea with formatter (on input)"
+          label-for="textarea-formatter"
+          description="We will convert your text to lowercase instantly"
+        >
+        <b-form-textarea
+          rows="10"
+          id="textarea-formatter"
+          v-model="$v.form.text1.$model"
+          placeholder="Enter your text1"
+          :formatter="formatter"
+        ></b-form-textarea>
         </b-form-group> 
     
+          <b-form-group
+          class="mb-0"
+          label="Textarea with formatter (on input)"
+          label-for="textarea-formatter"
+          description="We will convert your text to lowercase instantly"
+        >
+        <b-form-textarea
+          rows="5"
+          id="textarea-formatter"
+          v-model="$v.form.text2.$model"
+          placeholder="Enter your text2"
+          :formatter="formatter"
+        ></b-form-textarea>
+        </b-form-group> 
+
         <br/>
         <br/>
         <br/>
@@ -131,6 +161,8 @@ export default {
     data() {
       return {
         form: {
+          text1: "",
+          text2: "",
           recipeName: "",
           instruction: "",
           ingredients: "",
