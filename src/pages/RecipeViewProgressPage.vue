@@ -9,8 +9,8 @@
         <b-progress-bar :value="recipeTotalTime">
           <span>Minutes: <strong>{{recipeTotalTime}}</strong></span>
         </b-progress-bar>
-        <br/>
       </b-progress> 
+      <br/>
       <div style="text-align:center">
       <b-button class="next-back" variant="danger" @click="backRecipe">Previous recipe</b-button>
       <b-button class="next-back" variant="danger" @click="nextRecipe">Next recipe</b-button>
