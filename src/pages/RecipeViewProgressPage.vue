@@ -23,7 +23,7 @@
       <div class="recipe-header mt-3 mb-4">
         <h1 style="text-align:center; color:black;">{{ recipe.title }}</h1>
         <br />
-        <img :src="recipe.image" style="display: block; margin: 0 auto;" /> 
+        <img :src="recipe.image" style="width: 70%;height: auto;" /> 
       </div>
       <br />
       <div class="recipe-body">
