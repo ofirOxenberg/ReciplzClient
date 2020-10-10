@@ -2,7 +2,7 @@
   <div class="container">
     <br/>
     <br/>
-    <b-button variant="danger" @click="moveTo">Create New Recipe</b-button>
+    <b-button variant="dark" @click="moveTo">Create New Recipe</b-button>
     <br/>
     <br/>
     <RecipePreviewList v-if="!showMsg" title="My Recipes" :recipes="recipes" :privateRecipes="true" />

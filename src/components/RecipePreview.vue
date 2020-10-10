@@ -84,36 +84,6 @@
               <td class="img" v-if="recipe.vegetarian">
                 <img class="center" src="../assets/vegetarian-food-symbol.png" />
               </td>
-               <!-- <template>
-                <div>
-                  <b-dropdown variant="outline-danger">
-                    <template v-slot:button-content>
-                      <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
-                    </template>
-
-                        <b-dropdown-group class="small">
-                          <li v-for="item in myMeals" :key="item.meal_id">
-                          <b-dropdown-item-button @click="meal(item.meal_id)">
-                            <b-icon icon="blank" aria-hidden="true"></b-icon>
-                            {{item.name}} Meal 
-                            <td v-if="item.flag">
-                              <span class="sr-only">(Selected)</span>
-                            </td>
-                            <td v-else>
-                              <span class="sr-only">(Not selected)</span>
-                            </td>
-                          </b-dropdown-item-button>
-                          </li>
-                        </b-dropdown-group>
-                        <b-dropdown-divider></b-dropdown-divider>
-                        <input v-model="mealName" placeholder="Enter new meal name">
-                       <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
-                          <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
-                          Create new meal
-                      </b-dropdown-item-button>
-                  </b-dropdown>
-                </div>
-              </template> -->
           </tr>    
           <tr v-else>
             <td v-if="recipe.glutenFree" class="img">
@@ -129,7 +99,7 @@
           <tr v-if="this.$root.store.username != undefined" style="text-align:center;">
             <template>
                 <div style="margin-top: 10px;">
-                  <b-dropdown variant="outline-danger">
+                  <b-dropdown variant="outline-dark">
                     <template v-slot:button-content>
                       <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon> Add To Meal
                     </template>
@@ -152,7 +122,7 @@
                       <b-dropdown-group>
                         <b-dropdown-divider></b-dropdown-divider>
                         <input v-model="mealName" placeholder="Enter new meal name">
-                      <b-dropdown-item-button variant="danger" @click="createMeal(mealName)">
+                      <b-dropdown-item-button variant="dark" @click="createMeal(mealName)">
                           <b-icon icon="clipboard-plus" aria-hidden="true"></b-icon>
                           Create new meal
                       </b-dropdown-item-button>
@@ -160,6 +130,11 @@
                   </b-dropdown>
                 </div>
             </template>
+          </tr>
+          <tr v-if="this.$root.store.username != undefined && privateRecipes && myRecipes" style="text-align:center;">
+            <div>
+              <b-button variant="link" @click="deleteRecipe">Delete recipe permanently</b-button>
+            </div>
           </tr>
         </table>
       </div>
@@ -202,6 +177,11 @@ export default {
     this.getMeals();
   },
   methods: {
+    async deleteRecipe(){
+      alert("the button worked");
+      //this.$router.go(0);
+    },
+
     async update() {
       if (this.$root.store.username != undefined) {
         try {

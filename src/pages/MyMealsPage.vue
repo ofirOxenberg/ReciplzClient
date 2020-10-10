@@ -9,7 +9,7 @@
         <b-row style="margin-bottom: 15px;"> 
           <b-col> 
             <br/>
-              <b-dropdown variant="outline-danger">
+              <b-dropdown variant="outline-dark">
                 <template v-slot:button-content>
                   <b-icon icon="b-icon-clipboard-plus" aria-hidden="true"></b-icon>Choose meal
                 </template>
@@ -42,7 +42,10 @@
       <div v-if="recipes.length">
         <h1 style="text-align: center;">Recipes in the meal:</h1>
         <br/>
-          <b-button class="mt-3" variant="danger" @click="startMeal">Start meal</b-button>
+          <b-button class="mt-3" variant="dark" @click="startMeal">Start meal</b-button>
+        <br/>
+          <b-button variant="link" @click="deleteMeal">Delete meal permanently</b-button>
+        <br/>
         <br/>
         <div>
           <RecipePreviewProList :recipes="recipes" />
@@ -88,6 +91,11 @@ export default {
     }
   },
   methods: {
+    async deleteMeal(){
+      alert("button worked")
+      //this.$router.go(0);
+    },
+
     async getMeals() {
       try {
         if (this.$root.store.username != undefined) {
