@@ -97,7 +97,6 @@
           rows="3"
           max-rows="25"
           class="textarea"
-          style="resize: vertical"
           id="instruction"
           v-model="$v.form.instruction.$model"
           type="text"

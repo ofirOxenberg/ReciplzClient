@@ -15,8 +15,8 @@
       <h3 style="text-align:center">{{ title }}:</h3>
       <br />
       <div class="row" flex-grow-1 v-for="(group, i) in recipeGroups" :key="group">
+        <!-- class="col" -->
         <div
-          class="col"
           v-for="(r, index) in recipes.slice(i * recipesPerRow, (i+1) * recipesPerRow)"
           :key="index"
         >
