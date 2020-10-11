@@ -11,7 +11,8 @@
     </div>
     <div v-else>
       <br />
-      <div class="row" flex-grow-1 v-for="(group, i) in recipeGroups" :key="group">
+      <div class="row"  v-for="(group, i) in recipeGroups" :key="group">
+        <!-- flex-grow-1 -->
         <div
           class="col"
           v-for="(r, index) in recipes.slice(i * recipesPerRow, (i+1) * recipesPerRow)"
@@ -52,7 +53,7 @@ export default {
     },
     recipesPerRow: {
       type: Number,
-      default: 4
+      default: 3
     },
     homePage: {
       type: Boolean,
