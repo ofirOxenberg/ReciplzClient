@@ -137,7 +137,12 @@ export default {
       var curr = parseInt(currentItem);
       curr = curr + 1;
       window.localStorage.setItem('currentRecipe', curr);
+      var curRecipe = this.recipes[curr].id;
+      if(isNaN(Number(curRecipe)))
+        window.location.href = `http://recip-lz.herokuapp.com/#/recipe/${this.recipes[curr].id}`
+      else
       window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
+
       this.$router.go(0)
     }  
   },
