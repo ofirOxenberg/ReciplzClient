@@ -155,7 +155,12 @@ export default {
           console.log('results_dic',results_dic);
           this.timePassed= counter
           this.recipes = results_dic.map(r => {
-            if(Array.isArray(r)) return r[0];
+            if(Array.isArray(r)){
+              let obj =  r[0];
+              obj.readyInMinutes = Number(obj.ready_in_minutes);
+              obj.title = obj.recipe_name;
+              return obj;
+            } 
             return r;
           });
 
