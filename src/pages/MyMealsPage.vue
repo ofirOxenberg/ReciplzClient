@@ -50,7 +50,7 @@
         <br/>
         <br/>
         <div>
-          <RecipePreviewProList :recipes="recipes" :privateRecipes="true" />
+          <RecipePreviewProList :recipes="recipes" />
         </div>
       </div>
       <!-- <div v-else>
@@ -138,8 +138,15 @@ export default {
           //save recepies ids in local storage
           var recipesForMeal = [];
           response.data.forEach((recipe) => {
+            if(Array.isArray(recipe))
+            {
+              let obj =  r[0];
+              obj.readyInMinutes = Number(obj.ready_in_minutes);
+              obj.title = obj.recipe_name;
+            recipesForMeal.push({id:recipe.recipe_id,readyInMinutes:recipe.ready_in_minutes});
+            } 
             recipesForMeal.push({id:recipe.id,readyInMinutes:recipe.readyInMinutes});
-          });
+          })
           var allRecipesInMeal = JSON.stringify(recipesForMeal);
           window.localStorage.setItem('recipesForMeal', allRecipesInMeal);
 
