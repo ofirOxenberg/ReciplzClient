@@ -139,7 +139,8 @@ export default {
       window.localStorage.setItem('currentRecipe', curr);
       var curRecipe = this.recipes[curr].id;
       if(isNaN(Number(curRecipe)))
-        window.location.href = `http://recip-lz.herokuapp.com/#/recipe/${this.recipes[curr].id}`
+
+        window.location.href = `http://recip-lz.herokuapp.com/#/recipe/${this.recipes[curr].id}?isPrivate=true`
       else
       window.location.href=`http://recip-lz.herokuapp.com/#/recipeWithProgress/${this.recipes[curr].id}`
 

@@ -102,7 +102,7 @@ export default {
     try {
       let response;
       try {
-        if (this.$route.params.privateRecipes) {
+        if (this.$route.params.privateRecipes || this.$route.query.isPrivate) {
           response = await this.axios.get(
             this.$root.store.BASE_URL +
               "/users/my_recipes/recipeId/" +
