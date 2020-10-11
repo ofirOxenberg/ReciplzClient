@@ -110,12 +110,12 @@
                           <!-- v-if="isInMeal" -->
                           <b-icon icon="check" aria-hidden="true"></b-icon>
                           {{item.name}} Meal 
-                          <td v-if="item.flag">
+                          <!-- <td v-if="item.flag">
                               <span class="sr-only">(Selected)</span>
                             </td>
                             <td v-else>
                               <span class="sr-only">(Not selected)</span>
-                            </td>
+                            </td> -->
                         </b-dropdown-item-button>
                         </li>
                       </b-dropdown-group>
@@ -272,25 +272,6 @@ export default {
       }
     },
 
-    // async getMeals() {
-    //   try {
-    //     if (this.$root.store.username != undefined) {
-    //       var isInMealBoolean = await this.axios.get(
-    //         this.$root.store.BASE_URL +
-    //           "/users/getRecipesMealsFlags/"+this.recipe.id+'/'+item.meal_id
-    //       );
-    //       this.isInMeal = isInMealBoolean;
-
-    //       console.log("flag test")
-    //       console.log(isInMealBoolean)
-    //       console.log(this.isInMeal);
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //     return;
-    //   }
-    // },
-
     async meal(num) {
       this.mealRecipe = true;
       this.getMeals();
@@ -348,6 +329,7 @@ export default {
   box-sizing: border-box;
 }
 .main-preview {
+  display:inline;
   text-align: center;
   font-weight: bold;
   margin-left: auto;
@@ -370,10 +352,6 @@ export default {
   position: relative;
 }
 .recipe-preview .recipe-body .recipe-image {
-  /* margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto; */
   display: block;
   height: auto;
   -webkit-background-size: cover;

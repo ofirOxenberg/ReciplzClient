@@ -22,9 +22,6 @@
           <b-form-invalid-feedback 
           v-if="!$v.form.recipeName.$model">
           Recipe name is required</b-form-invalid-feedback>
-          <!-- <b-form-invalid-feedback
-          v-if="!$v.form.recipeName.alpha">
-          Recipe name must contain English letters only</b-form-invalid-feedback> -->
         </b-form-group>
         
         <b-form-group 
@@ -78,8 +75,8 @@
         label-for="ingredients"
         ><textarea
           rows="3"
-          max-rows="20"
-          label-cols-sm="7"
+          max-rows="25"
+          class="textarea"
           style="resize: vertical"
           id="ingredients"
           v-model="$v.form.ingredients.$model"
@@ -98,8 +95,8 @@
         label-for="instruction"
         ><textarea
           rows="3"
-          max-rows="20"
-          label-cols-sm="7"
+          max-rows="25"
+          class="textarea"
           style="resize: vertical"
           id="instruction"
           v-model="$v.form.instruction.$model"

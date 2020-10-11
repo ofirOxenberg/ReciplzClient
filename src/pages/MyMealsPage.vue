@@ -53,9 +53,6 @@
           <RecipePreviewProList :recipes="recipes" />
         </div>
       </div>
-      <!-- <div v-else>
-        <h2>There is no recipes in that meal</h2>
-      </div> -->
       <br />
     </div>
   </div>
