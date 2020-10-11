@@ -16,6 +16,7 @@
           <br />
       </b-col>
       
+      
 
       <b-col class="col">
         <!-- if the user is not logged in: -->
@@ -85,7 +86,7 @@ export default {
 }
 
 #rand_button {
-  background-color: rgba(240, 90, 90, 0.911);
+  //background-color: #D8A65A;
   //background-position: center;
   border: 2px solid white;
   font-weight: 700;

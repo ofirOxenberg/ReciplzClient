@@ -126,7 +126,7 @@ export default {
 #h1 {
 }
 #texttt {
-  color: rgba(240, 90, 90, 0.911);
+  //color: rgba(240, 90, 90, 0.911);
   font-weight: 700;
 }
 </style>
