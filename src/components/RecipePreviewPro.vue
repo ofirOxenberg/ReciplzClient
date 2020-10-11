@@ -7,7 +7,7 @@
     >{{ recipe.title }}</h5>
     <br>
     <div class="recipe-body">
-      <img :src="recipe.image" style="width:350px; height:350px; object-fit:cover;" class="recipe-image" id="image" />
+      <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
     </div>
     
     <div>

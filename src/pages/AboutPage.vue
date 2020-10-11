@@ -25,18 +25,14 @@
         - create an account,<br/>
         - explore random recipes on the main page, add a recipe to favorites and more.<br/>
         - plan a meal combained of number of recipes.<br/>
-        - watch your meal progress bar according to the meal plan        
+        - Search for a specific recipe. <br/>
+        - watch your meal timer progress according to the meal preparation time.        
         <br/>
          <br/>   
                
-         For the server side - we used an API and worked with <a variant="warning"  href="https://spoonacular.com/food-api"><strong> spoonacular</strong></a> website to get recipes,
-         <!-- style="color: rgba(238, 107, 107, 0.911)" -->
+         For the backend side - we used an API and worked with <a variant="warning"  href="https://spoonacular.com/food-api"><strong> spoonacular</strong></a> website to get recipes,
+         along with using Azure DB for both backend and frontend side.         
      <br/>
-      along with using Azure DB ....
-
-     <br/>  
-      <br/>  
-      
 <br> 
   </p>
 </div>
