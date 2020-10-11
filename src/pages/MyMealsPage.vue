@@ -137,22 +137,27 @@ export default {
           );
           //save recepies ids in local storage
           var recipesForMeal = [];
-          response.data.forEach((recipe) => {
-            if(Array.isArray(recipe))
-            {
+          this.recipes = []
+          var results_dic = response.data;
+
+            this.recipes = results_dic.map(r => {
+            if(Array.isArray(r)){
               let obj =  r[0];
               obj.readyInMinutes = Number(obj.ready_in_minutes);
               obj.title = obj.recipe_name;
-            recipesForMeal.push({id:recipe.recipe_id,readyInMinutes:recipe.ready_in_minutes});
+              obj.id = obj.recipe_id;
+              return obj;
             } 
+            return r;
+          });
+          this.recipes.forEach((recipe) => {
+            // if(Array.isArray(recipe))
             recipesForMeal.push({id:recipe.id,readyInMinutes:recipe.readyInMinutes});
-          })
+          });
           var allRecipesInMeal = JSON.stringify(recipesForMeal);
           window.localStorage.setItem('recipesForMeal', allRecipesInMeal);
 
-          this.recipes = []
           var counter = 0
-          var results_dic = response.data;
           window.localStorage.removeItem('Recipies');
 
           window.localStorage.setItem('Recipies',JSON.stringify(response))
@@ -161,15 +166,7 @@ export default {
           });
           console.log('results_dic',results_dic);
           this.timePassed= counter
-          this.recipes = results_dic.map(r => {
-            if(Array.isArray(r)){
-              let obj =  r[0];
-              obj.readyInMinutes = Number(obj.ready_in_minutes);
-              obj.title = obj.recipe_name;
-              return obj;
-            } 
-            return r;
-          });
+
 
         this.searched = true;
         console.log(this.recipes);
