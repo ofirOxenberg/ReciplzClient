@@ -152,8 +152,17 @@ export default {
           results_dic.forEach(recipe => {
             counter = counter + recipe.readyInMinutes
           });
+          console.log('results_dic',results_dic);
           this.timePassed= counter
-          this.recipes.push(...results_dic);
+          this.recipes = results_dic.map(r => {
+            if(Array.isArray(r)){
+              let obj =  r[0];
+              obj.readyInMinutes = Number(obj.ready_in_minutes);
+              obj.title = obj.recipe_name;
+              return obj;
+            } 
+            return r;
+          });
 
         this.searched = true;
         console.log(this.recipes);
