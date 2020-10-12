@@ -108,14 +108,14 @@
                         <li v-for="item in myMeals" :key="item.meal_id">
                         <b-dropdown-item-button @click="meal(item.meal_id)">
                           <!-- v-if="isInMeal" -->
-                          <b-icon icon="check" aria-hidden="true"></b-icon>
+                          <!-- <b-icon icon="check" aria-hidden="true"></b-icon> -->
                           {{item.name}} Meal 
-                          <!-- <td v-if="item.flag">
+                          <td v-if="item.flag">
                               <span class="sr-only">(Selected)</span>
                             </td>
                             <td v-else>
                               <span class="sr-only">(Not selected)</span>
-                            </td> -->
+                            </td>
                         </b-dropdown-item-button>
                         </li>
                       </b-dropdown-group>
@@ -438,8 +438,7 @@ export default {
   margin-right: auto;
 }
 .img{
-  width: 30px;
-  height: 30px; 
+
   padding-right: 10px; 
   display: inline;
 }
