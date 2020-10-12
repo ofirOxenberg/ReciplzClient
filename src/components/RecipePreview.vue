@@ -6,7 +6,7 @@
       class="recipe-title"
     >{{ recipe.title }}</h5>
     <br>
-    <!-- family recipes -->
+    
     <router-link
       v-if="privateRecipes"
       :to="{ name: 'recipe', params: { recipeId: recipe.id,
@@ -18,9 +18,9 @@
         <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
-    <!-- family recipes -->
+    
 
-    <!-- My recipes -->
+    
     <router-link
       v-else-if="myRecipes"
       :to="{ name: 'recipe', params: { recipeId: recipe.id,
@@ -32,9 +32,9 @@
         <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
-    <!-- My recipes -->
+    
 
-    <!-- API recipes -->
+    
     <router-link
       v-else
       :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
@@ -44,7 +44,7 @@
         <img :src="recipe.image" style="width: 60%;height: auto;" class="recipe-image" id="image" />
       </div>
     </router-link>
-    <!-- API recipes -->
+    
 
     <div>
       <div class="recipe-preview">
