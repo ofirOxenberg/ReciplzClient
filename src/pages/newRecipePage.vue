@@ -51,7 +51,7 @@
           :state="validateState('image')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.image.required">Recipe picture is required</b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.image.url">Profile picture must be valid URL</b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.image.url">Recipe picture must be valid URL</b-form-invalid-feedback>
         </b-form-group>
 
         <b-form-group 
